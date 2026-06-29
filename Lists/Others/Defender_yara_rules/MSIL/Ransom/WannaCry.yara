@@ -1,0 +1,97 @@
+rule Ransom_MSIL_WannaCry_AYA_2147922981_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Ransom:MSIL/WannaCry.AYA!MTB"
+        threat_id = "2147922981"
+        type = "Ransom"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "WannaCry"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = "WannaCry.Properties.Resources" wide //weight: 2
+        $x_1_2 = "Ooops, your files have been encrypted!" wide //weight: 1
+        $x_1_3 = "Nobody can recover your files without our decryption service" wide //weight: 1
+        $x_1_4 = ".WNCRY" wide //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Ransom_MSIL_WannaCry_MBZ_2147942166_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Ransom:MSIL/WannaCry.MBZ!MTB"
+        threat_id = "2147942166"
+        type = "Ransom"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "WannaCry"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "6"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = "Ooops, your files has been encrypted" wide //weight: 2
+        $x_1_2 = "Send $600 worth of bitcoin to this adress" wide //weight: 1
+        $x_1_3 = "Wanna Decrypt0r 2.0" wide //weight: 1
+        $x_1_4 = "Please pay first! one file deleted." wide //weight: 1
+        $x_1_5 = "FAKE WANNA CRY" wide //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Ransom_MSIL_WannaCry_AMTB_2147963982_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Ransom:MSIL/WannaCry!AMTB"
+        threat_id = "2147963982"
+        type = "Ransom"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "WannaCry"
+        severity = "Critical"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "C:\\Users\\Acer Nitro 50\\Desktop\\C#\\WannaCry\\obj\\Release\\PayDay.pdb" ascii //weight: 1
+        $x_1_2 = "Image.WNCRY" ascii //weight: 1
+        $x_1_3 = "Workflow.WNCRY" ascii //weight: 1
+        $x_1_4 = "PayDay.Properties.Resources" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Ransom_MSIL_WannaCry_A_2147970752_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Ransom:MSIL/WannaCry.A!AMTB"
+        threat_id = "2147970752"
+        type = "Ransom"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "WannaCry"
+        severity = "Critical"
+        info = "AMTB: an internal category used to refer to some threats"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "ENCRYPT_NETWORK_SHARES" ascii //weight: 1
+        $x_1_2 = "Your files have been permanently deleted!" ascii //weight: 1
+        $x_1_3 = "*.wncry" ascii //weight: 1
+        $x_1_4 = "RansomSalt" ascii //weight: 1
+        $x_1_5 = "WormWorker" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

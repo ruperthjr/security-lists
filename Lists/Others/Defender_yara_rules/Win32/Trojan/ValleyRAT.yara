@@ -1,0 +1,273 @@
+rule Trojan_Win32_ValleyRAT_EC_2147913492_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ValleyRAT.EC!MTB"
+        threat_id = "2147913492"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ValleyRAT"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = {8b c6 83 e0 0f 8a 04 08 30 04 16 46 3b f3 72 f0}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ValleyRAT_PAHL_2147949159_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ValleyRAT.PAHL!MTB"
+        threat_id = "2147949159"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ValleyRAT"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "8"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = "monitor.bat" ascii //weight: 2
+        $x_2_2 = "tasklist /FI \"IMAGENAME eq %ProcessName%\" | findstr /I \"%ProcessName%\" >nul" ascii //weight: 2
+        $x_1_3 = "cmd.exe /B /c \"%s\"" ascii //weight: 1
+        $x_1_4 = "monitor.pid" ascii //weight: 1
+        $x_1_5 = "copy /Y \"%BackupProcessPath%\" \"%ProcessPath%\"" ascii //weight: 1
+        $x_1_6 = "INVALID.aps" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ValleyRAT_GBVL_2147950691_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ValleyRAT.GBVL!MTB"
+        threat_id = "2147950691"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ValleyRAT"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {83 c0 01 89 85 ?? ?? ?? ?? 83 bd ?? ?? ?? ?? ?? 73 ?? 8b 8d ?? ?? ?? ?? 0f be 54 0d ?? 81 f2 91 00 00 00 8b 85 ?? ?? ?? ?? 88 54 05}  //weight: 2, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ValleyRAT_NW_2147958155_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ValleyRAT.NW!MTB"
+        threat_id = "2147958155"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ValleyRAT"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {0f b6 04 07 47 99 f7 f9 8b 46 08 8b 4d 10 80 c2 36 89 7d 08 32 14 08 88 14 01 b8 64 1d 00 10}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ValleyRAT_AHB_2147959548_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ValleyRAT.AHB!MTB"
+        threat_id = "2147959548"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ValleyRAT"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "60"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = "mzy.dat" ascii //weight: 10
+        $x_20_2 = "OpeeProcdssaoken" ascii //weight: 20
+        $x_30_3 = {f7 f1 0f b7 1c 55 ?? ?? ?? ?? e8 ?? ?? ?? ?? 4f 75 ?? 8b c6 8b 4d f4}  //weight: 30, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ValleyRAT_ABV_2147961126_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ValleyRAT.ABV!MTB"
+        threat_id = "2147961126"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ValleyRAT"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "9"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {68 74 74 70 3a 2f 2f 31 30 33 2e 31 32 31 2e 39 33 2e 37 38 3a 32 33 32 33 2f [0-15] 2e 62 69 6e}  //weight: 5, accuracy: Low
+        $x_1_2 = "schtasks /create /tn \"%s\" /tr \"\"%s\"\" /sc onlogon /rl highest" ascii //weight: 1
+        $x_1_3 = "CreatePersistentTask called" ascii //weight: 1
+        $x_1_4 = "Cleaning up memory" ascii //weight: 1
+        $x_1_5 = "Delaying execution" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ValleyRAT_GHT_2147961985_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ValleyRAT.GHT!MTB"
+        threat_id = "2147961985"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ValleyRAT"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {56 8b f1 57 6a 40 68 00 30 00 00 8b 46 04 2b 06 50 6a 00 ff 15 ?? ?? ?? ?? 8b f8 85 ff ?? ?? 8b 16 8b 4e 04 2b ca 51 52 57 e8 ?? ?? ?? ?? 83 c4 0c 6a 00 6a 00 6a 00 57 6a 00 6a 00 ff 15 ?? ?? ?? ?? 85 c0 74 09 6a ff 50 ff 15}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ValleyRAT_PGVR_2147962707_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ValleyRAT.PGVR!MTB"
+        threat_id = "2147962707"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ValleyRAT"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {0f 57 84 24 a0 00 00 00 0f 29 84 24 a0 00 00 00 0f 28 84 24 50 02 00 00 0f 57 84 24 b0 00 00 00 0f 29 84 24 b0 00 00 00 0f 28 84 24 30 03 00 00 0f 57 84 24 c0 00 00 00 0f 29 84 24 c0 00 00 00 0f 28 44 24 40 0f 57 84 24 d0 00 00 00 0f 29 84 24 d0 00 00 00}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ValleyRAT_AHA_2147967925_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ValleyRAT.AHA!MTB"
+        threat_id = "2147967925"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ValleyRAT"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "100"
+        strings_accuracy = "High"
+    strings:
+        $x_40_1 = "e5b6ebe2bd1f6b7045bc74f32a72e14bb78b" ascii //weight: 40
+        $x_30_2 = "bdbc1e81bf8b79b6dcd496e814853965" ascii //weight: 30
+        $x_20_3 = "nThumbnailExtractionHost.exe" ascii //weight: 20
+        $x_10_4 = "ZhiMaUpdate.dll" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ValleyRAT_SX_2147969442_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ValleyRAT.SX!MTB"
+        threat_id = "2147969442"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ValleyRAT"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "High"
+    strings:
+        $x_30_1 = {8b c1 33 d2 f7 75 e8 8b 4d e4 8a 04 3a 32 45 f3 88 01 8b 43 04 8b 13 2b c2 8b 4d e0 3b c8}  //weight: 30, accuracy: High
+        $x_20_2 = {03 d1 8d 41 01 89 45 e0 89 55 e4 33 d2 f7 75 e8 8a 04 3a 8b 55 e4 32 02 c0 c8 04 32 c1 83 7d ec 00 88 45 f3}  //weight: 20, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ValleyRAT_AHD_2147970210_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ValleyRAT.AHD!MTB"
+        threat_id = "2147970210"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ValleyRAT"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "60"
+        strings_accuracy = "High"
+    strings:
+        $x_30_1 = "e5b6ebe2bd1f6b7045bc74f32a72e14bb78b" ascii //weight: 30
+        $x_20_2 = "bdbc1e81bf8b79b6dcd496e814853965" ascii //weight: 20
+        $x_10_3 = ".com/GT955888/encrypted.bin" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ValleyRAT_AHE_2147972296_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ValleyRAT.AHE!MTB"
+        threat_id = "2147972296"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ValleyRAT"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "150"
+        strings_accuracy = "High"
+    strings:
+        $x_50_1 = "start login..info" ascii //weight: 50
+        $x_40_2 = "LoginManager13SendConditionEb" ascii //weight: 40
+        $x_30_3 = "LoginManager13FilterProcessEP" ascii //weight: 30
+        $x_20_4 = "LoginManager9GetScreenER" ascii //weight: 20
+        $x_10_5 = "K7TSecurity.exe" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

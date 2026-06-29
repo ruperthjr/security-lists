@@ -1,0 +1,327 @@
+rule Trojan_MSIL_ShellCodeRunner_CXF_2147851161_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/ShellCodeRunner.CXF!MTB"
+        threat_id = "2147851161"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "ShellCodeRunner"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {11 09 11 10 11 08 11 10 9a 1f 10 28 ?? ?? ?? ?? 9c 00 11 10 17 58 13 10 11 10 11 08 8e 69 fe 04 13 11 11 11 2d d9}  //weight: 1, accuracy: Low
+        $x_1_2 = "zhwgPHQExloaaD" ascii //weight: 1
+        $x_1_3 = "xqMvSkuiE" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_ShellCodeRunner_GP_2147891923_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/ShellCodeRunner.GP!MTB"
+        threat_id = "2147891923"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "ShellCodeRunner"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_4_1 = {00 06 07 02 07 91 03 07 03 8e 69 5d 91 61 d2 9c 00 07 17 58 0b 07 02 8e 69 fe 04 0c 08 2d e1}  //weight: 4, accuracy: High
+        $x_1_2 = "The program is designed to perform process injection" wide //weight: 1
+        $x_1_3 = "CreateRemoteThread Injection" wide //weight: 1
+        $x_1_4 = "DLL Injection" wide //weight: 1
+        $x_1_5 = "Process Hollowing" wide //weight: 1
+        $x_1_6 = "APC Queue Injection" wide //weight: 1
+        $x_1_7 = "XOR Encryption" wide //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_ShellCodeRunner_NR_2147917706_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/ShellCodeRunner.NR!MTB"
+        threat_id = "2147917706"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "ShellCodeRunner"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "Low"
+    strings:
+        $x_3_1 = {11 06 11 05 09 11 04 6f ?? 00 00 0a 16 73 ?? 00 00 0a 13 07 16 fe 0e ee 01}  //weight: 3, accuracy: Low
+        $x_1_2 = "RVirus.pdb" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_ShellCodeRunner_RP_2147917846_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/ShellCodeRunner.RP!MTB"
+        threat_id = "2147917846"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "ShellCodeRunner"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "28"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = ".win Tools.exe" ascii //weight: 1
+        $x_1_2 = "BlockNetwork" ascii //weight: 1
+        $x_1_3 = "AddScheduledTask" ascii //weight: 1
+        $x_1_4 = ".msvcp120.dll" ascii //weight: 1
+        $x_1_5 = ".msvcr120.dll" ascii //weight: 1
+        $x_1_6 = ".w10.rar" ascii //weight: 1
+        $x_1_7 = ".w7.rar" ascii //weight: 1
+        $x_1_8 = "QzpcUHJvZ3JhbSBGaWxlc1" wide //weight: 1
+        $x_10_9 = "FWQGWQ231241ASF" wide //weight: 10
+        $x_10_10 = {09 11 06 07 11 06 91 08 11 06 08 8e 69 5d 91 61 d2 9c 11 06 17 58 13 06 11 06 07 8e 69 32}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_ShellCodeRunner_NS_2147923058_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/ShellCodeRunner.NS!MTB"
+        threat_id = "2147923058"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "ShellCodeRunner"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "6"
+        strings_accuracy = "Low"
+    strings:
+        $x_3_1 = {ff 16 fe 0e ?? ?? ?? ?? 2b 25 00 09 fe 0c ?? ?? ?? 00 07 fe 0c ?? ?? ?? ?? 93 28 15 00 00 0a 9c 00 fe 0c ?? ?? ?? ?? 17 58 fe 0e}  //weight: 3, accuracy: Low
+        $x_2_2 = "CalistirmaFonksiyonu" ascii //weight: 2
+        $x_1_3 = "Spotifys.exe" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_ShellCodeRunner_NS_2147923058_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/ShellCodeRunner.NS!MTB"
+        threat_id = "2147923058"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "ShellCodeRunner"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "7"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = "Shellcode injected and executed using EnumUILanguagesW in Notepad process!" wide //weight: 2
+        $x_1_2 = "execute shellcode using EnumUILanguagesW in the target process!" wide //weight: 1
+        $x_1_3 = "create remote thread in the target process!" wide //weight: 1
+        $x_1_4 = "write shellcode to the remote process memory!" wide //weight: 1
+        $x_1_5 = "allocate memory in the remote process!" wide //weight: 1
+        $x_1_6 = "jiamiA_X_B.Properties.Resources" wide //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_ShellCodeRunner_GA_2147924833_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/ShellCodeRunner.GA!MTB"
+        threat_id = "2147924833"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "ShellCodeRunner"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {06 11 04 06 11 04 91 07 11 04 07 8e 69 5d 91 61 d2 9c 11 04 17 58 13 04}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_ShellCodeRunner_GAF_2147945454_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/ShellCodeRunner.GAF!MTB"
+        threat_id = "2147945454"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "ShellCodeRunner"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {2f 00 4f 00 69 00 50 00 41 00 41 00 41 00 41 00 59 00 44 00 48 00 53 00 69 00 65 00 56 00 6b 00 69 00 31 00 49 00 3d}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_ShellCodeRunner_GTF_2147955504_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/ShellCodeRunner.GTF!MTB"
+        threat_id = "2147955504"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "ShellCodeRunner"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {2b 27 06 08 8f ?? 00 00 01 25 71 ?? 00 00 01 72 ?? 00 00 70 08 1f 0a 5d 6f ?? 00 00 0a d2 61 d2 81 ?? 00 00 01 08 17 58 0c 08 07 17 59 33 d3}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_ShellCodeRunner_GPAX_2147962216_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/ShellCodeRunner.GPAX!MTB"
+        threat_id = "2147962216"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "ShellCodeRunner"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "8"
+        strings_accuracy = "High"
+    strings:
+        $x_8_1 = {02 72 01 00 00 70 72 05 00 00 70 6f 05 00 00 0a 72 07 00 00 70 72 05 00 00 70 6f 05 00 00 0a 72 0b 00 00 70 72 05 00 00 70 6f 05 00 00 0a 72 0f 00 00 70 72 05 00 00 70 6f 05 00 00 0a 6f 06 00 00 0a}  //weight: 8, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_ShellCodeRunner_GPSA_2147963909_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/ShellCodeRunner.GPSA!MTB"
+        threat_id = "2147963909"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "ShellCodeRunner"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "8"
+        strings_accuracy = "Low"
+    strings:
+        $x_8_1 = {25 26 5d 28 ?? 00 00 0a 25 26 0c 08 61 0d 06 09 d1 6f ?? 00 00 0a 25 26 26 07 18 58 0b 07 02}  //weight: 8, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_ShellCodeRunner_GPSB_2147963910_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/ShellCodeRunner.GPSB!MTB"
+        threat_id = "2147963910"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "ShellCodeRunner"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "8"
+        strings_accuracy = "High"
+    strings:
+        $x_7_1 = {11 0d 11 0e 11 0f 11 0a 5a 11 10 58 11 0b 61 d2 9c 11 0e 17 58 13 0e 11 0e 11 0c}  //weight: 7, accuracy: High
+        $x_1_2 = {67 65 74 5f 49 73 56 61 6c 75 65 54 79 70 65 00 41 63 74 69 76 61 74 6f 72 00 43 72 65 61 74 65 49 6e 73 74 61 6e 63 65 00 67 65 74 5f 49 73 41 72 72 61 79 00 41 72 72 61 79 00 49 6e 76 6f 6b 65 00 53 79 73 74 65 6d 2e 54 68 72 65 61 64 69 6e 67 2e 54 61 73 6b 73 00 54 61 73 6b 00 54 61 73 6b 41 77 61 69 74 65 72 00 47 65 74 41 77 61 69 74 65 72 00 47 65 74 52 65 73 75 6c 74}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_ShellCodeRunner_GPSC_2147964114_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/ShellCodeRunner.GPSC!MTB"
+        threat_id = "2147964114"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "ShellCodeRunner"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "8"
+        strings_accuracy = "High"
+    strings:
+        $x_8_1 = {16 1f 47 8c 11 00 00 01 a2 11 1d 17 1f 65 8c 11 00 00 01 a2 11 1d 18 1f 6e 8c 11 00 00 01 a2 11 1d 19 1f 65 8c 11 00 00 01 a2 11 1d 1a 1f 72 8c 11 00 00 01 a2 11 1d 1b 1f 61}  //weight: 8, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_ShellCodeRunner_GPSD_2147964115_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/ShellCodeRunner.GPSD!MTB"
+        threat_id = "2147964115"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "ShellCodeRunner"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "8"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "cachedShellcodeData" ascii //weight: 1
+        $x_1_2 = "cachedStage2Data" ascii //weight: 1
+        $x_1_3 = "NoiseHttpMethod" ascii //weight: 1
+        $x_1_4 = "DebuggerBrowsableState" ascii //weight: 1
+        $x_1_5 = "get_TickCount" ascii //weight: 1
+        $x_1_6 = "TransformFinalBlock" ascii //weight: 1
+        $x_1_7 = "encryptedAssemblyJson" ascii //weight: 1
+        $x_1_8 = "RandomNumberGenerator" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

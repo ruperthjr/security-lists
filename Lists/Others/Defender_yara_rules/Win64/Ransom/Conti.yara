@@ -1,0 +1,229 @@
+rule Ransom_Win64_Conti_ZA_2147814691_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Ransom:Win64/Conti.ZA"
+        threat_id = "2147814691"
+        type = "Ransom"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Conti"
+        severity = "Critical"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "11"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {f1 d5 00 fa 4c 62 cc f4 0f 0b}  //weight: 1, accuracy: High
+        $x_10_2 = {43 69 04 81 51 2d 9e cc c1 c0 0f 69 c8 93 35 87 1b 33 f9 c1 c7 0d 81 c7 14 af dd fa 8d 3c bf 49 83 c0 01 75 db}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Ransom_Win64_Conti_RPJ_2147827691_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Ransom:Win64/Conti.RPJ!MTB"
+        threat_id = "2147827691"
+        type = "Ransom"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Conti"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {8b 45 fc 48 63 d0 48 8b 45 10 48 01 d0 8b 55 fc 48 63 ca 48 8b 55 f0 48 01 ca 0f b6 00 88 02 83 45 fc 01 8b 45 fc 48 63 d0 48 8b 45 10 48 01 d0 0f b6 00 84 c0}  //weight: 1, accuracy: High
+        $x_1_2 = {c6 45 b3 56 c6 45 b4 69 c6 45 b5 72 c6 45 b6 74 c6 45 b7 75 c6 45 b8 61 c6 45 b9 6c c6 45 ba 41 c6 45 bb 6c c6 45 bc 6c c6 45 bd 6f c6 45 be 63}  //weight: 1, accuracy: High
+        $x_1_3 = {c6 45 aa 6b c6 45 ab 65 c6 45 ac 72 c6 45 ad 6e c6 45 ae 65 c6 45 af 6c c6 45 b0 33 c6 45 b1 32}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Ransom_Win64_Conti_MIO_2147901165_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Ransom:Win64/Conti.MIO!MTB"
+        threat_id = "2147901165"
+        type = "Ransom"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Conti"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {d1 e8 8b c8 81 f1 78 3b f6 82 80 e2 01 0f 44 c8 8b c1 d1 e8 8b d0 81 f2 78 3b f6 82 80 e1 01 0f 44 d0 8b ca d1 e9 8b c1 35 78 3b f6 82 80 e2 ?? 0f 44 c1 49 83 e9 01 0f 85}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Ransom_Win64_Conti_MX_2147935760_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Ransom:Win64/Conti.MX!MTB"
+        threat_id = "2147935760"
+        type = "Ransom"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Conti"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "vssadmin delete shadows" ascii //weight: 1
+        $x_1_2 = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run" ascii //weight: 1
+        $x_1_3 = "wmic shadowcopy delete" ascii //weight: 1
+        $x_1_4 = "system_health.exe" ascii //weight: 1
+        $x_1_5 = "Clear-ComputerRestorePoint -All" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Ransom_Win64_Conti_QZ_2147937596_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Ransom:Win64/Conti.QZ!MTB"
+        threat_id = "2147937596"
+        type = "Ransom"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Conti"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR"
+        threshold = "8"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = "vssadmin delete shadows" ascii //weight: 2
+        $x_2_2 = "wmic shadowcopy delete" ascii //weight: 2
+        $x_2_3 = "Clear-ComputerRestorePoint -All" ascii //weight: 2
+        $x_2_4 = "system_health.exe" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Ransom_Win64_Conti_DC_2147956263_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Ransom:Win64/Conti.DC!MTB"
+        threat_id = "2147956263"
+        type = "Ransom"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Conti"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "25"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = "encrypted by CONTI ransomware" ascii //weight: 5
+        $x_5_2 = "If you try to use any additional recovery software - the files might be damaged or lost" ascii //weight: 5
+        $x_5_3 = "To make sure that we REALLY CAN recover data - we offer you to decrypt samples" ascii //weight: 5
+        $x_5_4 = "YOU SHOULD BE AWARE!" ascii //weight: 5
+        $x_5_5 = "We've downloaded your data and are ready to publish it on out news website if you do not respond" ascii //weight: 5
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Ransom_Win64_Conti_GTV_2147958038_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Ransom:Win64/Conti.GTV!MTB"
+        threat_id = "2147958038"
+        type = "Ransom"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Conti"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "To decrypt your files, send 0.1 BTC to:" ascii //weight: 1
+        $x_1_2 = "=== CONTI RANSOMWARE ===" ascii //weight: 1
+        $x_1_3 = "!!! YOUR FILES ARE ENCRYPTED !!!" ascii //weight: 1
+        $x_1_4 = "=== DO NOT DELETE THIS FILE ===" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Ransom_Win64_Conti_RS_2147965967_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Ransom:Win64/Conti.RS!MTB"
+        threat_id = "2147965967"
+        type = "Ransom"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Conti"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {41 0f b6 11 4d 8d 49 01 b8 ?? ?? ?? ?? 2b c2 8d 0c 40 b8 ?? ?? ?? ?? c1 e1 03 f7 e9 03 d1 c1 fa 06 8b c2 c1 e8 1f 03 d0 6b c2 7f 2b c8 b8 ?? ?? ?? ?? 83 c1 7f f7 e9 03 d1 c1 fa 06 8b c2 c1 e8 1f 03 d0 6b c2 7f 2b c8 41 88 49 ff 49 83 ea 01 75 ae}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Ransom_Win64_Conti_AHB_2147967064_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Ransom:Win64/Conti.AHB!MTB"
+        threat_id = "2147967064"
+        type = "Ransom"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Conti"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "60"
+        strings_accuracy = "High"
+    strings:
+        $x_30_1 = "- %APPDATA%\\Telegram*, Kotatogram*, 64Gram*, Unigram* (mask)" ascii //weight: 30
+        $x_10_2 = "--remove-persistence" ascii //weight: 10
+        $x_20_3 = "- Other user profiles (C:\\Users\\*\\AppData\\Roaming\\...)" ascii //weight: 20
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Ransom_Win64_Conti_ARA_2147969518_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Ransom:Win64/Conti.ARA!MTB"
+        threat_id = "2147969518"
+        type = "Ransom"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Conti"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "12"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = {30 06 c0 c0 03 48 ff c6 48 ff c9 75 f3}  //weight: 10, accuracy: High
+        $x_2_2 = "All your files have been encrypted" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

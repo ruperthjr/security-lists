@@ -1,0 +1,386 @@
+rule Trojan_MSIL_BypassUAC_GNF_2147898086_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.GNF!MTB"
+        threat_id = "2147898086"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {06 0a 02 28 ?? ?? ?? 06 0b 07 8e 69 8d 1d 00 00 01 0c 16 0d 2b 13 08 09 07 09 91 06 09 06 8e 69 5d 91 61 d2 9c 09 17 58 0d 09 07 8e 69 32 e7}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_SGA_2147904862_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.SGA!MTB"
+        threat_id = "2147904862"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR"
+        threshold = "2"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = "\\Dofus2\\Module_Ankama_Connection.dat" wide //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_SG_2147906456_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.SG!MTB"
+        threat_id = "2147906456"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR"
+        threshold = "3"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "AbaddonStub.exe" ascii //weight: 1
+        $x_1_2 = "HTTPDebuggerBrowser.dll" wide //weight: 1
+        $x_1_3 = "/run /tn \\Microsoft\\Windows\\DiskCleanup\\SilentCleanup /I" wide //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_RP_2147913282_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.RP!MTB"
+        threat_id = "2147913282"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {fe 0c 03 00 20 04 00 00 00 fe 01 39 05 00 00 00 38 05 00 00 00 38 5e ff ff ff 28 20 00 00 06 28 1f 00 00 06 60 28 21 00 00 06 60 28 22 00 00 06 60 28 23 00 00 06 60 39 06 00 00 00 14 28 24 00 00 0a dd}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_NB_2147916239_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.NB!MTB"
+        threat_id = "2147916239"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "11"
+        strings_accuracy = "High"
+    strings:
+        $x_3_1 = "\\root\\SecurityCenter2" ascii //weight: 3
+        $x_2_2 = "Select * from AntivirusProduct" ascii //weight: 2
+        $x_1_3 = "WebEye.Controls.WinForms.WebCameraControl.dll" ascii //weight: 1
+        $x_1_4 = "/send-passwords" ascii //weight: 1
+        $x_1_5 = "netsh firewall delete allowedprogram" ascii //weight: 1
+        $x_1_6 = "Software\\Microsoft\\Windows\\CurrentVersion\\Run" ascii //weight: 1
+        $x_1_7 = "ZT_RAT" ascii //weight: 1
+        $x_1_8 = "/get-remote-shell" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_NC_2147918386_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.NC!MTB"
+        threat_id = "2147918386"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_3_1 = "ZT_RAT_Client.Resources" ascii //weight: 3
+        $x_2_2 = "Select * from AntivirusProduct" ascii //weight: 2
+        $x_1_3 = "/get-clipboard-text" ascii //weight: 1
+        $x_1_4 = "/send-passwords" ascii //weight: 1
+        $x_1_5 = "netsh firewall delete allowedprogram" ascii //weight: 1
+        $x_1_6 = "CreateDecryptor" ascii //weight: 1
+        $x_1_7 = "FromBase64String" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_NG_2147925555_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.NG!MTB"
+        threat_id = "2147925555"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "7"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = "e1ede26c-6645-49cc-9c1e-52d132f7a571" ascii //weight: 2
+        $x_1_2 = "Software\\Classes\\ms-settings\\shell\\open\\command" ascii //weight: 1
+        $x_1_3 = "System32\\fodhelper.exe" ascii //weight: 1
+        $x_1_4 = "VM DETECTED" ascii //weight: 1
+        $x_1_5 = "Sandbox DETECTED" ascii //weight: 1
+        $x_1_6 = "DOWNLOADFILE" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_PAHI_2147961190_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.PAHI!MTB"
+        threat_id = "2147961190"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "6"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "SELECT ParentProcessId FROM Win32_Process WHERE ProcessId = {0}" wide //weight: 1
+        $x_1_2 = "root\\CIMV2" wide //weight: 1
+        $x_1_3 = "NoOneComeALive" wide //weight: 1
+        $x_1_4 = "start /C C:\\Windows\\System32\\fodhelper.exe" wide //weight: 1
+        $x_2_5 = "rootkit dropper" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_MK_2147967336_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.MK!MTB"
+        threat_id = "2147967336"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "35"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {26 11 04 72 ?? ?? 00 70 28 ?? 00 00 0a 25 09 28 ?? 00 00 0a 11 04 28 ?? 00 00 0a 11 04 72 ?? ?? 00 70 28 ?? 00 00 0a 13 05 11 05 28 ?? 00 00 0a 2c 0c 11 05 28 1a 00 00 0a 6f 1b 00 00 0a 11 04 72 ?? ?? 00 70 28 ?? 00 00 0a 13 06 11 06}  //weight: 30, accuracy: Low
+        $x_5_2 = "payload.zip" ascii //weight: 5
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_MKA_2147967847_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.MKA!MTB"
+        threat_id = "2147967847"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "35"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {a2 25 1c 72 ?? ?? ?? 70 a2 28 ?? 00 00 0a 6f ?? 00 00 0a 08 17 6f ?? 00 00 0a 08 17 6f ?? 00 00 0a 08 28 ?? 00 00 0a 26 03 80 6c 00 00 04 05 80 6e 00 00 04 04 80 6d 00 00 04 0e 04 28 ?? 00 00 06 2a}  //weight: 20, accuracy: Low
+        $x_10_2 = "-NoProfile -ExecutionPolicy Bypass -Command \"(Invoke-WebRequest -Uri '" ascii //weight: 10
+        $x_5_3 = "/Run /TN \\Microsoft\\Windows\\DiskCleanup\\SilentCleanup /I" ascii //weight: 5
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_KKA_2147968285_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.KKA!MTB"
+        threat_id = "2147968285"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "15"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = "GHOST BOT | HELP MENU" ascii //weight: 5
+        $x_4_2 = "Wallpaper updated! Message: Ghost has taken over your desktop." ascii //weight: 4
+        $x_3_3 = "GrabRecentTokensFromAllBrowsers" ascii //weight: 3
+        $x_2_4 = "SetupDiscordC2" ascii //weight: 2
+        $x_1_5 = "ExecuteGhostCommand" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_KKA_2147968285_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.KKA!MTB"
+        threat_id = "2147968285"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "15"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = "*RATClient.Program+<RunClientLoopAsync>d__4" ascii //weight: 5
+        $x_4_2 = "BrowserCredDumpAsync" ascii //weight: 4
+        $x_3_3 = "KeyloggerHandler" ascii //weight: 3
+        $x_2_4 = "Software\\Classes\\ms-settings\\shell\\open\\command" ascii //weight: 2
+        $x_1_5 = "UAC DISABLED! Already admin!" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_MKB_2147968947_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.MKB!MTB"
+        threat_id = "2147968947"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "35"
+        strings_accuracy = "High"
+    strings:
+        $x_15_1 = "<StartClipboardMonitor>" ascii //weight: 15
+        $x_10_2 = "<StartStealer>" ascii //weight: 10
+        $x_5_3 = "<StartScreenshotLoop>" ascii //weight: 5
+        $x_3_4 = "<StartReverseShell>" ascii //weight: 3
+        $x_2_5 = "TECHNIQUE:AMSI_Patch" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_KK_2147969319_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.KK!MTB"
+        threat_id = "2147969319"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "28"
+        strings_accuracy = "High"
+    strings:
+        $x_7_1 = "JavaRAT_Client" ascii //weight: 7
+        $x_6_2 = "ANTI_KILL" ascii //weight: 6
+        $x_5_3 = "FAKE_ERROR_TITLE" ascii //weight: 5
+        $x_4_4 = "FAKE_ERROR_TEXT" ascii //weight: 4
+        $x_3_5 = "UAC_BYPASS" ascii //weight: 3
+        $x_2_6 = "{\"cmd\":\"download\",\"name\":\"" ascii //weight: 2
+        $x_1_7 = "{\"cmd\":\"uploaded\",\"msg\":\"" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_SX_2147969340_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.SX!MTB"
+        threat_id = "2147969340"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {0a 0d 09 72 ?? 00 00 70 6f ?? 00 00 0a 09 17 6f ?? 00 00 0a 09 17 6f ?? 00 00 0a 09 17 6f ?? 00 00 0a 09 28 ?? 00 00 0a 26}  //weight: 30, accuracy: Low
+        $x_20_2 = {0a 0c 08 72 ?? 00 00 70 72 ?? 00 00 70 06 72 ?? 00 00 70 28 ?? 00 00 0a 6f ?? 00 00 0a 08 72 ?? 00 00 70 72 ?? 00 00 70 6f ?? 00 00 0a dd 0d 00 00 00}  //weight: 20, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_BypassUAC_MKC_2147969957_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/BypassUAC.MKC!MTB"
+        threat_id = "2147969957"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "35"
+        strings_accuracy = "High"
+    strings:
+        $x_15_1 = "<RATClient.Exploits.ExploitHandler+<BrowserCredDumpAsync>d__5" ascii //weight: 15
+        $x_10_2 = "RATClient.Modules.SystemActionHandler+<SendScreenshotAsync>d__6" ascii //weight: 10
+        $x_5_3 = ">RATClient.Modules.SystemActionHandler+<SendClipboardAsync>d__4" ascii //weight: 5
+        $x_3_4 = "6RATClient.Exploits.ExploitHandler+<UacBypassAsync>d__1" ascii //weight: 3
+        $x_2_5 = "9RATClient.Modules.KeyloggerHandler+<SenderLoopAsync>d__17" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

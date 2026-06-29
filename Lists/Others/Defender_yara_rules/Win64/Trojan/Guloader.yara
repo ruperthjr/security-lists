@@ -1,0 +1,103 @@
+rule Trojan_Win64_Guloader_RR_2147967208_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Guloader.RR!MTB"
+        threat_id = "2147967208"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Guloader"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "ukvemsordets pertusariaceae ondulation" wide //weight: 1
+        $x_1_2 = "subsidierings srskrivningernes" wide //weight: 1
+        $x_1_3 = "enwoven forivrelsens skepsis" wide //weight: 1
+        $x_1_4 = "knuselsker tiggermunks reemerge" wide //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Guloader_RR_2147967208_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Guloader.RR!MTB"
+        threat_id = "2147967208"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Guloader"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "8"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "ukvemsordets pertusariaceae ondulation" wide //weight: 1
+        $x_1_2 = "subsidierings srskrivningernes" wide //weight: 1
+        $x_1_3 = "enwoven forivrelsens skepsis" wide //weight: 1
+        $x_1_4 = "knuselsker tiggermunks reemerge" wide //weight: 1
+        $x_1_5 = "Troopships@Mishagsytringern.Mi1" ascii //weight: 1
+        $x_1_6 = "Overexpectant1" ascii //weight: 1
+        $x_1_7 = "Medskabning Konger Skose 1" ascii //weight: 1
+        $x_1_8 = "Overexpectant" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Guloader_VGX_2147967575_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Guloader.VGX!MTB"
+        threat_id = "2147967575"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Guloader"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR"
+        threshold = "6"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "svarfristens clustering.exe" wide //weight: 1
+        $x_1_2 = "flgbremse sophistically" wide //weight: 1
+        $x_1_3 = "matchlock hydromys" wide //weight: 1
+        $x_1_4 = "SeShutdownPrivilege" wide //weight: 1
+        $x_1_5 = "trstege brstningernes" wide //weight: 1
+        $x_1_6 = "satanise" wide //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Guloader_VGZ_2147971221_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Guloader.VGZ!MTB"
+        threat_id = "2147971221"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Guloader"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "sokol" wide //weight: 1
+        $x_1_2 = "nonacquiescent millpond unpractised" wide //weight: 1
+        $x_1_3 = "elegikeres" wide //weight: 1
+        $x_1_4 = "SeShutdownPrivilege" wide //weight: 1
+        $x_1_5 = "Software\\Microsoft\\Windows\\CurrentVersion" wide //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

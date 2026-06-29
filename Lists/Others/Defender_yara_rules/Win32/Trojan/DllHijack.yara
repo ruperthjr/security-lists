@@ -1,0 +1,326 @@
+rule Trojan_Win32_DllHijack_DB_2147901327_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.DB!MTB"
+        threat_id = "2147901327"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {f6 d0 f7 d8 d3 ea 89 56 ?? 8b d0 c0 e8 ?? 0f b7 0f 66 c1 c0 ?? 05 ?? ?? ?? ?? 58 66 33 cb 66 ff c1 0f b7 c2}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_DllHijack_CCIF_2147909906_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.CCIF!MTB"
+        threat_id = "2147909906"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {8a 14 31 47 32 d0 8b c1 88 14 31 99 f7 fb 85 d2 75 ?? 33 ff 8b 44 24 ?? 41 3b c8 7c}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_DllHijack_YAB_2147911997_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.YAB!MTB"
+        threat_id = "2147911997"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "12"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {c7 44 24 04 73 b0 f0 3c e8 c7 9f 00 00 89 34 24 c7 44 24 04 34 6d 62 47 a3 ?? ?? ?? ?? e8 b2 9f 00 00 89 34 24 c7 44 24 04 c7 7b 3a a4}  //weight: 1, accuracy: Low
+        $x_1_2 = "Direct3DCreate8" ascii //weight: 1
+        $x_10_3 = {8d 44 7d 00 03 42 24 0f b7 00 8d 44 85 00 03 42 1c 03 28 83 c4 08}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_DllHijack_HNA_2147925079_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.HNA!MTB"
+        threat_id = "2147925079"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {69 95 20 ed ff ff fe 00 00 00 81 c2 3b 66 f3 56 69 85 20 ed ff ff fe 00 00 00 2b d0 81 f2 72 62 aa 00}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_DllHijack_A_2147927936_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.A!MTB"
+        threat_id = "2147927936"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {01 c7 c6 44 24 3c 74 81 3f 50 45 00 00 0f b7 47 14 89 7c 24 24 89 54 24 38 0f 85 27 ff ff ff 0f b7 7f 06 89 7c 24 20 66 85 ff 0f 84 16 ff ff ff 8b 7c 24 24 89 4c 24 2c 8d 6c 24 38 8d 74 07 18 31 ff 8d b4 26 00 00 00 00 66}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_DllHijack_BZ_2147944777_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.BZ!MTB"
+        threat_id = "2147944777"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {8d 45 f0 8b d7 50 8d 4d ec e8 ?? ?? ?? ?? 8b 45 e4 83 c7 06 30 45 f0 83 c4 04 30 65 f1 0f b6 45 ea 30 45 f2 0f b6 45 eb 30 45 f3 8b c6 8b 75}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_DllHijack_BJ_2147945056_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.BJ!MTB"
+        threat_id = "2147945056"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {59 59 8b 45 08 03 45 fc 0f b6 00 33 45 10 8b 4d 08 03 4d fc 88 01 eb}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_DllHijack_GTD_2147947525_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.GTD!MTB"
+        threat_id = "2147947525"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {89 45 f4 8b 45 f4 3b 45 ec ?? ?? 8b 45 e8 03 45 f4 0f be 00 33 45 f8 89 45 f8 8b 45 f8 0f af 45 e4 89 45 f8 8b 45 f8 c1 e8 07 33 45 f8 89 45 f8}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_DllHijack_C_2147947709_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.C!MTB"
+        threat_id = "2147947709"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "7"
+        strings_accuracy = "High"
+    strings:
+        $x_3_1 = {8a c1 32 c3 34 36 8a d8 41 88 1e 3b 8d}  //weight: 3, accuracy: High
+        $x_2_2 = "RUNASADMIN" ascii //weight: 2
+        $x_2_3 = "/uac" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_DllHijack_LRC_2147965690_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.LRC!MTB"
+        threat_id = "2147965690"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "30"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {8a 04 38 8b cf 88 45 cf b8 ?? ?? ?? ?? f7 e7 2b ca d1 e9 03 ca 8b d7 c1 e9 02}  //weight: 20, accuracy: Low
+        $x_1_2 = "--- decrypt [%s] ---" ascii //weight: 1
+        $x_2_3 = "[%s] decrypting..." ascii //weight: 2
+        $x_3_4 = "[%s] decrypt OK" ascii //weight: 3
+        $x_4_5 = "[%s] SHA-256 OK" ascii //weight: 4
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_DllHijack_LRD_2147967099_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.LRD!MTB"
+        threat_id = "2147967099"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "20"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {88 4d f0 8a ca c0 e9 02 80 e1 0f c0 e0 04 c0 e2 06 02 c8 02 55 ef 4e 88 4d f1 88 55 f2 85 f6 7e 13 0f b6 ?? ?? ?? 8b 4d dc 50 e8 ?? ?? ?? ?? 43 3b de}  //weight: 20, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_DllHijack_ARR_2147970483_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.ARR!MTB"
+        threat_id = "2147970483"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "20"
+        strings_accuracy = "Low"
+    strings:
+        $x_15_1 = {66 0f ef c1 0f 11 44 4c 10 0f 10 04 4d ?? ?? ?? ?? 66 0f ef c1 0f 11 44 4c 20 0f 10 04 4d ?? ?? ?? ?? 66 0f ef c1 0f 11 44 4c 30}  //weight: 15, accuracy: Low
+        $x_5_2 = {66 0f ef c1 0f 11 04 4c 83 c1 ?? 83 f9 ?? 7c}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_DllHijack_GPKA_2147971051_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.GPKA!MTB"
+        threat_id = "2147971051"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {53 55 8b 6c 24 0c 33 db 56 57 39 5d 14 76 3b 90 8b 45 1c 8b 34 98 8b 45 04 03 75 24 8b 78 24 33 c0 38 06 74 07 40 80 3c 06 00 75 f9 33 d2 85 c0}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_DllHijack_GPKB_2147971052_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.GPKB!MTB"
+        threat_id = "2147971052"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "7"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {54 fb 02 00 44 fb 02 00 32 fb 02 00 1e fb 02 00 0c fb 02 00 fc fa 02 00 ec fa 02 00 64 fb 02 00 00 00 00 00 fc ff 02 00 ea ff 02 00 da ff 02}  //weight: 5, accuracy: High
+        $x_2_2 = "NLEResource.dll" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_DllHijack_ARS_2147972093_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/DllHijack.ARS!MTB"
+        threat_id = "2147972093"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "DllHijack"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "20"
+        strings_accuracy = "Low"
+    strings:
+        $x_12_1 = {8d 0c 06 30 11 40 8b 95 ?? ?? ?? ?? 3b c2 72 ea}  //weight: 12, accuracy: Low
+        $x_8_2 = {0f 10 45 c8 57 0f 10 4d d8 8d 45 c8 50 0f 57 c8 56 0f 11 4d c8}  //weight: 8, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

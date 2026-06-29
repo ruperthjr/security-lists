@@ -1,0 +1,141 @@
+rule Trojan_Win32_ShellcodeLoader_A_2147917888_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ShellcodeLoader.A!MTB"
+        threat_id = "2147917888"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ShellcodeLoader"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {48 89 45 f0 48 8b 45 f0 48 81 c4 d0 00 00 00 5d c3 55 48 81 ec 60 02 00 00 48 8d ac 24 80 00 00 00 48 89 8d f0 01 00 00 48 89 95 f8 01 00 00 4c 89 85 00 02 00 00 4c 89 8d 08 02 00 00 48 c7 85}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ShellcodeLoader_MRZ_2147946840_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ShellcodeLoader.MRZ!MTB"
+        threat_id = "2147946840"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ShellcodeLoader"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {41 0f b6 94 8d ?? ?? ?? ?? 88 55 ea 8b 55 f0 0f b6 4d ea 30 0c 32 46 ff 4d e4 75}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ShellcodeLoader_AHD_2147959478_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ShellcodeLoader.AHD!MTB"
+        threat_id = "2147959478"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ShellcodeLoader"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "100"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = "ExecuteShellcodePayload" ascii //weight: 10
+        $x_20_2 = "DecryptAndExtractPayload" ascii //weight: 20
+        $x_30_3 = "PayloadThread" ascii //weight: 30
+        $x_40_4 = {66 c7 44 24 47 74 75 c6 44 24 49 61 88 54 24 4a c6 44 24 4b 41 88 54 24 4c}  //weight: 40, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ShellcodeLoader_AH_2147963037_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ShellcodeLoader.AH!MTB"
+        threat_id = "2147963037"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ShellcodeLoader"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {31 fe c1 c6 ?? 89 f0 c1 e8 ?? 01 f0 8d 3c 70 42 89 d0 31 d2 f7 f1 0f b6 03 43 84 c0 75}  //weight: 30, accuracy: Low
+        $x_20_2 = "schtasks.exe /run /tn \"WinSafe" ascii //weight: 20
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ShellcodeLoader_ABSL_2147970741_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ShellcodeLoader.ABSL!MTB"
+        threat_id = "2147970741"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ShellcodeLoader"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "9"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = "103.73.161.238" ascii //weight: 5
+        $x_1_2 = "Copying shellcode to executable memory" ascii //weight: 1
+        $x_1_3 = "Shellcode executed successfully" ascii //weight: 1
+        $x_1_4 = "WindowsSystemMonitor_Mutex" ascii //weight: 1
+        $x_1_5 = "Delaying execution" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_ShellcodeLoader_ASLT_2147971960_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/ShellcodeLoader.ASLT!MTB"
+        threat_id = "2147971960"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "ShellcodeLoader"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_3_1 = {68 00 74 74 70 00 3a 00 2f 00 2f 00 70 00 61 00 6e 00 2e 00 61 00 69 00 6c 00 65 00 6b 00 2e 00 63 00 6e 00 2f 00 64 00 6f 00 77 00 6e 00 2e 00 70 00 68 00 70 00 2f 00 [0-42] 2e 00 62 00 69 00 6e 00}  //weight: 3, accuracy: Low
+        $x_3_2 = {68 74 74 70 3a 2f 2f 70 61 6e 2e 61 69 6c 65 6b 2e 63 6e 2f 64 6f 77 6e 2e 70 68 70 2f [0-42] 2e 62 69 6e}  //weight: 3, accuracy: Low
+        $x_1_3 = "C:\\windowsupdate.exe" ascii //weight: 1
+        $x_1_4 = "shellcode_loader" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (
+            ((1 of ($x_3_*) and 2 of ($x_1_*))) or
+            ((2 of ($x_3_*))) or
+            (all of ($x*))
+        )
+}
+

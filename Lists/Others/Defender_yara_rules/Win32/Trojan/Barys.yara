@@ -1,0 +1,493 @@
+rule Trojan_Win32_Barys_GMF_2147888464_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.GMF!MTB"
+        threat_id = "2147888464"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "22"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {2b 1f 00 00 18 0b 30 ?? aa 5c d7 07 b5 03}  //weight: 10, accuracy: Low
+        $x_10_2 = {09 f3 00 51 3c 30 16 09 50 bd 44 26 0c fc}  //weight: 10, accuracy: High
+        $x_1_3 = "haryAhLibrhLoadTU" ascii //weight: 1
+        $x_1_4 = "hThrehExitTU" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_AMAA_2147892662_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.AMAA!MTB"
+        threat_id = "2147892662"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {8d 48 1e 30 4c 05 d0 48 ff c0 48 83 f8}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_GMA_2147896750_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.GMA!MTB"
+        threat_id = "2147896750"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "EL2R8RPv5LmwFPP" ascii //weight: 1
+        $x_1_2 = "amaN4nuxvAwpOX" ascii //weight: 1
+        $x_1_3 = "vAKA3qwQkHOpEXv8" ascii //weight: 1
+        $x_1_4 = "ce8jHHJEVsGmRyNjfECj4nL" ascii //weight: 1
+        $x_1_5 = "n01YP87cyoG79M" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_PACS_2147899723_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.PACS!MTB"
+        threat_id = "2147899723"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = {8b 55 08 8b 45 f8 01 d0 0f b6 08 8b 45 f8 83 e0 1f 0f b6 54 05 d8 8b 5d 08 8b 45 f8 01 d8 31 ca 88 10 83 45 f8 01 8b 45 f8 3b 45 0c 72 d2}  //weight: 2, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_RB_2147900504_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.RB!MTB"
+        threat_id = "2147900504"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {8b 54 24 20 03 54 24 08 8a 6d 00 8a 22 30 e5 88 6d 00}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_RC_2147900505_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.RC!MTB"
+        threat_id = "2147900505"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {8a 6d 00 8a 0e 31 f6 30 cd 88 6d 00 8b 5c 24 04 83 c3 02}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_GXV_2147903534_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.GXV!MTB"
+        threat_id = "2147903534"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {07 16 07 1c f3 67 54 35 ?? ?? ?? ?? 45 56 f6 2f 2f 16 f6 62 38 6c}  //weight: 5, accuracy: Low
+        $x_5_2 = {f6 3f 04 d4 20 37 8b 52 e1 35 2f 5d c3 4a}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_GXQ_2147910133_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.GXQ!MTB"
+        threat_id = "2147910133"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "6"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {51 50 57 ff 15 ?? ?? ?? ?? 6a 04 68 00 30 00 00 68 04 01 00 00 6a 00 57 ff 15 ?? ?? ?? ?? 6a 00 6a 11 68 ?? ?? ?? ?? 8b f0 56 57 ff 15}  //weight: 5, accuracy: Low
+        $x_5_2 = {51 50 57 ff 54 24 ?? 6a 04 68 00 30 00 00 68 04 01 00 00 6a 00 57 ff 94 24 ?? ?? ?? ?? 6a 00 6a 11 68 ?? ?? ?? ?? 8b f0 56 57 ff 54 24}  //weight: 5, accuracy: Low
+        $x_1_3 = "imgui_log.txt" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (
+            ((1 of ($x_5_*) and 1 of ($x_1_*))) or
+            ((2 of ($x_5_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win32_Barys_MX_2147933715_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.MX!MTB"
+        threat_id = "2147933715"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR"
+        threshold = "3"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "SafeExamBrowser" wide //weight: 1
+        $x_1_2 = "tester" ascii //weight: 1
+        $x_1_3 = "Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_NMD_2147936097_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.NMD!MTB"
+        threat_id = "2147936097"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "11"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "%s\\War.txt" ascii //weight: 1
+        $x_1_2 = "War by [WarGame,#eof] ( **** ti amo anche se tu non mi ricambi" ascii //weight: 1
+        $x_1_3 = "Now it's fun" ascii //weight: 1
+        $x_1_4 = "IsDebuggerPresent" ascii //weight: 1
+        $x_1_5 = "do you want to kill me" ascii //weight: 1
+        $x_1_6 = "EncryptFileA" ascii //weight: 1
+        $x_1_7 = "RegOpenKeyExA" ascii //weight: 1
+        $x_1_8 = "RegSetValueExA" ascii //weight: 1
+        $x_1_9 = "CreateMutexA" ascii //weight: 1
+        $x_2_10 = "somesomeWar_EOF" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_AB_2147939490_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.AB!MTB"
+        threat_id = "2147939490"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {5b b8 13 8d ff ff 80 34 03 b8 40 3d d6 fa ff ff 75 f4 61 e9 76 ?? ff ff 60 e8}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_AC_2147939492_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.AC!MTB"
+        threat_id = "2147939492"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {33 c0 89 08 50 45 43 6f 6d 70 61 63 74 32 00 ee 05 9e 8b c4 b7 67 3c 87 2f 7c e1}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_PGA_2147940183_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.PGA!MTB"
+        threat_id = "2147940183"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {8b 45 ec 89 45 ec 8b 4d 10 89 4d f0 ?? ?? 8b 55 f0 83 c2 ?? 89 55 f0 8b 45 10 05 ?? ?? ?? ?? 39 45 f0}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_CCJZ_2147943380_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.CCJZ!MTB"
+        threat_id = "2147943380"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {8b 95 f0 f3 ff ff 8b 42 0c 83 e0 10 09 c0 75 ?? 8b 8d f0 f3 ff ff 51 68 00 04 00 00 6a 01 8d 95 f4 f3 ff ff 52 e8 ?? ?? ?? ?? 83 c4 10 89 85 f4 f7 ff ff 8b 85 f8 f7 ff ff 50 8b 8d f4 f7 ff ff 51 6a 01 8d 95 f4 f3 ff ff 52 e8 ?? ?? ?? ?? 83 c4 10 eb}  //weight: 2, accuracy: Low
+        $x_3_2 = {8b 85 e4 f7 ff ff 50 8b 8d f0 f7 ff ff 51 ff 15 ?? ?? ?? ?? f7 d8 1b c0 40 88 85 f8 f7 ff ff 83 bd fc f7 ff ff 14 7e ?? c7 85 fc f7 ff ff 00 00 00 00 6a 02 ff 15 ?? ?? ?? ?? 8b 95 fc f7 ff ff 83 c2 01 89 95 fc f7 ff ff e9}  //weight: 3, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_AHB_2147947690_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.AHB!MTB"
+        threat_id = "2147947690"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_3_1 = {03 c3 f7 f7 8a 01 88 45 ff 46 8b da 8d 84 9d f8 fb ff ff 8b 10 89 11 0f b6 4d ff 89 08 3b f7 72 c6}  //weight: 3, accuracy: High
+        $x_2_2 = {f8 8b 01 03 c2 33 d2 f7 75 18 8a 84 95 f8 fb ff ff 30 07 ff 45 f8 8b 45 f8 3b 45 0c 72}  //weight: 2, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_SX_2147953886_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.SX!MTB"
+        threat_id = "2147953886"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "7"
+        strings_accuracy = "Low"
+    strings:
+        $x_3_1 = {8b 8e 40 02 00 00 8b c7 6b c0 ?? 03 c1 85 58 0c 74 ?? 8b 16 50 8b 42 4c 8b ce ff d0}  //weight: 3, accuracy: Low
+        $x_2_2 = {74 14 8a 10 80 f2 ?? 80 c2 ?? 88 10 83 e9 ?? 83 c0 ?? 85 c9 75 ec}  //weight: 2, accuracy: Low
+        $x_1_3 = "\\\\.\\PhysicalDrive" ascii //weight: 1
+        $x_1_4 = "MSOLEActivation" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_ABR_2147957361_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.ABR!MTB"
+        threat_id = "2147957361"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {03 d3 51 33 c0 80 3a 00 74 0c 0f b6 0a d3 c0 03 c1 d3 c0 42}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_ABA_2147957367_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.ABA!MTB"
+        threat_id = "2147957367"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {8b 45 fc 4e c6 40 44 00 8a 06 84 c0 74 05 3a 46 ff 74 22 ff 15 ?? ?? ?? ?? 99 b9 07 00 00 00 f7 f9 8b 45 08 40 83 f8 0f 89 45 08}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_ZPF_2147966781_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.ZPF!MTB"
+        threat_id = "2147966781"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {c8 6e e4 8c 69 11 82 ad 2b f3 a6 ac ed 0e c3 d0 f3 fb fb 7e b1 99 a7 b5 34 85 95 6f a5 4d de 75 35 85 25 bb bb ee 24 58 5f 2e b9 9c 62 d7 b9 4a bd fc 3e 7f 57 10 f7 68 5e 3f 5b e5}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_PGBA_2147968851_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.PGBA!MTB"
+        threat_id = "2147968851"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {8b 17 49 41 81 e2 ?? ?? ?? ?? be ?? ?? ?? ?? 43 01 cb 31 10 21 f3 81 c1 ?? ?? ?? ?? 40 89 f1 f7 d1 47 01 de 29 de 46 81 f8 ?? ?? ?? ?? 0f 8c}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_PA_2147970723_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.PA!MTB"
+        threat_id = "2147970723"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {c7 84 24 34 04 00 00 38 5b 48 cc c7 84 24 30 04 00 00 6a b4 8e ef 8b 84 24 30 04 00 00 8b 84 24 34 04 00 00 c7 84 24 3c 04 00 00 5b 4b f5 2f c7 84 24 38 04 00 00 83 c4 eb 80}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Barys_PGBR_2147971684_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Barys.PGBR!MTB"
+        threat_id = "2147971684"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Barys"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {8b 39 01 f6 29 d6 81 e7 ?? ?? ?? ?? 09 d6 f7 d2 89 d3 31 38 21 da f7 d3 bb ?? ?? ?? ?? 40 09 d3 29 d3}  //weight: 5, accuracy: Low
+        $x_5_2 = {8b 01 29 f2 81 c6 ?? ?? ?? ?? 81 e0 ?? ?? ?? ?? 4a 01 fa 47 31 03 89 f7 81 c7 ?? ?? ?? ?? 47 81 c3 01 00 00 00 f7 d7 89 fe 89 fe 81 c1 ?? ?? ?? ?? 09 fa}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (1 of ($x*))
+}
+

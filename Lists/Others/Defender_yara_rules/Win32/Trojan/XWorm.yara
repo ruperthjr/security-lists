@@ -1,0 +1,584 @@
+rule Trojan_Win32_XWorm_NWR_2147890114_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.NWR!MTB"
+        threat_id = "2147890114"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "7"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {e8 49 ff ff ff 3b 43 20 75 ?? 33 c0 89 43 20 eb ?? 8b 43 1c e8 b9 67 fa ff 8b d0 8b c6 e8 ?? ?? ?? ?? 89 43 20 83 c3}  //weight: 5, accuracy: Low
+        $x_1_2 = "shutdown.exe /f /s /t 0" wide //weight: 1
+        $x_1_3 = "StartDDos" wide //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_AMAT_2147916822_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.AMAT!MTB"
+        threat_id = "2147916822"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_AUTOITHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {46 00 49 00 4c 00 45 00 49 00 4e 00 53 00 54 00 41 00 4c 00 4c 00 20 00 28 00 20 00 22 00 [0-30] 22 00 20 00 2c 00 20 00 40 00 54 00 45 00 4d 00 50 00 44 00 49 00 52 00 20 00 26 00 20 00 22 00 5c 00 00 22 00 20 00 2c 00 20 00 31 00 20 00 29 00}  //weight: 1, accuracy: Low
+        $x_1_2 = {46 49 4c 45 49 4e 53 54 41 4c 4c 20 28 20 22 [0-30] 22 20 2c 20 40 54 45 4d 50 44 49 52 20 26 20 22 5c 00 22 20 2c 20 31 20 29}  //weight: 1, accuracy: Low
+        $x_2_3 = "EXECUTE ( \"A\" & \"sc(Str\" & \"ingM\" & \"id" ascii //weight: 2
+        $x_2_4 = {45 00 58 00 45 00 43 00 55 00 54 00 45 00 20 00 28 00 20 00 22 00 44 00 6c 00 6c 00 43 00 61 00 6c 00 6c 00 28 00 [0-30] 28 00 22 00}  //weight: 2, accuracy: Low
+        $x_2_5 = {45 58 45 43 55 54 45 20 28 20 22 44 6c 6c 43 61 6c 6c 28 [0-30] 28 22}  //weight: 2, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (
+            ((2 of ($x_2_*) and 1 of ($x_1_*))) or
+            ((3 of ($x_2_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win32_XWorm_FEM_2147920072_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.FEM!MTB"
+        threat_id = "2147920072"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {55 8b ec 83 c4 f0 b8 00 10 40 00 e8 01 00 00 00 9a 83 c4 10 8b e5 5d e9 43 c7 36 00}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_PAYR_2147929391_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.PAYR!MTB"
+        threat_id = "2147929391"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "6"
+        strings_accuracy = "High"
+    strings:
+        $x_6_1 = {8b 55 d8 3b d6 7f 2d 8b 4d e8 8b 59 0c 2b 59 14 8d 0c 13 8b 55 e4 8b 5a 0c 2b 5a 14 8b 55 dc 8a 14 13 30 11 ff 45 dc 39 45 dc 7e 03 89 7d dc ff 45 d8 eb cc}  //weight: 6, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_NW_2147934129_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.NW!MTB"
+        threat_id = "2147934129"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_3_1 = {8d 8c 24 a4 00 00 00 51 ff d6 8b 54 24 4c 8b 32 8d 4c 24 58 83 c6 34 e8 29 f6 ff ff 8b 0e 50 8b 44 24 50 50 ff d1 8b 74 24 58 3b f3 75 0a 68 03 40 00 80 e8 cd 8a 00 00 8d 4c 24 54 e8 04 f6 ff ff 8b 16}  //weight: 3, accuracy: High
+        $x_1_2 = "WmiPrvSE.exe" ascii //weight: 1
+        $x_1_3 = "5Qiilccol52Xrrthd2.DAEyor4JDA0iewWKE2" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_AAG_2147935030_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.AAG!MTB"
+        threat_id = "2147935030"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {46 0f b6 84 34 ?? ?? ?? ?? 88 84 1c ?? ?? ?? ?? 88 8c 34 ?? ?? ?? ?? 0f b6 84 1c ?? ?? ?? ?? 8b 4c 24 ?? 03 c2 0f b6 c0 89 74 24 ?? 0f b6 84 04 ?? ?? ?? ?? 30 04 0f 47 3b 7c 24 ?? 0f 8c}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_BSA_2147938306_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.BSA!MTB"
+        threat_id = "2147938306"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "15"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = {56 8b f1 8b 4e 24 85 c9 74 15 8b 11 3b ce 0f 95 c0 0f b6 c0 50 ff 52 10 c7 46 24 00}  //weight: 10, accuracy: High
+        $x_5_2 = {8b 45 c0 8d 4d c0 6a 14 68 a8 7b 68 00 ff 10 8b 56 0c 8d 4d c0 e8 39 36 fb ff 8b f8 6a 09 68 9c 7b 68 00 8b 0f 8b 11 8b cf ff d2 8b 56 24}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_GVB_2147938658_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.GVB!MTB"
+        threat_id = "2147938658"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {8a 1c 02 88 1c 01 83 c0 01 83 d6 00 3d d7 08 00 00 89 f7 83 df}  //weight: 2, accuracy: Low
+        $x_1_2 = {89 f3 83 e3 07 8a 1c 1c 80 f3 4a 88 1c 32 83 c6 01 83 d7 00 39 ce 89 fb 19 c3}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_BAA_2147939311_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.BAA!MTB"
+        threat_id = "2147939311"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {33 d2 8b c7 f7 f6 03 cf 47 8a 44 15 ?? 8b 55 ?? 32 04 11 88 01 8b 4d ?? 3b fb 7c}  //weight: 2, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_AHB_2147941647_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.AHB!MTB"
+        threat_id = "2147941647"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "20"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {0f b6 50 1b 8b 74 24 30 80 f1 e7 80 f2 78 88 4c 24 1e 0f b6 48 1c 88 54 24 1f 0f b6 50 1d 80 f1 98 80 f2 e9 88 4c 24 20 0f b6 48 1e 88 54 24 21 0f b6 50 1f}  //weight: 10, accuracy: High
+        $x_5_2 = {50 57 57 ff 15 ?? ?? ?? 00 85 c0 74 0c c7 05 ?? ?? ?? 00 01 00 00 00 eb 15 ff 15 ?? ?? ?? 00 83 f8 78 75 0a c7 05 ?? ?? ?? 00 02 00 00 00}  //weight: 5, accuracy: Low
+        $x_5_3 = {0b 0b 0b 83 74 74 74 f8 b9 b9 b9 ff 00 73 e1 ff 00 7f f9 ff 00 7f f9 ff 00 49 f7 ff 00 49 f7 ff 00 49 f7 ff 00 49 f7 ff 00 16 f5 ff 00 16 f5 ff 00 04 f3 ff 00 04 f3 ff 00 04 f3 ff 00 00 f2 ff 00 00 f2 ff 00 00 f2 ff 00 00 f0 ff 00 00 f0 ff}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_HA_2147942491_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.HA!MTB"
+        threat_id = "2147942491"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_CMDHSTR_EXT"
+        threshold = "104"
+        strings_accuracy = "High"
+    strings:
+        $x_50_1 = "'gnirts46esabmorf'[-1..-16] -join ''" wide //weight: 50
+        $x_50_2 = "'txetlladaer'[-1..-11] -join ''" wide //weight: 50
+        $x_50_3 = "'daoL'[-1..-4] -join ''" wide //weight: 50
+        $x_1_4 = ".MemoryStream;" wide //weight: 1
+        $x_1_5 = ".GZipStream($" wide //weight: 1
+        $x_1_6 = ".Invoke(" wide //weight: 1
+        $x_1_7 = ".CopyTo($" wide //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (
+            ((2 of ($x_50_*) and 4 of ($x_1_*))) or
+            ((3 of ($x_50_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win32_XWorm_GZQ_2147945528_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.GZQ!MTB"
+        threat_id = "2147945528"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {c6 85 ac fe ff ff 4c c6 85 ad fe ff ff 6f c6 85 ae fe ff ff 61 c6 85 af fe ff ff 64 c6 85 b0 fe ff ff 4c c6 85 b1 fe ff ff 69 c6 85 b2 fe ff ff 62 c6 85 b3 fe ff ff 72 c6 85 b4 fe ff ff 61 c6 85 b5 fe ff ff 72 c6 85 b6 fe ff ff 79 c6 85 b7 fe ff ff 57}  //weight: 5, accuracy: High
+        $x_5_2 = {5a b8 6b 00 00 00 66 89 85 50 fd ff ff b9 65 00 00 00 66 89 8d 52 fd ff ff ba 72 00 00 00 66 89 95 54 fd ff ff b8 6e 00 00 00 66 89 85 56 fd ff ff b9 65 00 00 00 66 89 8d 58 fd ff ff ba 6c 00 00 00 66 89 95 5a fd ff ff b8 33 00 00 00 66 89 85 5c fd ff ff b9 32 00 00 00 66 89 8d 5e fd ff ff ba 2e 00 00 00 66 89 95 60 fd ff ff b8 64 00 00 00 66 89 85 62 fd ff ff b9 6c 00 00 00 66 89 8d 64 fd ff ff ba 6c 00 00 00 66 89 95 66 fd ff ff 33 c0 66 89 85 68 fd ff ff c7 85}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_BAF_2147948271_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.BAF!MTB"
+        threat_id = "2147948271"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {0f b6 04 57 33 d2 30 01 8b 45 ?? 03 c1 f7 75 ?? 0f b6 04 57 33 d2 30 41 01 8b 45 d0}  //weight: 2, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_BAB_2147954670_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.BAB!MTB"
+        threat_id = "2147954670"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "32"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = {00 00 01 00 00 20 00 00 00 a2 00 00 00 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 20 00 00 60}  //weight: 10, accuracy: High
+        $x_10_2 = {0e 05 00 00 00 20 01 00 00 04 00 00 00 a6 00 00 00 00 00 00 00 00 00 00 00 00 00 00 40 00 00 40}  //weight: 10, accuracy: High
+        $x_10_3 = {0c 00 00 00 00 40 01 00 00 02 00 00 00 aa 00 00 00 00 00 00 00 00 00 00 00 00 00 00 40 00 00 42}  //weight: 10, accuracy: High
+        $x_1_4 = "checkprotection" ascii //weight: 1
+        $x_1_5 = "SOFTWARE\\WinLicense" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_MCM_2147956048_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.MCM!MTB"
+        threat_id = "2147956048"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {56 42 35 21 f0 1f 2a [0-48] f8 1a 40 00 10 f0 30 00 00 ff ff ff 08 00 00 00 01 00 00 00 02 00 01 00 e9 00 00 00 a0 13 40 00 24 15 40 00 20 11 40 00 78}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_MCN_2147956049_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.MCN!MTB"
+        threat_id = "2147956049"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {2e 53 71 75 69 7a 50 61 82 9a 00 00 00 10 08 00 00 9c 00 00 00 f6 07 00 00 00 00 00 00 00 00 00 00 00 00 00 40 00 00 40 2e 65 68 5f 66 72 61 6d 04 00 00 00 00 b0 08 00 00 02 00 00 00 92 08 00 00 00 00 00 00 00 00 00 00 00 00 00 40 00 00 c0 2e 70 64 61 74 61}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_AMTB_2147958364_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm!AMTB"
+        threat_id = "2147958364"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "6"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "MXe77Hjr3fLHXxIK416L2RQyHLJKFpD5GynmFOQr1Zas4U1kWsCYAgSuRWbILZyDllySaE" ascii //weight: 1
+        $x_1_2 = "a2iKC8dQHAx3OBpcTPTuHc9sYQF4LYmMu1mVKn07Xugl8BE49rkJb7XW6PQSv6w06dfUhE" ascii //weight: 1
+        $x_1_3 = "5mlbGFlsC7Vi5yWZ4dQdrZA0MflHP9i18nXRUWby7AQrZODPrctymlle" ascii //weight: 1
+        $x_1_4 = "EXECUTION_STATE" ascii //weight: 1
+        $x_1_5 = "get_UserName" ascii //weight: 1
+        $x_1_6 = "get_MachineName" ascii //weight: 1
+        $x_1_7 = "h9dvA9Crk3ELw0vrVJ6FFrnv5QdkVxjY1My65xfOmY9duFxGH7KTgDyBWgBx2fOAq0dcp0" ascii //weight: 1
+        $x_1_8 = "ElojuyhUAoZ1mqb60ODxThEPDYqVzASyaqOx8ZbWCJJEHb6gBZBphwt8t1gZ5oZyI3KeA1" ascii //weight: 1
+        $x_1_9 = "mxoWMt7UEafchl6G2m5cRsj8zqbm9OXWHwT3AC5u17ndTDiPWMUtK2W1" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (6 of ($x*))
+}
+
+rule Trojan_Win32_XWorm_BAC_2147960551_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.BAC!MTB"
+        threat_id = "2147960551"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = {89 55 f0 8a 06 83 c6 02 88 02 8b 55 f8 0f b6 c0 05 00 01 00 00 c1 e0 08 03 c1 41 88 14 18 8b 55 f0 42 89 55 f0 81 f9 00 01 00 00 7c}  //weight: 2, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_AB_2147960944_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.AB!MTB"
+        threat_id = "2147960944"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "6"
+        strings_accuracy = "Low"
+    strings:
+        $x_6_1 = {85 c9 74 09 33 d2 48 ff 25 83 56 05 00 [0-4] 48 83 ec 28 8b 15 5e 7e 12 00 33 c9 41 b9 04 00 00 00 41 b8 00 20 20 00 ff 15 32 55 05 00 48 85 c0 74 18 33 d2 41 b8 00 80 00 00 48 8b c8 ff 15 24 55 05 00 b0 01 48 83 c4 28}  //weight: 6, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_SLWP_2147964252_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.SLWP!MTB"
+        threat_id = "2147964252"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = "$alertsFolder = \"C:\\send\\alerts\"" ascii //weight: 2
+        $x_2_2 = "if (-not (Test-Path $alertsFolder)) { New-Item -ItemType Directory -Path $alertsFolder }" ascii //weight: 2
+        $x_2_3 = "-WindowStyle Hidden  -ExecutionPolicy Bypass -file \"C:\\TEMP\\ps2890.tmp.ps1\"" wide //weight: 2
+        $x_2_4 = "Are You sure you want to run this?" wide //weight: 2
+        $x_2_5 = "Add-Alert -hostname $parts[0] -ip $parts[1] -message $parts[2] -status $parts[3]" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_A_2147966306_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.A!AMTB"
+        threat_id = "2147966306"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "AMTB: an internal category used to refer to some threats"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "ExecutionPolicy Bypass Add-MpPreference -ExclusionPath" ascii //weight: 1
+        $x_1_2 = "Urlhide" ascii //weight: 1
+        $x_1_3 = "PCShutdown" ascii //weight: 1
+        $x_2_4 = "shutdown.exe /f /s /t 0" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_A_2147966306_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.A!AMTB"
+        threat_id = "2147966306"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "AMTB: an internal category used to refer to some threats"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "6"
+        strings_accuracy = "High"
+    strings:
+        $x_6_1 = "\"!#!$!%!&!'!(!)!*!+!,!-!.!/!0!1!2!3!435!6!7!8!9!:!;!<!=!>!?!@!A!B!C!D!E!F!G!H!I!J" ascii //weight: 6
+        $x_6_2 = "9B425D78411BF937F05FB72623B29FD8A823EFBA6CF3559209E071C19208DD31" ascii //weight: 6
+        $x_3_3 = "50E61CBE02D2A9AEEF3C489138DA70A465FCA5643EA0A9BB77AB927BE132E929" ascii //weight: 3
+        $x_3_4 = "B3373FC3DF27B18CB59DA4B5CB85F97BE9B58AB913F8B674E71A6EF84C47246A" ascii //weight: 3
+    condition:
+        (filesize < 20MB) and
+        (
+            ((2 of ($x_3_*))) or
+            ((1 of ($x_6_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win32_XWorm_RC_2147970192_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.RC!AMTB"
+        threat_id = "2147970192"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "AMTB: an internal category used to refer to some threats"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = {00 02 15 7d 97 02 00 04 2a d0 32 05 00 06 26 2a}  //weight: 2, accuracy: High
+        $x_2_2 = {02 6f 3f 04 00 06 6f 3d 02 00 0a 00 02 6f 41 04 00 06 16 6f 06 02 00 0a}  //weight: 2, accuracy: High
+        $x_2_3 = {00 25 06 6f 68 05 00 06 6f a2 05 00 06}  //weight: 2, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (2 of ($x*))
+}
+
+rule Trojan_Win32_XWorm_RA_2147970207_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.RA!AMTB"
+        threat_id = "2147970207"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "AMTB: an internal category used to refer to some threats"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "8"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = {00 02 28 3e 00 00 0a 00 02 7e 0b 01 00 0a 7d 2c 01 00 04 02 16 7d 2d 01 00 04 2b 00 02}  //weight: 2, accuracy: High
+        $x_2_2 = {02 7e b4 00 00 0a 7d 32 01 00 04 02 73 32 04 00 06 7d 33 01 00 04 02 20 e0 93 04 00 7d 34 01 00 04 02}  //weight: 2, accuracy: High
+        $x_2_3 = {6f 10 01 00 0a 6f 11 01 00 0a 16 6f 12 01 00 0a 7d 37 01 00 04 2b 00}  //weight: 2, accuracy: High
+        $x_2_4 = {02 16 7d 42 01 00 04 02 28 de 00 00 06 00 02 28 d7 01 00 06 00 02 28 d8 01 00 06 2b 00}  //weight: 2, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_XWorm_RD_2147970208_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/XWorm.RD!AMTB"
+        threat_id = "2147970208"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "XWorm"
+        severity = "Critical"
+        info = "AMTB: an internal category used to refer to some threats"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {74 0b 00 00 1b 7d 7a 00 00 04 02 28 30 01 00 06 00}  //weight: 1, accuracy: High
+        $x_1_2 = {02 7b 7a 00 00 04 7e dc 00 00 04 2c 07 7e dc 00 00 04 2b 16}  //weight: 1, accuracy: High
+        $x_1_3 = {7e d7 00 00 04 fe 06 d2 01 00 06 73 70 01 00 0a 25 80 dc 00 00 04}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

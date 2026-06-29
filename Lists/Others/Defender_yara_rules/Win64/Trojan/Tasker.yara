@@ -1,0 +1,156 @@
+rule Trojan_Win64_Tasker_CI_2147839270_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Tasker.CI!MTB"
+        threat_id = "2147839270"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Tasker"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {8b 06 eb 02 38 64 44 8b 5e 04 eb ?? ?? 41 b8 ?? ?? ?? ?? eb ?? ?? ?? 41 bc ?? ?? ?? ?? eb ?? ?? ?? 4c 8b 36 eb ?? ?? 41 81 f4 ?? ?? ?? ?? 71}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Tasker_KAA_2147900006_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Tasker.KAA!MTB"
+        threat_id = "2147900006"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Tasker"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {49 89 f3 41 8b 03 49 ba ?? ?? ?? ?? ?? ?? ?? ?? 48 8d 76 18 48 83 ee 14 eb}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Tasker_KK_2147944058_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Tasker.KK!MTB"
+        threat_id = "2147944058"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Tasker"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "22"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {b9 01 00 00 00 f0 48 0f c1 0d ?? ?? 16 00 49 89 cf 4d 31 c7 4c 89 fb 48 c1 c3 10 4f 8d 24 0f 4c 31 e3 4e 8d 2c 13 4c 31 e9 4d 01 df 4d 89 fc 49 c1 c4 20 48 c1 c3 15 4d 31 f7}  //weight: 10, accuracy: Low
+        $x_5_2 = {48 89 44 24 30 48 8d 84 24 78 01 00 00 ?? ?? ?? 24 20 48 c7 44 24 38 00 00 00 00 c7 44 24 28 0c 00 00 00 48 89 f1 ba 00 14 2d 00 4c 8d 84 24 b4 01 00 00 41 b9 0c 00 00 00 e8}  //weight: 5, accuracy: Low
+        $x_7_3 = "cmd/Cschtasks/Create/SCONLOGON/TN/TR/RLHIGHEST/F" ascii //weight: 7
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Tasker_ARR_2147958260_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Tasker.ARR!MTB"
+        threat_id = "2147958260"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Tasker"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "20"
+        strings_accuracy = "High"
+    strings:
+        $x_6_1 = "schtasks /create /tn \"WindowsSystemService\" /tr \"\\\"%s\\\"\" /sc onlogon /rl highest /f" ascii //weight: 6
+        $x_4_2 = "cmd /c timeout 3 > nul" ascii //weight: 4
+        $x_8_3 = "%s\\monitor_log.txt" ascii //weight: 8
+        $x_2_4 = {8b 0b 4c 89 f2 49 89 e8 83 c7 01 49 01 ee 41 0f af cf 41 0f af cc}  //weight: 2, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Tasker_AH_2147963685_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Tasker.AH!MTB"
+        threat_id = "2147963685"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Tasker"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {66 0f 6f 00 48 83 c0 ?? 66 0f fd c2 66 0f db c1 0f 29 40 f0 48 39 c8 75}  //weight: 30, accuracy: Low
+        $x_20_2 = {66 0f fd c1 66 25 ?? ?? f3 0f 7e 0d ?? ?? ?? ?? 66 89 05 ?? ?? ?? ?? 66 0f db c1 66 0f d6 05}  //weight: 20, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Tasker_MK_2147967915_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Tasker.MK!MTB"
+        threat_id = "2147967915"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Tasker"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "20"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = "RAT Client: ConnectedConnected to server. Performing encryption handshake..." ascii //weight: 10
+        $x_5_2 = "RAT Client: Connecting..." ascii //weight: 5
+        $x_3_3 = "reg add \"HKCU\\Control Panel\\Mouse\" /v SwapMouseButtons /t REG_SZ /d  /f" ascii //weight: 3
+        $x_2_4 = "schtasks /create /f /sc onlogon /rl highest /tn \"\" /tr '\"\"'" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Tasker_PAA_2147969029_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Tasker.PAA!MTB"
+        threat_id = "2147969029"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Tasker"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {44 0f b6 04 14 46 88 04 0c 88 0c 14 42 02 0c 0c 0f b6 c9 0f b6 14 0c 41 30 13 49 83 c3 01 4c 39 db}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

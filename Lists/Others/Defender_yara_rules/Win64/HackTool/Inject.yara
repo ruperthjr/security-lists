@@ -1,0 +1,97 @@
+rule HackTool_Win64_Inject_SX_2147959607_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "HackTool:Win64/Inject.SX!MTB"
+        threat_id = "2147959607"
+        type = "HackTool"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Inject"
+        severity = "High"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "25"
+        strings_accuracy = "Low"
+    strings:
+        $x_15_1 = {48 89 01 48 8b 0d da 54 0d ?? ?? ?? ?? 89 0a f3 0f 6f 05 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 41 0f 11 00 f3 0f 6f 0d ?? ?? ?? ?? 41 0f 11 48 10 49 89 01 8b 05 ?? ?? ?? ?? 41 89 41 08 31 c0}  //weight: 15, accuracy: Low
+        $x_10_2 = {66 0f 7e ca 66 0f 6f c1 48 8b 84 24 e8 00 00 00 48 2b 84 24 e0 00 00 00 48 89 84 24 90 00 00 00 66 49 0f 6e ec 44 89 e0 48 8d 34 12 66 0f 6c c5 48 8d 54 06 08 48 8d 8c 24 e0 00 00 00 48 89 84 24 88 00 00 00 0f c6 c0 e8 66 0f d6 84 24 98 00 00 00}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule HackTool_Win64_Inject_SXA_2147960711_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "HackTool:Win64/Inject.SXA!MTB"
+        threat_id = "2147960711"
+        type = "HackTool"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Inject"
+        severity = "High"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "16"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = "Process injection (DLL injection)" ascii //weight: 5
+        $x_5_2 = "Injection successful!" ascii //weight: 5
+        $x_2_3 = "token theft" ascii //weight: 2
+        $x_2_4 = "Attempting to steal SYSTEM token from winlogon.exe" ascii //weight: 2
+        $x_1_5 = "Successfully impersonating SYSTEM!" ascii //weight: 1
+        $x_1_6 = "Process is running with elevated privileges" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule HackTool_Win64_Inject_SXB_2147964413_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "HackTool:Win64/Inject.SXB!MTB"
+        threat_id = "2147964413"
+        type = "HackTool"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Inject"
+        severity = "High"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "46"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {48 89 44 24 28 e8 ?? ?? ?? ?? 84 c0 74 ?? 48 8b 15 ?? ?? ?? ?? 4c 8d 44 24 20 48 8b 0d 59 20 06 00 41 b9 06 00 00 00 c7 44 24 20 b8 01 00 00 66 c7 44 24 24 c0 c3 e8}  //weight: 30, accuracy: Low
+        $x_5_2 = {48 8d 44 24 30 41 b9 06 00 00 00 4c 8d 05 ?? ?? ?? ?? 48 89 44 24 20 ff 15 ?? ?? ?? ?? 85 c0 0f 95 c0 48 8b 4c 24 38 48 33 cc}  //weight: 5, accuracy: Low
+        $x_10_3 = "SysMain" ascii //weight: 10
+        $x_1_4 = "ntdll.dll" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule HackTool_Win64_Inject_SXC_2147971173_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "HackTool:Win64/Inject.SXC!MTB"
+        threat_id = "2147971173"
+        type = "HackTool"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Inject"
+        severity = "High"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "90"
+        strings_accuracy = "High"
+    strings:
+        $x_30_1 = "[+] Wrote %zu bytes to target process memory." ascii //weight: 30
+        $x_20_2 = "[-] WriteProcessMemory() - E%lu" ascii //weight: 20
+        $x_15_3 = "[+] Allocated memory in target process: %p" ascii //weight: 15
+        $x_15_4 = "[+] Created remote thread in target process: %p" ascii //weight: 15
+        $x_10_5 = "Shipping.exe" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

@@ -1,0 +1,810 @@
+rule Trojan_MSIL_RedlineStealer_GR_2147815756_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.GR!MTB"
+        threat_id = "2147815756"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "6"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "tiny.one/cya7dmsu" ascii //weight: 1
+        $x_1_2 = "PortableApps.com" ascii //weight: 1
+        $x_1_3 = "ToArray" ascii //weight: 1
+        $x_1_4 = "Reverse" ascii //weight: 1
+        $x_1_5 = "InvokeMember" ascii //weight: 1
+        $x_1_6 = "Ebuzczkipwbedwf" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_RPJ_2147819207_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.RPJ!MTB"
+        threat_id = "2147819207"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {28 2d 00 00 0a 0a 12 00 23 00 00 00 00 00 00 24 40 28 2e 00 00 0a 0b 2b 23 08 2d 20 20 00 00 00 00 7e 41 00 00 04 7b 2c 00 00 04 2d 2f 45 02 00 00 00 23 00 00 00 df ff ff ff 2b 21 07 28 2d 00 00 0a 28 2f 00 00 0a 0c}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_RPJ_2147819207_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.RPJ!MTB"
+        threat_id = "2147819207"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "18"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "M03illa" ascii //weight: 1
+        $x_1_2 = "Discord" ascii //weight: 1
+        $x_1_3 = "DownloadUpdate" ascii //weight: 1
+        $x_1_4 = "CommandLineUpdate" ascii //weight: 1
+        $x_1_5 = "DownloadAndExecuteUpdate" ascii //weight: 1
+        $x_1_6 = "NordApp" ascii //weight: 1
+        $x_1_7 = "AllWallets" ascii //weight: 1
+        $x_1_8 = "CryptoHelper" ascii //weight: 1
+        $x_1_9 = "UpdateShortRep" ascii //weight: 1
+        $x_1_10 = "ReverseDecode" ascii //weight: 1
+        $x_1_11 = "Invoke" ascii //weight: 1
+        $x_1_12 = "LoadModule" ascii //weight: 1
+        $x_1_13 = "Reverse" ascii //weight: 1
+        $x_1_14 = "ReadByte" ascii //weight: 1
+        $x_1_15 = "ToBase64String" ascii //weight: 1
+        $x_1_16 = "Encoding" ascii //weight: 1
+        $x_1_17 = "CopyBlock" ascii //weight: 1
+        $x_1_18 = "MemoryStream" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_MBAL_2147840181_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.MBAL!MTB"
+        threat_id = "2147840181"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {28 0a 00 00 0a 03 50 6f ?? 00 00 0a 6f ?? 00 00 0a 0b 73 ?? 00 00 0a 0c 08 07 6f ?? 00 00 0a 08 18 6f ?? 00 00 0a 08 6f 10 00 00 0a 02 50 16 02 50 8e 69}  //weight: 1, accuracy: Low
+        $x_1_2 = "xDTTHrgPLZZzGqKBFfoSK" ascii //weight: 1
+        $x_1_3 = "IMvxProducer" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_PSJB_2147844778_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.PSJB!MTB"
+        threat_id = "2147844778"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {28 22 26 00 06 0b 07 1f 20 8d 25 00 00 01 25 d0 36 14 00 04 28 ?? ?? ?? 0a 6f ?? ?? ?? 0a 07 1f 10 8d 25 00 00 01 25 d0 37 14 00 04 28 ?? ?? ?? 0a 6f ?? ?? ?? 0a 06 07 6f ?? ?? ?? 0a 17 73 ?? ?? ?? 0a 0c 08 02 16 02 8e 69 6f ce 00 00 0a}  //weight: 2, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_PSAO_2147899286_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.PSAO!MTB"
+        threat_id = "2147899286"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "11"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {57 55 a2 0b 09 0f 00 00 00 fa 25 33 00 16 00 00 01 00 00 00 68 00 00 00 70 07 00 00 7a 00 00 00 87 3a 00 00 91 00}  //weight: 5, accuracy: High
+        $x_1_2 = "nOpCoOpCoOpCoO0Co" ascii //weight: 1
+        $x_1_3 = "5nOpcoOp;nOpAoOpCoOpCoOpCoOPCo/" ascii //weight: 1
+        $x_1_4 = "CROWCoOpCoO" ascii //weight: 1
+        $x_1_5 = "Y@(K5" ascii //weight: 1
+        $x_1_6 = "@~@(w" ascii //weight: 1
+        $x_1_7 = "System.Security.Cryptography.HMACMD5" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_PSBI_2147899324_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.PSBI!MTB"
+        threat_id = "2147899324"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "13"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {00 06 16 2e 16 12 00 12 01 12 02 7e 06 00 00 04 06 97 29 1a 00 00 11 0d 00 2b e5}  //weight: 5, accuracy: High
+        $x_2_2 = "bhaupadvfvxVtouojoaupadvfvxVtouojoaupadvfvxUDfuxjoaupadaKsd{}D{Ghoas[" ascii //weight: 2
+        $x_2_3 = "uozoaupqdvvvxVtou" ascii //weight: 2
+        $x_2_4 = "joaupadvfvx" ascii //weight: 2
+        $x_2_5 = "kdvdvxVtouojoaupadVfv" ascii //weight: 2
+        $x_2_6 = "natpadvfvx" ascii //weight: 2
+        $x_1_7 = "ICryptoTransformExecute" ascii //weight: 1
+        $x_1_8 = "DebuggingModes" ascii //weight: 1
+        $x_1_9 = "DarkYellowToByteArray" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (
+            ((5 of ($x_2_*) and 3 of ($x_1_*))) or
+            ((1 of ($x_5_*) and 3 of ($x_2_*) and 2 of ($x_1_*))) or
+            ((1 of ($x_5_*) and 4 of ($x_2_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_MSIL_RedlineStealer_RPY_2147900595_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.RPY!MTB"
+        threat_id = "2147900595"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {71 1f 00 00 01 20 9a 00 00 00 61 d2 81 1f 00 00 01 02 50 06 8f 1f 00 00 01 25 71 1f 00 00 01 1f 40 58 d2 81 1f 00 00 01 02 50 06 8f 1f 00 00 01 25 71 1f 00 00 01 1f 43 59 d2 81 1f 00 00 01 02 50 06 8f 1f 00 00}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_RPY_2147900595_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.RPY!MTB"
+        threat_id = "2147900595"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "11"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "loginusers.vdf" wide //weight: 1
+        $x_1_2 = "Tokens.txt" wide //weight: 1
+        $x_1_3 = "Kazakhstan" wide //weight: 1
+        $x_1_4 = "Russia" wide //weight: 1
+        $x_1_5 = "shell\\open\\command" wide //weight: 1
+        $x_1_6 = "api.ip.sb/ip" wide //weight: 1
+        $x_1_7 = "AllWallets" ascii //weight: 1
+        $x_1_8 = "WhoIsLocking" ascii //weight: 1
+        $x_1_9 = "GetBrowsers" ascii //weight: 1
+        $x_1_10 = "GetGraphicCards" ascii //weight: 1
+        $x_1_11 = "QueryAV" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_RPZ_2147900596_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.RPZ!MTB"
+        threat_id = "2147900596"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {81 1d 00 00 01 02 50 06 8f 1d 00 00 01 25 71 1d 00 00 01 20 af 00 00 00 59 d2 81 1d 00 00 01 02 50 06 8f 1d 00 00 01 25 71 1d 00 00 01 20 e8 00 00 00 58 d2 81 1d 00 00 01 02 50 06 8f 1d 00 00 01 25 71 1d 00 00}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_RPX_2147902014_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.RPX!MTB"
+        threat_id = "2147902014"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {00 08 17 58 20 00 01 00 00 5d 0c 09 06 08 91 58 20 00 01 00 00 5d 0d 06 08 91 13 07 06 08 06 09 91 9c}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_RPX_2147902014_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.RPX!MTB"
+        threat_id = "2147902014"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {26 20 06 00 00 00 38 f2 fb ff ff 16 13 04 20 05 00 00 00 fe 0e 03 00 38 dd fb ff ff 1f 0a 13 00 20 06 00 00 00 38 d3 fb ff ff 11 00 11 0a 3e 56 ff ff ff 20 0a 00 00 00 38 c0 fb ff ff 11 04 17 58 13 04 20 1e 00 00 00}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_NA_2147904133_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.NA!MTB"
+        threat_id = "2147904133"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {02 08 91 0d 08 1f 09 5d ?? ?? 03 11 04 9a 13 05 02 08 11 05 09}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_NB_2147904513_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.NB!MTB"
+        threat_id = "2147904513"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {11 04 07 17 ?? ?? 00 00 0a 11 06 91 1b 61 b4}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_NC_2147905365_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.NC!MTB"
+        threat_id = "2147905365"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {38 15 00 00 00 00 02 06 8f ?? 00 00 01 25 47 03 06 91 61 d2 52 00 06 17 59 0a 06 16 fe 04 16 fe 01 0b 07 3a dd ff ff ff}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_AMAA_2147909780_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.AMAA!MTB"
+        threat_id = "2147909780"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {0a 09 08 91 09 07 91 58 20 00 01 00 00 5d 13 ?? 03 11 ?? 8f ?? 00 00 01 25 71 ?? 00 00 01 09 11 ?? 91 61 d2 81 ?? 00 00 01 11}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_NE_2147916587_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.NE!MTB"
+        threat_id = "2147916587"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_3_1 = {16 13 07 2b 0d 11 08 17 58 13 08 11 08 07 8e 69}  //weight: 3, accuracy: High
+        $x_3_2 = {11 06 17 58 13 06 11 06 06 8e 69 07 8e 69 59}  //weight: 3, accuracy: High
+        $x_4_3 = "9A0668AA-2E7F-4FFD-A690-21D53CF99999" ascii //weight: 4
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_KAM_2147919567_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.KAM!MTB"
+        threat_id = "2147919567"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {03 08 02 04 08 1e 5d 9a 28 ?? 00 00 0a 03 08 91 28 ?? 00 00 06 28 ?? 00 00 0a 9c 08 17 d6 0c 08 07}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_AMAI_2147920021_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.AMAI!MTB"
+        threat_id = "2147920021"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {08 17 58 20 00 01 00 00 5d 0c 09 06 08 91 58 20 00 01 00 00 5d 0d 06 08 91}  //weight: 1, accuracy: High
+        $x_2_2 = {6e 5b 26 02 11 ?? 8f ?? 00 00 01 25 71 ?? 00 00 01 06 11 ?? 91 61 d2 81 ?? 00 00 01 11 ?? 17 58 13 ?? 11 ?? 02 8e 69 3f}  //weight: 2, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_AMH_2147922555_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.AMH!MTB"
+        threat_id = "2147922555"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {6e 5b 26 11 ?? 6e 11 ?? 6a 5b 26 11}  //weight: 1, accuracy: Low
+        $x_4_2 = {0a 26 16 13 ?? 12 ?? 28 ?? 00 00 0a 28 ?? 00 00 0a 13 ?? 03 11 ?? 91 13 ?? 06 11 ?? 91 13 ?? 11 ?? 11 ?? 61 d2 13}  //weight: 4, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_SZA_2147929054_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.SZA!MTB"
+        threat_id = "2147929054"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {06 11 15 1f 1f 5f 8f 89 00 00 01 25 4a 11 12 11 15 1e 5a 1f 1f 5f 63 61 54 11 15 17 58 13 15 11 15 1a fe 04 13 16 11 16 2d d6}  //weight: 1, accuracy: High
+        $x_1_2 = "Account_Panel.Properties.Resources" ascii //weight: 1
+        $x_1_3 = "$3eb20253-9dc7-4119-9a16-5cb763e8e3e8" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_SZA_2147929054_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.SZA!MTB"
+        threat_id = "2147929054"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "$996a36e4-64c8-4c48-bc33-95d7dcbcd09e" ascii //weight: 1
+        $x_1_2 = "JYM_Project.Properties.Resources.resources" ascii //weight: 1
+        $x_1_3 = {00 11 04 11 14 8f 60 00 00 01 25 47 11 0e 11 14 1e 5a 1f 1f 5f 63 d2 61 d2 52 00 11 14 17 58 13 14 11 14 1a fe 04 13 15 11 15 2d d4}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_EHIZ_2147945213_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.EHIZ!MTB"
+        threat_id = "2147945213"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {06 07 20 d2 04 00 00 5a 61 0a 06 07 ?? ?? ?? ?? ?? 5a ?? ?? ?? ?? ?? 5d 58 0a 06 17 62 06 1f 1f 63 60 0a 07 17 58 0b 07 1f 0a 32 d4}  //weight: 2, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_ENWL_2147945217_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.ENWL!MTB"
+        threat_id = "2147945217"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {6c 5b 13 22 1f 50 13 53 ?? ?? ?? ?? ?? ?? ?? ?? 00 00 11 21 1f 64 5d 58 13 23 22 a0 1a cf 3f 11 21 6b 5a 13 24 11 55 1f 72 91 1f 56 58 13 53}  //weight: 2, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_GTB_2147948778_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.GTB!MTB"
+        threat_id = "2147948778"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "12"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {13 06 11 06 72 ?? 00 00 70 6f ?? 00 00 0a 13 07 11 07 72 ?? 00 00 70 1f 38 6f ?? 00 00 0a 13 08 11 08 2d 02 2b 18 11 08 14 17 8d ?? 00 00 01 25 16 16 8d ?? 00 00 01 a2 28}  //weight: 10, accuracy: Low
+        $x_2_2 = "DLL resource tidak ditemukan!" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_PI_2147956540_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.PI!MTB"
+        threat_id = "2147956540"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "9"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {02 72 8f 00 00 70 7d 01 00 00 04 02 7b 01 00 00 04 28 ?? 00 00 0a 3a e8 00 00 00 73 20 00 00 06 28 ?? 00 00 0a 72 ad 00 00 70 28 ?? 00 00 0a 0a 72 bf 00 00 70 0b 72 d5 00 00 70 02 7b 01 00 00 04 6f ?? 00 00 0a 72 e5 00 00 70 28 ?? 00 00 0a 0c 72 07 01 00 70 0d 72 d5 00 00 70 02 7b 01 00 00 04 6f ?? 00 00 0a 72 19 01 00 70 28 ?? 00 00 0a 13 04 72 37 01 00 70 13 05 72 d5 00 00 70 02 7b 01 00 00 04 6f ?? 00 00 0a 72 57 01 00 70}  //weight: 5, accuracy: Low
+        $x_2_2 = "b0369ec1-8cf8-485d-8fb1-62835b575d88" ascii //weight: 2
+        $x_2_3 = "GGWSUpdate.Properties.Resources" wide //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_PAGU_2147956754_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.PAGU!MTB"
+        threat_id = "2147956754"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "7"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {07 11 06 02 17 9a 11 06 94 9e 11 06 17 58 13 06 11 06 02 17 9a 8e 69 32 e7}  //weight: 5, accuracy: High
+        $x_2_2 = "Hidden=" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_ZEK_2147957119_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.ZEK!MTB"
+        threat_id = "2147957119"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {03 32 05 dd 48 01 00 00 02 08 09 6f ?? 00 00 0a 13 08 03 07 6f ?? 00 00 0a 59 13 09 11 05 07 6f ?? 00 00 0a 61 19 5f 13 0b 11 0b 2c 0c 11 0b 17}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_ZYK_2147957869_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.ZYK!MTB"
+        threat_id = "2147957869"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {02 05 0e 04 6f ?? 00 00 0a 0a 04 03 6f ?? 00 00 0a 59 0b 07 16 fe 02 16 fe 01 0c 08 2c 02 2b 68 03 06}  //weight: 5, accuracy: Low
+        $x_5_2 = {02 03 04 05 07 0e 04 0e 05 28 ?? 00 00 06 00 03 6f ?? 00 00 0a 04 fe 04 16 fe 01 0d 09 2c 02 2b 2a}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_SX_2147965412_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.SX!MTB"
+        threat_id = "2147965412"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {fe 0c 00 00 fe 0c 01 00 fe 0c 00 00 fe 0c 01 00 93 ?? ?? ?? ?? ?? fe 0c 01 00 58 20 ff 00 00 00 5f 61 d1 9d fe 0c 01 00 17 58 fe 0e 01 00 fe 0c 01 00 fe 0c 00 00 8e 69 32 c6}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_SXA_2147965612_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.SXA!MTB"
+        threat_id = "2147965612"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "40"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {2d 0f 06 28 ?? 00 00 0a 2d 07 06 28 ?? 00 00 0a 26 03 28 ?? 00 00 0a 0b 04 07 28 ?? 00 00 0a 73 ?? 00 00 0a 0c 08 04}  //weight: 30, accuracy: Low
+        $x_10_2 = {02 03 06 04 06 59 6f ?? 00 00 0a 0b 07 2d 02 06 2a 06 07 58 0a 06 04 32 e7}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_RVA_2147965654_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.RVA!MTB"
+        threat_id = "2147965654"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {00 01 25 16 12 02 28 ?? 00 00 0a 9c 25 17 12 02 28 ?? 00 00 0a 9c 25 18 12 02 28 ?? 00 00 0a 9c 6f ?? 00 00 0a}  //weight: 2, accuracy: Low
+        $x_1_2 = "a7f0f61e-400a-4c76-8472-cf2c1140f266" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_ARZ_2147967836_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.ARZ!MTB"
+        threat_id = "2147967836"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {0a 06 02 7d ?? 00 00 04 06 03 7d ?? 00 00 04 02 7b ?? 00 00 04 02 7b ?? 00 00 04 6f ?? 00 00 0a 28 ?? 00 00 0a 06 fe ?? ?? 00 00 06 73 ?? 00 00 0a 28 ?? 00 00 2b 2a}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_RedlineStealer_RVB_2147968736_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.RVB!MTB"
+        threat_id = "2147968736"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "6"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {57 1d a2 09 09 0f 00 00 00 fa 01 33 00 16 00 00 01 00 00 00 94 00 00 00 2e 00 00 00 ef 00 00 00 05 01 00 00 ab 00 00 00 62 01 00 00 10 00 00 00 ed 00 00 00 35 00 00 00 0f 00 00 00 45 00 00 00 65 00 00 00 3b 00 00 00 01 00 00 00 08 00 00 00 02 00 00 00 11 00 00 00 21 00 00 00 1d}  //weight: 1, accuracy: High
+        $x_1_2 = {57 9d a2 29 09 0f 00 00 00 00 00 00 00 00 00 00 02 00 00 00 a5 00 00 00 3f 00 00 00 ?? 01 00 00 69 01 00 00 b3 00 00 00 70 01 00 00 10 00 00 00 ef 00 00 00 0b 00 00 00 ?? 00 00 00 0c 00 00 00 35 00 00 00 47 00 00 00 3b 00 00 00 0e 00 00 00 02 00 00 00 08 00 00 00 04 00 00 00 1d 00 00 00 21 00 00 00 1d}  //weight: 1, accuracy: Low
+        $x_5_3 = "C9E8A7F6-5D4B-4A3E-9F2C-8B1A7D6E5F4C" ascii //weight: 5
+    condition:
+        (filesize < 20MB) and
+        (
+            ((1 of ($x_5_*) and 1 of ($x_1_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_MSIL_RedlineStealer_AHB_2147971619_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/RedlineStealer.AHB!MTB"
+        threat_id = "2147971619"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "RedlineStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "60"
+        strings_accuracy = "High"
+    strings:
+        $x_30_1 = "<SendTelegramMessageWithScreenshotAsync>d__" ascii //weight: 30
+        $x_20_2 = "<SendDiscordMessageWithScreenshotAsync>d__" ascii //weight: 20
+        $x_10_3 = "<SendDeviceCompromisedReportAsync>d__" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

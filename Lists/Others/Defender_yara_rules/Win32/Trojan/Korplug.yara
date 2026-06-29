@@ -1,0 +1,263 @@
+rule Trojan_Win32_Korplug_GMN_2147918622_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Korplug.GMN!MTB"
+        threat_id = "2147918622"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Korplug"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {8b e8 8b 4d ?? 8d 41 ?? 89 45 ?? 8a 44 9c ?? 8b 9c 24 ?? ?? ?? ?? 32 04 1a 88 44 29 ?? 8d 44 24 ?? 50 6a 01 52 e8 ?? ?? ?? ?? 83 c4 ?? 84 c0}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Korplug_WFB_2147919021_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Korplug.WFB!MTB"
+        threat_id = "2147919021"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Korplug"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {8b 45 0c 8a 4d e0 d3 f8 30 44 37 08 83 fb 03}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Korplug_VV_2147920035_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Korplug.VV!MTB"
+        threat_id = "2147920035"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Korplug"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {8b 45 08 8b 94 95 e8 fb ff ff 8d 8d e0 fb ff ff 32 14 30 46 0f b6 d2 e8 af c7 ff ff e9 4b}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Korplug_AHT_2147946724_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Korplug.AHT!MTB"
+        threat_id = "2147946724"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Korplug"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {c6 45 e4 47 c6 45 e5 65 c6 45 e6 74 c6 45 e7 4d c6 45 e8 6f c6 45 e9 64 c6 45 ea 75 c6 45 eb 6c c6 45 ec 65 c6 45 ed 46 c6 45 ee 69 c6 45 ef 6c c6 45 f0 65 c6 45 f1 4e c6 45 f2 61 c6 45 f3 6d c6 45 f4 65 c6 45 f5 41 c6 45 f6 00}  //weight: 2, accuracy: High
+        $x_3_2 = {83 f2 4c 88 95 5f fe ?? ?? 0f be 85 5f fe ?? ?? 83 f0 76 88 85 5f fe ?? ?? 8b 8d a4 fe ?? ?? 03 8d 54 fe ?? ?? 0f b6 09 8b 85 54 fe ?? ?? 33 d2 f7 75 b4 8b 45 d8 0f be 14 10 33 ca}  //weight: 3, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Korplug_GZF_2147954224_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Korplug.GZF!MTB"
+        threat_id = "2147954224"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Korplug"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {41 0f b6 c9 8a 5c 0c ?? 00 da 0f b6 f2 8a 7c 34 ?? 88 7c 0c ?? 88 5c 34 ?? 02 5c 0c ?? 0f b6 f3 8a 5c 34 ?? 8b 74 24 ?? 32 1c 06 8b 74 24 ?? 88 1c 06 40}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Korplug_AEPB_2147961729_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Korplug.AEPB!MTB"
+        threat_id = "2147961729"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Korplug"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "9"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {0f 42 c3 66 33 84 3f ?? ?? ?? ?? 66 89 44 7c 38 47 eb ?? f2 0f 10 05 ?? ?? ?? ?? 31 ?? f2 0f 11 84 24 74 02 00 00 39 ?? 74 10 0f b7 ?? ?? 6c 66 89 ?? ?? 7c 02 00 00}  //weight: 5, accuracy: Low
+        $x_2_2 = {c7 06 18 00 00 00 83 66 04 00 89 46 08 c7 46 0c 40 00 00 00 83 66 10 00 83 66 14 00 66 89 08 66 89 48 02 8d 8c 24 74 02 00 00 89 48 04}  //weight: 2, accuracy: High
+        $x_2_3 = {6a 00 6a 00 6a 60 6a 01 6a 03 68 80 00 00 00 6a 00 51 56 68 89 00 12 00 52 ff d0 35 34}  //weight: 2, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Korplug_ARA_2147964102_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Korplug.ARA!MTB"
+        threat_id = "2147964102"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Korplug"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {85 ff 74 1c 83 ff fe b8 aa 00 00 00 0f 44 c3 66 33 87 ?? ?? ?? ?? 66 89 44 3c 30 83 c7 02 eb e0}  //weight: 2, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Korplug_SX_2147967845_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Korplug.SX!MTB"
+        threat_id = "2147967845"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Korplug"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "40"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {b9 00 00 00 c1 ?? 0e 6b ?? 59 28 ?? 0f b6 ?? 8a 89 ?? ?? ?? ?? 88 0c 06 40 39 c7 75 dd}  //weight: 30, accuracy: Low
+        $x_10_2 = {0f be c0 f2 0f 2a d0 f2 0f 58 d2 f2 0f 5c ca f2 0f 59 c8 f2 0f 11 0c 24 a0 ?? ?? ?? ?? 0f be c0 83 c0 07 8a 0d ?? ?? ?? ?? 0f be c9 31 d2}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Korplug_AHA_2147968832_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Korplug.AHA!MTB"
+        threat_id = "2147968832"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Korplug"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {31 db 83 ff ?? 0f 94 c3 c1 e3 ?? 81 cb ?? 00 00 00 66 33 9f ?? ?? ?? ?? 66 89 5c 3c 30 83 c7 ?? eb}  //weight: 30, accuracy: Low
+        $x_30_2 = {58 0f 44 c3 66 33 87 ?? ?? ?? ?? 66 89 44 3c 30 83 c7 ?? eb}  //weight: 30, accuracy: Low
+        $x_20_3 = {cb 89 f8 b9 ?? ?? ?? ?? 89 55 ec 69 f6 ?? ?? ?? ?? f7 e1 69 cf ?? ?? ?? ?? 01 ce 89 c7 01 d6}  //weight: 20, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (
+            ((1 of ($x_30_*) and 1 of ($x_20_*))) or
+            ((2 of ($x_30_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win32_Korplug_SL_2147970848_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Korplug.SL!MTB"
+        threat_id = "2147970848"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Korplug"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {b8 e8 00 00 00 0f 44 c3 66 33 87 ?? ?? ?? ?? 66 89 44 3c 30 83 c7 02}  //weight: 1, accuracy: Low
+        $x_1_2 = {0f b7 44 3c 30 83 c7 02 66 89 06 83 c6 02}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Korplug_AKP_2147971779_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Korplug.AKP!MTB"
+        threat_id = "2147971779"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Korplug"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {8b 45 a8 f3 0f 7e 45 98 f3 0f 7e 4d a0 89 45 ec 66 0f d6 45 dc 66 0f d6 4d e4 8b 45 dc 8b 55 e0 8d 3c 10 6a 1c 59 be 9e 3d 08 10 8b 5d 08 f3 a4 8b 75 0c 8d 4a 1d 89 4d e0 c6 44 10 1c 22}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Korplug_CAL_2147972413_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Korplug.CAL!MTB"
+        threat_id = "2147972413"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Korplug"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {89 d9 c1 c1 ?? 0f be fa 8d 5f ?? 80 fa ?? 0f 4c df 01 cb 8a 10}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

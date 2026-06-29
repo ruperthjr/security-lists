@@ -1,0 +1,109 @@
+rule Trojan_Win64_Agentb_GDI_2147943974_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Agentb.GDI!MTB"
+        threat_id = "2147943974"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Agentb"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {fe 63 c8 62 49 8b c8 49 8b c1 49 f7 e0 49 ff c0 48 c1 ea 03 48 8d 04 d2 48 2b c8 8a 44 0c 50 42 30 44 04 77 49 83 f8 10}  //weight: 5, accuracy: High
+        $x_5_2 = {33 c9 89 5c 24 ?? 83 64 24 ?? 00 ff 15 ?? ?? ?? ?? 85 c0 0f 84 ?? ?? ?? ?? 48 8b 4c 24 ?? 4c 8d 4d ?? 48 8d 95 ?? ?? ?? ?? 45 33 c0 89 5c 24 ?? c7 44 24 ?? 00 30 00 00 ff 15}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Agentb_GXY_2147952149_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Agentb.GXY!MTB"
+        threat_id = "2147952149"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Agentb"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {46 32 14 1b 41 f7 f9 41 d2 ca 41 31 f2 83 c6 07 46 88 14 1b}  //weight: 5, accuracy: High
+        $x_5_2 = {89 c8 99 41 f7 f9 48 63 d2 41 0f b6 04 10 41 30 04 0a 48 83 c1 01 49 39 cb 75 e5 c3}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Agentb_MK_2147963538_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Agentb.MK!MTB"
+        threat_id = "2147963538"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Agentb"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "35"
+        strings_accuracy = "High"
+    strings:
+        $x_20_1 = {41 8b c8 45 03 c6 42 0f b6 84 19 a0 33 00 00 42 8a 84 18 20 32 00 00 41 88 04 12 49 03 d6 48 3b d3}  //weight: 20, accuracy: High
+        $x_15_2 = {48 8b 4b 08 41 8b d0 41 ff c0 0f b7 04 57 66 89 04 51 8b 43 10 44 3b c0}  //weight: 15, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Agentb_BMD_2147963726_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Agentb.BMD!MTB"
+        threat_id = "2147963726"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Agentb"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {44 89 c8 99 41 f7 fb 48 63 d2 8a 44 14 ?? 42 32 04 09 43 88 04 0a 49 ff c1 45 39 c8 7f}  //weight: 2, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Agentb_BMD_2147963726_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Agentb.BMD!MTB"
+        threat_id = "2147963726"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Agentb"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {49 89 c1 41 83 e1 ?? 46 8a 4c 0c ?? 44 32 0c 01 44 88 0c 02 48 ff c0 41 39 c0 7f e4}  //weight: 2, accuracy: Low
+        $x_2_2 = {ff c1 88 88 ?? ?? ?? ?? 0f b6 c9 44 8a 0c 08 45 01 cb 44 88 98 ?? ?? ?? ?? 45 0f b6 db 42 8a 1c 18 88 1c 08 46 88 0c 18 44 02 0c 08 45 0f b6 c9 42 8a 0c 08 42 30 0c 12 49 ff c2 45 39 d0 7f b3}  //weight: 2, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

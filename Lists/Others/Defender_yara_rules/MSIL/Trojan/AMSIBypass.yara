@@ -1,0 +1,180 @@
+rule Trojan_MSIL_AMSIBypass_AHB_2147962554_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/AMSIBypass.AHB!MTB"
+        threat_id = "2147962554"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "AMSIBypass"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "90"
+        strings_accuracy = "Low"
+    strings:
+        $x_40_1 = {07 08 06 08 9a 28 ?? ?? ?? 0a 03 5b d2 9c 08 17 58 0c 08 07 8e 69 32 e8}  //weight: 40, accuracy: Low
+        $x_30_2 = "ApplyEventTracingAdjustments" ascii //weight: 30
+        $x_20_3 = "ApplySecurityAdjustments" ascii //weight: 20
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_AMSIBypass_AHC_2147963109_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/AMSIBypass.AHC!MTB"
+        threat_id = "2147963109"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "AMSIBypass"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "30"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = "ApplyEventTracingAdjustments" ascii //weight: 5
+        $x_10_2 = "ApplySecurityAdjustments" ascii //weight: 10
+        $x_15_3 = "Skype{A8483C01-E840-4A8D-83F5-9AC0C3880390bb-BBD916912398811}" ascii //weight: 15
+        $x_30_4 = {11 1a 91 fe 01 16 fe 01 13 1b 11 1b 2c 0b 72 ?? ?? ?? 70 73 ?? ?? ?? 0a 7a 00 11 1a 17 58 13 1a 11 1a 11 0f 8e 69 fe 04 13 1c 11 1c 2d c1}  //weight: 30, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (
+            ((1 of ($x_15_*) and 1 of ($x_10_*) and 1 of ($x_5_*))) or
+            ((1 of ($x_30_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_MSIL_AMSIBypass_KK_2147963585_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/AMSIBypass.KK!MTB"
+        threat_id = "2147963585"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "AMSIBypass"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "20"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {07 08 06 08 9a 28 ?? ?? ?? 0a 03 5b d2 9c 08 17 58 0c 08 07 8e 69 32 e8}  //weight: 20, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_AMSIBypass_AH_2147964075_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/AMSIBypass.AH!MTB"
+        threat_id = "2147964075"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "AMSIBypass"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "30"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {06 08 9a 12 03 28 ?? ?? ?? 0a 2c 16 07 08 09 28 ?? ?? ?? 0a 03 28 ?? ?? ?? 0a 28 ?? ?? ?? 0a 9c 2b 13 72 ?? ?? ?? 70 06 08 9a 28 ?? ?? ?? 0a 73 ?? ?? ?? 0a 7a 08 17 58 0c 08 06 8e 69 32 c1}  //weight: 30, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_AMSIBypass_ARR_2147965200_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/AMSIBypass.ARR!MTB"
+        threat_id = "2147965200"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "AMSIBypass"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "20"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {0b 06 07 8e 69 6a 28 ?? ?? ?? ?? 1f 40 12 02 28 ?? ?? ?? ?? 26 07 06 28}  //weight: 20, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_AMSIBypass_SXA_2147969522_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/AMSIBypass.SXA!MTB"
+        threat_id = "2147969522"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "AMSIBypass"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "40"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {20 10 00 01 00 7d ?? 00 00 04 07 12 02 28 ?? 00 00 06 2c 2e 12 02 7e ?? 00 00 04 28 ?? 01 00 0a 7d ?? 00 00 04 12 02 17 6a 7d ?? 00 00 04 07 12 02 28 ?? 00 00 06 26}  //weight: 30, accuracy: Low
+        $x_10_2 = "AdvancedAmsiBypass" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_AMSIBypass_SXB_2147970587_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/AMSIBypass.SXB!MTB"
+        threat_id = "2147970587"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "AMSIBypass"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "High"
+    strings:
+        $x_30_1 = {0b 06 73 1c 00 00 0a 28 02 00 00 06 0c 08 7e 1d 00 00 0a 28 1e 00 00 0a 2c 07 02 28 1f 00 00 0a 2a}  //weight: 30, accuracy: High
+        $x_20_2 = {06 20 b8 00 00 00 07 28 12 00 00 0a 28 14 00 00 0a 28 16 00 00 0a 06 20 c4 00 00 00 07 1f 1c 58 28 16 00 00 0a}  //weight: 20, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_AMSIBypass_SX_2147972503_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/AMSIBypass.SX!MTB"
+        threat_id = "2147972503"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "AMSIBypass"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "30"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {08 16 07 08 8e 69 28 ?? 00 00 0a [0-1] 07 08 8e 69 6a 28 ?? 00 00 0a 09 12 03 28 ?? 00 00 06 26}  //weight: 20, accuracy: Low
+        $x_10_2 = {06 0a 06 7e ?? 00 00 04 28 ?? 00 00 06 0b 28 ?? 00 00 0a 1e 2e}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

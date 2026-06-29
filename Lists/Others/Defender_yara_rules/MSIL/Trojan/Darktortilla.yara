@@ -1,0 +1,110 @@
+rule Trojan_MSIL_Darktortilla_NB_2147918800_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/Darktortilla.NB!MTB"
+        threat_id = "2147918800"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "Darktortilla"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {02 1f 49 61 b4 0a 18 0d 2b b5 02 0a 18 0d 2b af}  //weight: 5, accuracy: High
+        $x_5_2 = {26 16 0d 2b d0 03 1d 5d 16 fe 01 0b 07}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_Darktortilla_NA_2147927149_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/Darktortilla.NA!MTB"
+        threat_id = "2147927149"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "Darktortilla"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = {93 61 1f 5c 5f 9d fe 02 2b 01 17 0a 06 2c 05 19 13 06 2b 87 18 2b f9}  //weight: 2, accuracy: High
+        $x_1_2 = {91 61 20 c7 00 00 00 5f 9c 2c 05 17 13 04 2b a3 16}  //weight: 1, accuracy: High
+        $x_1_3 = {91 61 1f 4e 5f 9c 2d 09 1f 0a 13 08}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_Darktortilla_ZUU_2147942759_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/Darktortilla.ZUU!MTB"
+        threat_id = "2147942759"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "Darktortilla"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "11"
+        strings_accuracy = "Low"
+    strings:
+        $x_6_1 = {0c 00 08 07 28 ?? 01 00 06 0d 09 02 28 ?? 01 00 06 00 08 6f ?? 00 00 0a 0a de 24 00 09 2c 07 09 6f ?? 00 00 0a 00 dc 00 08 2c 07 08}  //weight: 6, accuracy: Low
+        $x_5_2 = {a2 02 03 17 da 9a 28 ?? 00 00 0a 28 ?? 00 00 06 0a 02 03 1c da 06 a2 02 03 1d da 06 6f ?? 01 00 0a 1f 18 9a a2 02 03 1d da 9a}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_Darktortilla_MCQ_2147962719_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/Darktortilla.MCQ!MTB"
+        threat_id = "2147962719"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "Darktortilla"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {72 00 61 00 6d 00 61 00 74 00 00 03 2f 00 00 13 72 00 65 00 73 00 6f 00 75 00 72 00 63 00 65 00 73 00 00 0d 39 00 34 00 32 00 33 00 36 00 31 00 00 0f 4c 00 20 00 6f 00 20 00 61 00 20 00 64}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_MSIL_Darktortilla_PZR_2147968455_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:MSIL/Darktortilla.PZR!MTB"
+        threat_id = "2147968455"
+        type = "Trojan"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "Darktortilla"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "9"
+        strings_accuracy = "High"
+    strings:
+        $x_6_1 = {02 11 0b 02 11 0b 91 11 04 11 0b 11 05 d8 11 04 8e 69 5d 91 61 9c 11 0b 17 d6 13 0b 11 0b 11 0a}  //weight: 6, accuracy: High
+        $x_3_2 = {02 11 09 02 11 09 91 09 11 09 09 8e 69 5d 91 61 9c 11 09 17 d6 13 09 11 09 11 08}  //weight: 3, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

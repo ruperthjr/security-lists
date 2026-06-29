@@ -1,0 +1,171 @@
+{
+  "generated_utc": "2026-06-28T05:46:15+00:00",
+  "total_records": 1779,
+  "total_malicious": 1707,
+  "total_risky": 72,
+  "severity_counts": {
+    "critical": 574,
+    "high": 873,
+    "low": 22,
+    "medium": 310
+  },
+  "category_counts": {
+    "copyright-violation": 15,
+    "deprecated": 2,
+    "expired-domain": 1,
+    "impersonation": 854,
+    "impersonation-malware": 5,
+    "malware": 574,
+    "owner-request": 8,
+    "potentially-malicious": 4,
+    "publisher-requested": 3,
+    "risky-ai-code-access": 9,
+    "risky-api-client": 3,
+    "risky-cloud-access": 9,
+    "risky-code-execution": 4,
+    "risky-collaboration": 1,
+    "risky-credential-access": 5,
+    "risky-database-access": 8,
+    "risky-file-transfer": 7,
+    "risky-git-access": 2,
+    "risky-infrastructure": 4,
+    "risky-remote-access": 15,
+    "risky-tunnel": 5,
+    "spam": 71,
+    "spam-malware": 5,
+    "typo-squatting": 1,
+    "untrustworthy": 164
+  },
+  "malicious_category_counts": {
+    "copyright-violation": 15,
+    "deprecated": 2,
+    "expired-domain": 1,
+    "impersonation": 854,
+    "impersonation-malware": 5,
+    "malware": 574,
+    "owner-request": 8,
+    "potentially-malicious": 4,
+    "publisher-requested": 3,
+    "spam": 71,
+    "spam-malware": 5,
+    "typo-squatting": 1,
+    "untrustworthy": 164
+  },
+  "risky_category_counts": {
+    "risky-ai-code-access": 9,
+    "risky-api-client": 3,
+    "risky-cloud-access": 9,
+    "risky-code-execution": 4,
+    "risky-collaboration": 1,
+    "risky-credential-access": 5,
+    "risky-database-access": 8,
+    "risky-file-transfer": 7,
+    "risky-git-access": 2,
+    "risky-infrastructure": 4,
+    "risky-remote-access": 15,
+    "risky-tunnel": 5
+  },
+  "total_publishers": 1364,
+  "top_publishers": [
+    [
+      "pit00",
+      34
+    ],
+    [
+      "gtfish1988",
+      26
+    ],
+    [
+      "SlashMark",
+      25
+    ],
+    [
+      "gh555com",
+      19
+    ],
+    [
+      "LinJun",
+      18
+    ],
+    [
+      "Zubair",
+      13
+    ],
+    [
+      "Puglight",
+      10
+    ],
+    [
+      "cryptninjaswap",
+      10
+    ],
+    [
+      "Extensions-Topic",
+      7
+    ],
+    [
+      "MarkH",
+      7
+    ],
+    [
+      "QuantumCodeLabs",
+      7
+    ],
+    [
+      "PCODE-pl",
+      7
+    ],
+    [
+      "GitlensPro",
+      6
+    ],
+    [
+      "VSAnalysistest",
+      6
+    ],
+    [
+      "atom8n",
+      6
+    ],
+    [
+      "cobot100",
+      5
+    ],
+    [
+      "JackHerry",
+      5
+    ],
+    [
+      "Malkolm",
+      5
+    ],
+    [
+      "pandaexpress",
+      5
+    ],
+    [
+      "priskinski",
+      5
+    ],
+    [
+      "fsiovn",
+      5
+    ],
+    [
+      "kodawari",
+      5
+    ],
+    [
+      "ms-vscode-remote",
+      5
+    ],
+    [
+      "ms-vscode",
+      5
+    ],
+    [
+      "DevelopmentInc",
+      5
+    ]
+  ]
+}

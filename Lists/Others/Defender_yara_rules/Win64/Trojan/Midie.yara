@@ -1,0 +1,1252 @@
+rule Trojan_Win64_Midie_SIB_2147807755_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.SIB!MTB"
+        threat_id = "2147807755"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "31"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = "XVI32_Load" ascii //weight: 10
+        $x_10_2 = "DllInstall" ascii //weight: 10
+        $x_10_3 = "XVI32_Close" ascii //weight: 10
+        $x_10_4 = "XVI32_init" ascii //weight: 10
+        $x_1_5 = {4c 3b 7c 24 60 7d ?? 4c 8b 7c 24 50 48 8b 6c 24 58 55 48 8b 44 24 ?? 5d 48 01 c5 48 0f be 45 00 49 31 c7 49 81 e7 ff 00 00 00 48 8b 2d 9b 84 05 00 49 c1 e7 ?? 4d 8b 3c 2f 4c 8b 74 24 50 49 c1 fe ?? 49 81 e6 ff ff ff 00 4d 31 f7 4c 89 7c 24 50 4c 8b 7c 24 ?? 49 ff c7 4c 89 7c 24 04 eb}  //weight: 1, accuracy: Low
+        $x_1_6 = {48 c7 c0 08 00 00 00 48 3b 44 24 ?? 7c ?? 4c 8b 7c 24 ?? 49 83 e7 01 4d 21 ff 74 ?? 4c 63 7c 24 ?? 4c 8b 74 24 02 49 d1 ?? 49 81 e6 ff ff ff 7f 4d 31 f7 4c 89 7c 24 02 eb ?? 4c 8b 7c 24 02 49 d1 ?? 49 81 e7 ff ff ff 7f 4c 89 7c 24 02 48 ff 44 24 00 71 ?? ff 74 24 02 4c 8b 7c 24 ?? 48 8b 2d ?? ?? ?? ?? 49 c1 e7 ?? 58 49 89 04 2f 48 ff 44 24}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (
+            ((3 of ($x_10_*) and 1 of ($x_1_*))) or
+            ((4 of ($x_10_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win64_Midie_NM_2147904896_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.NM!MTB"
+        threat_id = "2147904896"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = "RWSafe.pdb" ascii //weight: 2
+        $x_2_2 = "GPT 1.6" ascii //weight: 2
+        $x_1_3 = "Baat" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_NM_2147904896_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.NM!MTB"
+        threat_id = "2147904896"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_3_1 = {40 b7 01 40 88 7c 24 20 8a cb e8 bc fd ff ff e8 9b 0b 00 00 48 8b d8 48 83 38 00}  //weight: 3, accuracy: High
+        $x_2_2 = {48 8b c8 e8 0a fd ff ff 84 c0 74 16 48 8b 1b 48 8b cb e8 b7 00 00 00 45 33 c0 41 8d 50 02 33 c9 ff d3 e8 73 0b 00 00 48 8b d8}  //weight: 2, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_NM_2147904896_2
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.NM!MTB"
+        threat_id = "2147904896"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {4c 8b cb 33 c9 ff 15 ee 35 06 00 48 8b f8 48 85 c0 74 12 48 8b c8 48 89 43 ?? ff 15 e9 35 06 00 83 f8 ff 75 37}  //weight: 2, accuracy: Low
+        $x_1_2 = {53 48 83 ec ?? 4c 8b c1 33 d2 48 8b 0d de ce 05 00 ff 15 98 72 02 00 85 c0 75 16}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_NM_2147904896_3
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.NM!MTB"
+        threat_id = "2147904896"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {48 83 7c 24 ?? 00 49 0f 44 d6 4c 8d 44 24 ?? 4c 8d 7c 24 ?? 4c 89 f9 e8 21 f3 ff ff 4c 8d a4 24}  //weight: 2, accuracy: Low
+        $x_1_2 = {48 89 ce 0f b6 81 ?? 00 00 00 88 91 ?? 00 00 00 48 8d 0d 67 01 00 00 48 63 04 81 48 01 c8 ff e0 0f b6 c2 ff c8}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_GXZ_2147908904_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.GXZ!MTB"
+        threat_id = "2147908904"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = {0f b6 02 41 88 00 88 0a 0f b6 54 24 31 44 0f b6 44 24 30 0f b6 4c 14 32 42 02 4c 04 32 0f b6 c1 0f b6 4c 04 32 42 32 4c 17 f7 41 88 4a ff 49 83 eb 01}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_GP_2147914443_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.GP!MTB"
+        threat_id = "2147914443"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "dbdjUKLXxZzyf" ascii //weight: 1
+        $x_1_2 = "KYgWGvLdWnJMcT" ascii //weight: 1
+        $x_1_3 = "xrEAfFrCHbBCE0" ascii //weight: 1
+        $x_1_4 = "EaVMlTKHmPPIYKX" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_ASJ_2147922485_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.ASJ!MTB"
+        threat_id = "2147922485"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_4_1 = {48 8b d0 4c 8d 05 ?? ?? ff ff 49 8b cf 48 8b f8 ff 15 ?? ?? ?? ?? 4c 89 6c 24 30 4c 8b cf 44 89 6c 24 28 45 33 c0 33 d2 48 89 5c 24 20 49 8b cf ff 15 ?? ?? ?? ?? 41 b9 18 00 00 00 4c 89 6c 24 20 4c 8d 44 24 50 48 8b d3 49 8b cf ff 15 ?? ?? ?? ?? b9 64 00 00 00 ff 15}  //weight: 4, accuracy: Low
+        $x_1_2 = {49 8d 04 30 49 2b d0 0f 1f 40 00 0f 1f 84 00 00 00 00 00 44 30 38 48 8d 40 01 48 83 ea 01 75}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_AMI_2147925996_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.AMI!MTB"
+        threat_id = "2147925996"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_4_1 = "Westminster Performance Suite for optimized system analytics and efficiency" wide //weight: 4
+        $x_1_2 = "London Bridge Technologies" wide //weight: 1
+        $x_2_3 = "Manchester.dll" wide //weight: 2
+        $x_3_4 = "70.59.2345.6789" wide //weight: 3
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_AMD_2147926002_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.AMD!MTB"
+        threat_id = "2147926002"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_4_1 = "Kensington Data Shield for comprehensive data security and protection" wide //weight: 4
+        $x_3_2 = "Piccadilly Digital Labs" wide //weight: 3
+        $x_1_3 = "71.60.3456.7890" wide //weight: 1
+        $x_2_4 = "Stratford.dll" wide //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_GNS_2147927639_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.GNS!MTB"
+        threat_id = "2147927639"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {04 c1 86 36 32 1a 95 2a a4 4d}  //weight: 5, accuracy: High
+        $x_5_2 = {8c 11 42 36 ee 97 a4 bc ?? ?? ?? ?? cc 31 d1 32 2e 59 00 76 10}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_GNS_2147927639_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.GNS!MTB"
+        threat_id = "2147927639"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "11"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {2f ef 00 72 ?? 0a d7 30 76 ?? a4 e2 ?? 30 76 ?? dc 72 ?? 30 76 ?? ac 0a 0f 30 76 ?? bc}  //weight: 10, accuracy: Low
+        $x_1_2 = "baE8.NU6L" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_GNK_2147927659_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.GNK!MTB"
+        threat_id = "2147927659"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {48 63 c0 48 c1 f2 b2 42 80 b4 44 ?? ?? ?? ?? ?? 42 ff 4c 04 ?? 48 13 e8 5e 4e 8b 94 83 ?? ?? ?? ?? ff ce 36 66 43 8b 34 8a 48 8d 8a ?? ?? ?? ?? 0f 8d}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_GTC_2147931139_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.GTC!MTB"
+        threat_id = "2147931139"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {12 0e 6d 30 1b 97 fb 00 1c e0 58 95}  //weight: 5, accuracy: High
+        $x_5_2 = {41 32 f8 56 40 08 b4 54 1e 00 fe ff 40 d2 c7 66 0b de 40 1a f8}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_NS_2147937841_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.NS!MTB"
+        threat_id = "2147937841"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {4d 29 fe 4c 39 f7 4d 89 f0 4c 0f 42 c7 48 89 d9 31 d2 e8 a4 fe ff ff 42 8d 0c fd 00 00 00 00 48 d3 e0 48 0b 46 ?? 48 89 46 ?? 49 39 fe}  //weight: 2, accuracy: Low
+        $x_1_2 = {48 89 f1 e8 2e ff ff ff 48 8b 46 ?? 48 31 06 48 83 66}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_GZK_2147941295_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.GZK!MTB"
+        threat_id = "2147941295"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = {b4 1f 4d bf 85 e6 08 f6 9c fa 43 1b 08 1e 32 f9 bf}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_GZZ_2147941354_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.GZZ!MTB"
+        threat_id = "2147941354"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {f1 33 cd 31 aa ?? ?? ?? ?? 5a 89 95 ?? ?? ?? ?? 34 04 1e 58 03 15 ?? ?? ?? ?? c9 b7 49 b4 b4 41 e1 f4}  //weight: 10, accuracy: Low
+        $x_5_2 = {ec 50 1e 32 62 a7 a4 63 80}  //weight: 5, accuracy: High
+        $x_5_3 = {18 31 10 42 ?? 54 02 20 35 ?? ?? ?? ?? 1a cb}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (
+            ((2 of ($x_5_*))) or
+            ((1 of ($x_10_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win64_Midie_SPR_2147945181_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.SPR!MTB"
+        threat_id = "2147945181"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "7"
+        strings_accuracy = "Low"
+    strings:
+        $x_3_1 = {33 ff 45 33 c9 48 89 7c 24 30 45 33 c0 c7 44 24 28 ?? ?? ?? ?? ba ?? ?? ?? ?? c7 44 24 20 ?? ?? ?? ?? ff 15 ?? ?? ?? ?? 48 8b e8 48 83 f8 ff 75}  //weight: 3, accuracy: Low
+        $x_3_2 = {c7 44 24 28 ?? ?? ?? ?? 48 83 64 24 20 00 48 8d 15 ?? ?? ?? ?? 33 c9 45 33 c9 ff 15 ?? ?? ?? ?? 48 83 f8 20 0f 9f c0 48 83 c4 38}  //weight: 3, accuracy: Low
+        $x_1_3 = "posdfcc.exe" wide //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_AHB_2147946815_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.AHB!MTB"
+        threat_id = "2147946815"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "15"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {48 03 c8 48 89 4c 24 30 89 44 24 38 0f 28 44 24 30 66 0f 7f 44 24 30 48 8d 85 d0 01 00 00 48 89 44 24 20 4c 8d 8d d8 01 00 00 4c 8d 85 e0 01 00 00 48 8d 95 e8}  //weight: 5, accuracy: High
+        $x_5_2 = {44 8b c0 b8 4f ec c4 4e 41 f7 e8 c1 fa 03 8b ca c1 e9 1f 03 d1 6b ca 1a 44 2b c1 41 8d 50 41 48 8d 4d c0 e8}  //weight: 5, accuracy: High
+        $x_5_3 = "MP3SimWnd" ascii //weight: 5
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_AHC_2147947011_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.AHC!MTB"
+        threat_id = "2147947011"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "55"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {0f 10 45 b0 f3 0f 7f 45 d8 8a 45 c0 88 45 e8 8a 45 c1 88 45 e9 48 8b 45 c8 48 89 45 f0 48 8d 05 ?? ?? ?? ?? 48 89 45 d0 eb 08 48 c7 45 d0 00}  //weight: 30, accuracy: Low
+        $x_20_2 = {44 8b c0 b8 ?? ?? ?? ?? 41 f7 e8 c1 fa 03 8b ca c1 e9 1f 03 d1 6b ca 1a 44 2b c1 41 8d 50 41 48 8d 4d c0 e8}  //weight: 20, accuracy: Low
+        $x_5_3 = "MP3SimWnd" ascii //weight: 5
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_MDD_2147947499_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.MDD!MTB"
+        threat_id = "2147947499"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {41 32 c9 41 32 ca 41 88 4c 24 01 49 8d 47 fe 83 e0 07 0f b6 8c 30 ?? ?? ?? ?? c0 e9 04 c0 e2 04 0a ca 41 32 8c 37 ?? ?? ?? ?? 32 cb 41 32 c8 41 88 4c 24 02 49 83 c7 05 49 83 c5 05 4d 8d 64 24 05 49 83 fd 1a 0f 82}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_KK_2147948776_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.KK!MTB"
+        threat_id = "2147948776"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "30"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {8b 84 24 bc 00 00 00 89 84 24 84 00 00 00 65 48 8b 04 25 ?? 00 00 00 48 8b 40 18 48 89 c1 48 83 c1 10 48 89 8c 24 88 00 00 00 48 8b 40 10 48 39 c8 48 89 84 24 90 00 00 00}  //weight: 20, accuracy: Low
+        $x_10_2 = {48 8b 94 24 38 01 00 00 8b 8c 24 34 01 00 00 44 8a 84 24 33 01 00 00 48 89 d0 48 83 c0 01 45 0f b6 c0 44 31 c1 69 c9 93 01 00 01 8a 52 01 80 fa 00 88 94 24 33 01 00 00 89 8c 24 34 01 00 00 48 89 84 24 38 01 00 00}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_GVA_2147949149_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.GVA!MTB"
+        threat_id = "2147949149"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = {48 8d 45 d8 48 83 7d f0 0f 48 0f 47 45 d8 0f b6 14 08 80 f2 3d 48 8b c6 48 83 7e 18 0f 76 03 48 8b 06 88 14 08 48 ff c1 48 3b 4d e8 72 d2}  //weight: 2, accuracy: High
+        $x_1_2 = "//tapped.win/" ascii //weight: 1
+        $x_1_3 = "SOFTWARE\\CHARM\\Auth" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_AHG_2147952065_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.AHG!MTB"
+        threat_id = "2147952065"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "40"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {0f b6 4c 24 27 c1 e1 ?? 48 63 c9 48 09 c1 0f b6 44 24 24 c1 e0 ?? 48 09 c8 0f b7 4c 24 22 48 09 c1}  //weight: 30, accuracy: Low
+        $x_10_2 = {48 89 c1 ba ?? ?? ?? ?? 4c 0f af ea 49 c1 ed ?? 48 c7 40 78 00 00 00 00 4c 8d 80 88 00 00 00 4c 89 80 80 00 00 00 4c 8d 88 10 01 00 00 4d 8d 45 ff}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_SXA_2147952332_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.SXA!MTB"
+        threat_id = "2147952332"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "15"
+        strings_accuracy = "Low"
+    strings:
+        $x_7_1 = {66 39 11 75 0f 48 63 41 3c 41 0f b7 d0 66 44 39 04 08 74 09 48 81 e9}  //weight: 7, accuracy: High
+        $x_5_2 = {45 33 d2 8b da 41 c1 e9 ?? 41 8b d2 41 8b c1 c1 e0 ?? 4c 63 d8 4c 03 d9 41 f7 d9}  //weight: 5, accuracy: Low
+        $x_1_3 = "svchost_inj.cpp" ascii //weight: 1
+        $x_1_4 = "InjectSVCHost" ascii //weight: 1
+        $x_1_5 = "injlib\\remote_thread.cpp" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_SXB_2147952333_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.SXB!MTB"
+        threat_id = "2147952333"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "15"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {f7 f9 8b 55 bc 2b d0 89 55 bc 8b 4d bc 83 c1 ?? 8b 45 d8 99 f7 f9}  //weight: 10, accuracy: Low
+        $x_5_2 = {8b 55 d8 2b d1 0f af 55 d8 89 55 d8 8d 45 d8 89 45 d4 8b 4d d8 83 c1 ?? 8b 45 e4}  //weight: 5, accuracy: Low
+        $x_10_3 = {8b 45 e4 2b 45 08 8b 4d f8 2b c8 89 4d f8 8b 4d f4 83 c1 ?? 8b 45 08 99 f7 f9 03 45 f4 89 45 f4}  //weight: 10, accuracy: Low
+        $x_5_4 = {8b 4d f8 83 c1 ?? 8b 45 f8 99 f7 f9 89 45 0c eb bc}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (
+            ((1 of ($x_10_*) and 1 of ($x_5_*))) or
+            ((2 of ($x_10_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win64_Midie_GVC_2147952501_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.GVC!MTB"
+        threat_id = "2147952501"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {42 8d 14 29 41 3b d6 73 22 42 8d 14 29 48 8d 54 13 10 83 f9 40 73 14 44 8b c1 47 0f b6 44 04 10 44 30 02 ff c1 3b c8 7c d7}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_GVD_2147952502_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.GVD!MTB"
+        threat_id = "2147952502"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {8d 0c 06 3b 4b 08 73 45 44 8b c1 4c 8b 13 3b cd 73 3b 46 0f b6 0c 07 42 8d 0c 28 c1 e1 03 45 8b de 41 d3 eb 41 0f b6 cb 41 33 c9 43 88 0c 02 ff c0 3b c2 7c cb}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_AB_2147955948_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.AB!MTB"
+        threat_id = "2147955948"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {40 20 f2 b3 52 41 20 d8 41 08 d0 44 30 e0 08 c1 40 20 f0 41 20 db 41 08 c3 45 30 c3 40 30 f9 44 08 d9 40 30 f9 44 89 d0 20 c8 44 30 d1 08 c1}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_AB_2147955948_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.AB!MTB"
+        threat_id = "2147955948"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {48 03 c8 48 8b c1 0f b7 4c 24 38 c1 e1 ?? 48 63 c9 8b 04 08 89 44 24 2c b8 ?? 00 00 00}  //weight: 20, accuracy: Low
+        $x_30_2 = {48 8b 4c 24 30 48 03 c8 48 8b c1 8b 4c 24 28 d1 e1 8b c9 0f b7 04 08}  //weight: 30, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_GTV_2147960350_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.GTV!MTB"
+        threat_id = "2147960350"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {8b 4e 24 49 03 cb 42 0f b7 14 51 8b 4e 1c 49 03 cb 8b 04 91 48 8d 4d e0 49 03 c3 ff d0}  //weight: 5, accuracy: High
+        $x_5_2 = {48 89 45 10 48 8b 45 10 48 89 45 d0 48 89 7d 10 48 8b 45 10 48 89 45 d8 48 89 5d 10 48 8b 45 10 48 89 7d 10 48 89 45 f0 48 8b 45 10 66 0f 6f 45 d0 48 89 45 f8 0f 57 45 f0 48 8d 55 e0 48 8d 4d d0 66 0f 7f 45 d0}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_GVK_2147960383_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.GVK!MTB"
+        threat_id = "2147960383"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {8a 0c 3a 8b c2 83 e0 07 c0 c1 02 32 88 ?? ?? ?? ?? f6 d1 80 c1 5a 88 0c 3a 42 3b d6 7c e2}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_GVL_2147960423_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.GVL!MTB"
+        threat_id = "2147960423"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "High"
+    strings:
+        $x_3_1 = {41 b9 12 85 28 a7 41 0f b6 c9 66 44 0f af c9 8b 4c 0b ee 41 81 e9 ac 85 04 b6 41 51 80 74 24 06 1c 48 81 d3 04 00 00 00 41 c1 e9 2f 0f 84 12 d1 ff ff}  //weight: 3, accuracy: High
+        $x_1_2 = {80 6c 5c 01 3f 0a 1c 19 80 74 24 01 29}  //weight: 1, accuracy: High
+        $x_2_3 = {32 44 24 09 1a c4 66 8b 04 22 49 81 da 02 00 00 00 e9 d2 ea ff ff}  //weight: 2, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (
+            ((1 of ($x_2_*) and 1 of ($x_1_*))) or
+            ((1 of ($x_3_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win64_Midie_SXD_2147961986_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.SXD!MTB"
+        threat_id = "2147961986"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "30"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {f3 0f 6f 04 10 48 8d 49 ?? 66 0f 6f ce 66 0f fc c8 f3 0f 7f 0c 10 f3 0f 6f 41 ?? 66 0f 6f ce 66 0f fc c6 f3 0f 7f 44 10 ?? f3 0f 6f 44 10 ?? 66 0f fc c8 f3 0f 7f 4c 10 ?? f3 0f 6f 44 10 ?? 66 0f 6f ce 66 0f fc c8 f3 0f 7f 4c 10}  //weight: 20, accuracy: Low
+        $x_10_2 = {48 8d 55 c0 c7 45 c0 10 00 00 00 48 8b c8 48 8b d8 ff 15 ?? ?? ?? ?? 48 8b cb e8 ?? ?? ?? ?? 48 8d 4d d8 ff 15 ?? ?? ?? ?? 4c 8d 4d d8 4c 8d 45 c8 48 8d 55 d0 48 8d 0d ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 4c 8d 4d d8 4c 8d 45 c8 48 8d 55 d0}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_ARA_2147962153_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.ARA!MTB"
+        threat_id = "2147962153"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "7"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {0f b6 cb 80 e1 03 c0 e1 03 41 b9 73 5d 2b 6b 41 d3 e9 44 32 4c 1c 30 0f be c3 6b c8 37 44 32 c9 49 3b d0 73 20 48 8d 42 01 48 89 45 40 48 8d 45 30 49 83 f8 0f 48 0f 47 45 30 44 88 0c 10 c6 44 10 01 00 eb 09}  //weight: 5, accuracy: High
+        $x_5_2 = "sc stop AA" ascii //weight: 5
+        $x_2_3 = "\\Sysmon_Drv.sys" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (
+            ((1 of ($x_5_*) and 1 of ($x_2_*))) or
+            ((2 of ($x_5_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win64_Midie_ARR_2147962504_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.ARR!MTB"
+        threat_id = "2147962504"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "20"
+        strings_accuracy = "Low"
+    strings:
+        $x_12_1 = {03 c1 0f b6 c0 8a 0c 04 30 0e 48 ff c6 48 83 ef}  //weight: 12, accuracy: High
+        $x_8_2 = {33 d0 8b c5 83 e0 ?? 03 d7 41 8b 0c 86 03 cd 33 d1 44 2b c2}  //weight: 8, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_SXE_2147962750_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.SXE!MTB"
+        threat_id = "2147962750"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "45"
+        strings_accuracy = "High"
+    strings:
+        $x_30_1 = "[+] Injection Complete" ascii //weight: 30
+        $x_10_2 = "[i] Credit Cards" ascii //weight: 10
+        $x_10_3 = "[+] Created Chrome.exe Process" ascii //weight: 10
+        $x_1_4 = "[i] History" ascii //weight: 1
+        $x_1_5 = "[i] Cookies" ascii //weight: 1
+        $x_1_6 = "[i] Autofill" ascii //weight: 1
+        $x_1_7 = "[i] Tokens" ascii //weight: 1
+        $x_1_8 = "[+] Extraction Complete" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (
+            ((1 of ($x_30_*) and 1 of ($x_10_*) and 5 of ($x_1_*))) or
+            ((1 of ($x_30_*) and 2 of ($x_10_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win64_Midie_SXF_2147962896_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.SXF!MTB"
+        threat_id = "2147962896"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "40"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {48 89 84 24 ?? ?? ?? ?? 48 8b 84 24 ?? ?? ?? ?? 48 35 ff 00 00 00 48 89 84 24}  //weight: 30, accuracy: Low
+        $x_10_2 = {48 c1 e0 03 48 35 57 13 00 00 48 89 84 24 ?? ?? ?? ?? 48 8b 84 24 ?? ?? ?? ?? 48 c1 e8 02 48 35 68 24 00 00}  //weight: 10, accuracy: Low
+        $x_10_3 = {48 35 34 12 00 00 48 8b 8c 24 ?? ?? ?? ?? 48 3b c1 73 ?? 48 8b 84 24 ?? ?? ?? ?? 48 05 21 43 00 00}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (
+            ((1 of ($x_30_*) and 1 of ($x_10_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win64_Midie_AH_2147963038_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.AH!MTB"
+        threat_id = "2147963038"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {f3 0f e6 c0 66 0f 6e c8 f3 0f e6 c9 41 6b c2 ?? f2 0f 58 c0 41 03 c3 f2 0f 5c c8 f2 0f 59 ca f2 0f 11 4c 24 68}  //weight: 30, accuracy: Low
+        $x_20_2 = {23 cf 03 c9 8b 54 83 ?? 48 63 84 24 a0 00 00 00 2b d1 03 94 24 b0 00 00 00 89 54 83}  //weight: 20, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_LMF_2147963647_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.LMF!MTB"
+        threat_id = "2147963647"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "36"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "_bind_mgr_8775" ascii //weight: 1
+        $x_2_2 = "create_data_25" ascii //weight: 2
+        $x_3_3 = "create_info_97" ascii //weight: 3
+        $x_4_4 = "load_handle_3" ascii //weight: 4
+        $x_5_5 = "open_data_55" ascii //weight: 5
+        $x_6_6 = "process_handle_67" ascii //weight: 6
+        $x_7_7 = "set_info_23" ascii //weight: 7
+        $x_8_8 = "start_cache_76" ascii //weight: 8
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_MK_2147964612_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.MK!MTB"
+        threat_id = "2147964612"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "35"
+        strings_accuracy = "High"
+    strings:
+        $x_20_1 = {48 63 ca 8b c2 48 c1 e1 05 4e 39 1c 11 41 0f 45 c0 ff c2 44 8b c0 41 3b d1}  //weight: 20, accuracy: High
+        $x_15_2 = {c7 45 cc 65 6c 33 32 c7 45 d0 2e 64 6c 6c c6 45 d4 00 c7 45 e8 6e 45 6e 74 66 c7 45 ec 72 79 c6 45 ee}  //weight: 15, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_MX_2147965168_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.MX!MTB"
+        threat_id = "2147965168"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR"
+        threshold = "3"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {74 48 48 89 c7 48 8d 0d 7c 01 00 00 ba 01 00 00 00 49 c7 c0 24 00 00 00 49 89 f9 48 83 ec 08 50 48 8d 05 0c 00 00 00 48 89 44 24 08 58 ff 25 80 09 00 00 48 89 f9 ff 15 6f 09 00 00 4c 8d 0d 45 01 00 00 49 c7 c2 24 00 00 00}  //weight: 1, accuracy: High
+        $x_1_2 = "CreateMutex" ascii //weight: 1
+        $x_1_3 = "Axolotl" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_KKA_2147965820_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.KKA!MTB"
+        threat_id = "2147965820"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "20"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {48 8b 45 f0 8b 4d ec 48 8b 55 f8 4c 63 c9 49 b8 ?? ?? ?? ?? ?? 00 00 00 47 8a 0c 08 41 89 c8 41 ba ab aa aa aa 4d 0f af c2 49 c1 e8 23 45 89 c2 41 c1 e2 02 45 89 d0 47 8d 04 40 41 89 ca 45 29 c2 45 89 d3 49 b8 ?? ?? ?? ?? ?? 00 00 00 4d 01 d8 4d 63 d2 45 32 08 4c 63 c1 46 88 0c 02 83 c1 01 89 08}  //weight: 20, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_SXG_2147966028_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.SXG!MTB"
+        threat_id = "2147966028"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = "[i] Found %lu Running Browser Processes" ascii //weight: 10
+        $x_30_2 = "[v] Attempting To Steal Opened File Handles..." ascii //weight: 30
+        $x_10_3 = "[v] Successfully Copied File Via Duplicated Handle" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_SXH_2147966386_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.SXH!MTB"
+        threat_id = "2147966386"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {0f b6 04 17 48 ff c2 03 c3 8d 0c c0 8b d9 c1 eb 06 33 d9 49 3b d0 75 e8}  //weight: 30, accuracy: High
+        $x_20_2 = {49 8b c0 83 e0 0f 0f b6 0c 08 49 03 c9 48 03 ca 44 0f b6 c9 42 8a 44 0c ?? 42 88 44 04 ?? 4c 03 c3 42 88 54 0c ?? 4c 3b c5 72 c8}  //weight: 20, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_SXI_2147966463_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.SXI!MTB"
+        threat_id = "2147966463"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {0f b6 84 01 ?? ?? ?? ?? 34 5f 88 44 0d ?? 48 ff c1 48 8d 05 ?? ?? ?? ?? 48 83 f9 0d 75 e2}  //weight: 30, accuracy: Low
+        $x_20_2 = {80 f1 5f 4c 39 74 24 68 48 0f 47 44 24 50 88 48 08 48 8d 44 24 50 0f b6 4d 99 80 f1 5f 4c 39 74 24 68 48 0f 47 44 24 50}  //weight: 20, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_SXK_2147967332_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.SXK!MTB"
+        threat_id = "2147967332"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "34"
+        strings_accuracy = "High"
+    strings:
+        $x_20_1 = "/goonen/bypass.php" ascii //weight: 20
+        $x_10_2 = "/goonen/login-check-new-private.php" ascii //weight: 10
+        $x_2_3 = "\\AppData\\Local\\BraveSoftware\\Brave-Browser\\User Data\\Default\\cookies" ascii //weight: 2
+        $x_2_4 = "\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\zvvln8t9.default\\signons.sqlite" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_SXJ_2147967724_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.SXJ!MTB"
+        threat_id = "2147967724"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "30"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = "SOFTWARE\\Classes\\CLSID\\{7C3A5D49-E8B2-4F1C-A6D0-3E7F8B9C2D1A}" ascii //weight: 10
+        $x_10_2 = "SOFTWARE\\Classes\\CLSID\\{7C3A5D49-E8B2-4F1C-A6D0-3E7F8B9C2D1A}\\InprocServer32" ascii //weight: 10
+        $x_5_3 = "wuaupdt.dat" ascii //weight: 5
+        $x_5_4 = "wuaupdt.exe" ascii //weight: 5
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_PAA_2147969226_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.PAA!MTB"
+        threat_id = "2147969226"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {0f b6 d0 0f b6 94 14 00 01 00 00 30 14 06 48 83 c0 01 48 39 e8 72 e9}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_SXL_2147969341_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.SXL!MTB"
+        threat_id = "2147969341"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "40"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {48 8b 44 24 50 48 8d 0d ?? ?? ?? ?? 0f b6 0c 01 89 ca 48 8d 0d ?? ?? ?? ?? 8a 0c 11 88 4c 04 66 48 83 c0 01 48 83 f8 1a 48 89 44 24 50 72 d1}  //weight: 30, accuracy: Low
+        $x_10_2 = {49 89 e1 49 c7 41 20 00 00 00 00 4c 8d 8c 24 ec 00 00 00 ff d0 8b 54 24 5c 85 c0 0f 95 c0 8b 8c 24 ec 00 00 00 29 d1 0f 94 c1 20 c8}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_MKA_2147971053_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.MKA!MTB"
+        threat_id = "2147971053"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "35"
+        strings_accuracy = "High"
+    strings:
+        $x_20_1 = {8b 47 24 8b 4f 1c 48 03 c3 48 03 cb 0f b7 04 70 8b 04 81 48 03 c3 48 3b c7}  //weight: 20, accuracy: High
+        $x_15_2 = {8b bc 08 88 00 00 00 33 f6 48 03 f9 44 8b 77 20 4c 03 f1 39 77 18}  //weight: 15, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_MKB_2147971321_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.MKB!MTB"
+        threat_id = "2147971321"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "35"
+        strings_accuracy = "High"
+    strings:
+        $x_20_1 = {0f 45 d1 41 81 f1 71 e7 a3 0e c6 c5 1e 66 0f 44 cc 66 40 0f be cc 66 41 0f 6e c9 8a cb 49 63 c8 b9 90 8f 9e 02}  //weight: 20, accuracy: High
+        $x_15_2 = {66 45 0f ab e3 49 92 41 0f ba e3 97 41 0f bb c3 66 41 d3 db 45 0f b6 d8 44 0f bf de 66 44 0f be de 66 41 0f a3 d3 66 0f ef e2 66 45 0f 42 d9 66 41 c1 cb 14 49}  //weight: 15, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_SXM_2147972405_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.SXM!MTB"
+        threat_id = "2147972405"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "65"
+        strings_accuracy = "High"
+    strings:
+        $x_30_1 = "NovaStealer" ascii //weight: 30
+        $x_20_2 = "SendToC2" ascii //weight: 20
+        $x_5_3 = "[EXFIL]" ascii //weight: 5
+        $x_5_4 = "Google\\Chrome\\User Data" ascii //weight: 5
+        $x_5_5 = "SELECT origin_url, username_value, password_value FROM logins" ascii //weight: 5
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Midie_MKC_2147972422_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Midie.MKC!MTB"
+        threat_id = "2147972422"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Midie"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "20"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = "Terminating all agent processes..." ascii //weight: 10
+        $x_5_2 = "Session monitor thread created" ascii //weight: 5
+        $x_3_3 = "Service will launch agent in user sessions" ascii //weight: 3
+        $x_2_4 = "Stopping session monitor..." ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

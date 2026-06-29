@@ -1,0 +1,125 @@
+rule Trojan_Win32_BypassUAC_BN_2147839340_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/BypassUAC.BN!MTB"
+        threat_id = "2147839340"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_4_1 = "C:\\ProgramData\\AxlnstSV\\WindowsInstallationAssistant.exe" ascii //weight: 4
+        $x_4_2 = "C:/ProgramData/AxlnstSV/WindowsInstallationAssistant.exe" wide //weight: 4
+        $x_2_3 = "enhanced-google.com/lod/xlsrd.cpl" ascii //weight: 2
+        $x_2_4 = "C:\\ProgramData\\AxlnstSV\\xlsrd.cpl" ascii //weight: 2
+        $x_2_5 = "Lastsst.exe" ascii //weight: 2
+        $x_2_6 = "Bill\\Bill.lnk" wide //weight: 2
+        $x_1_7 = "GJdGn.cpl" ascii //weight: 1
+        $x_1_8 = "GetTempPathW" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (
+            ((4 of ($x_2_*) and 2 of ($x_1_*))) or
+            ((1 of ($x_4_*) and 2 of ($x_2_*) and 2 of ($x_1_*))) or
+            ((1 of ($x_4_*) and 3 of ($x_2_*))) or
+            ((2 of ($x_4_*) and 2 of ($x_1_*))) or
+            ((2 of ($x_4_*) and 1 of ($x_2_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win32_BypassUAC_A_2147939499_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/BypassUAC.A!MTB"
+        threat_id = "2147939499"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {49 81 d1 06 00 00 00 48 c7 44 24 00 09 f4 84 ca 48 ff 44 24 00 48 c1 74 24 00 9a 0f ad d6 68 ba 35 01 8f 41 89 31 e9}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_BypassUAC_AB_2147945975_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/BypassUAC.AB!MTB"
+        threat_id = "2147945975"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {4d f8 21 38 95 93 2a 20 31 18 d5 1f 1e 38 31 34 81}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_BypassUAC_MK_2147960852_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/BypassUAC.MK!MTB"
+        threat_id = "2147960852"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "45"
+        strings_accuracy = "High"
+    strings:
+        $x_15_1 = "MTU2LjIzNC41OC4xOTQ=" ascii //weight: 15
+        $x_10_2 = "UVhaaGMzUlRkbU11WlhobA==" ascii //weight: 10
+        $x_10_3 = "TXpZd2RISmhlUzVsZUdVPQ==" ascii //weight: 10
+        $x_5_4 = "DeConhost.exe" ascii //weight: 5
+        $x_3_5 = "startmonitornokill" ascii //weight: 3
+        $x_2_6 = "Failed to write shellcode to file." ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_BypassUAC_SX_2147966679_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/BypassUAC.SX!MTB"
+        threat_id = "2147966679"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "BypassUAC"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "40"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {6b db 21 69 ff 81 00 00 00 0f b7 14 48 69 45 ?? 01 08 00 00 8d 8a b9 79 37 9e 33 d9 8d 8a b7 c1 7c 51 33 f9 8d 8a 67 e6 09 6a 33 c8 81 c2 85 ae 67 bb 69 45 ?? 01 20 00 00 89 4d ?? 33 d0 8b 45}  //weight: 30, accuracy: Low
+        $x_10_2 = {b8 85 ae 67 bb 53 56 8b f2 bb 67 e6 09 6a 57 8b f9 ba 3a f5 4f a5}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

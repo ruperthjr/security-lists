@@ -1,0 +1,659 @@
+rule Trojan_Win64_Cerbu_AMS_2147851297_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AMS!MTB"
+        threat_id = "2147851297"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {0f 1f 80 00 00 00 00 0f b6 14 0b 48 8d 49 01 80 f2 71 41 ff c0 88 51 ff 48 8b 54 24 70 49 63 c0 48 3b c2}  //weight: 1, accuracy: High
+        $x_1_2 = {48 89 44 24 28 33 d2 88 44 24 40 89 44 24 20 ff 15}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_GTT_2147926640_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.GTT!MTB"
+        threat_id = "2147926640"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {11 f0 13 20 b3 ?? ff 00 18 a5 ?? ?? ?? ?? 48 08 ed 89 ba ?? ?? ?? ?? f7 e3 01 00 00 00 51 32 d6}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AB_2147951435_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AB!MTB"
+        threat_id = "2147951435"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {41 0f b7 47 06 ff c6 48 83 c3 28 3b f0 0f 85 51 ff ff ff 0f b7 c8 41 0f b7 5f 14 45 33 f6 48 83 c3 18 49 03 df 66 85 c9 0f}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AB_2147951435_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AB!MTB"
+        threat_id = "2147951435"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "6"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "Kill all browser processes before extraction" ascii //weight: 1
+        $x_1_2 = "--kill" ascii //weight: 1
+        $x_1_3 = "[+] Payload connected" ascii //weight: 1
+        $x_1_4 = "[+] Payload decrypted" ascii //weight: 1
+        $x_1_5 = "Deriving runtime decryption keys..." ascii //weight: 1
+        $x_1_6 = "AvastBrowser.exe" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AHB_2147952331_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AHB!MTB"
+        threat_id = "2147952331"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "60"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {46 0f b6 1c 12 45 31 d8 45 88 04 19 48 ff c3 4c 89 c8 4c 89 d2 48 39 d9 7e ?? 44 0f b6 04 1f 48 85 f6 74 ?? 49 89 c1 48 89 d8 49 89 d2 48 99 48 f7 fe 48 39 d6 77}  //weight: 30, accuracy: Low
+        $x_20_2 = {48 8b 8c 24 40 02 00 00 48 8d 51 ff 48 d1 e2 66 89 10 48 89 ca 48 d1 e1 66 89 48 02 48 85 d2 0f}  //weight: 20, accuracy: High
+        $x_10_3 = "main.deobfuscateShellcode" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_BAA_2147952678_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.BAA!MTB"
+        threat_id = "2147952678"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "30"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = {50 45 00 00 64 86 0c 00 56 ed 80 63 00 00 00 00 00 00 00 00 f0 00 22 00 0b 02 0c 00 00 84 0a 00 00 14 05}  //weight: 10, accuracy: High
+        $x_10_2 = {85 82 0a 00 00 10 00 00 53 99 05 00 00 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 20 00 00 60}  //weight: 10, accuracy: High
+        $x_10_3 = {20 20 20 20 20 20 20 20 08 18 03 00 00 a0 0a 00 00 d2 00 00 00 9e 05 00 00 00 00 00 00 00 00 00 00 00 00 00 40 00 00 40}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_MK_2147954246_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.MK!MTB"
+        threat_id = "2147954246"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "25"
+        strings_accuracy = "Low"
+    strings:
+        $x_15_1 = {41 ff c9 41 b8 ?? ?? ?? ?? 4a 8d 04 8f 42 8b 0c 10 42 0f b6 04 11 48 8d 51 01 49 03 d2 84 c0}  //weight: 15, accuracy: Low
+        $x_10_2 = {0f be ca 0f b6 10 48 8d 40 01 41 33 c8 44 69 c1 43 01 00 00 84 d2}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_MKA_2147955285_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.MKA!MTB"
+        threat_id = "2147955285"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "40"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {40 00 00 e0 2e 70 64 61 74 61 00 49 00 e0 05}  //weight: 20, accuracy: High
+        $x_15_2 = {c0 d0 00 80 05 00 00 20 ?? ?? 01 90 d3 05}  //weight: 15, accuracy: Low
+        $x_3_3 = {c0 2e 69 64 61 74 61 20 20 00 10 00 00 00 d0 d0}  //weight: 3, accuracy: High
+        $x_2_4 = {40 00 00 e0 2e 72 73 72 63 00 00 00 80 05}  //weight: 2, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AHC_2147955764_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AHC!MTB"
+        threat_id = "2147955764"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "65"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = "STEALER STARTED" ascii //weight: 5
+        $x_10_2 = "Hostile environment detected - exiting silently" ascii //weight: 10
+        $x_20_3 = "All extraction tasks finished successfully" ascii //weight: 20
+        $x_30_4 = "Credit Cards (all profiles):" ascii //weight: 30
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AYA_2147958369_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AYA!MTB"
+        threat_id = "2147958369"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = "pastepload.com" ascii //weight: 5
+        $x_2_2 = "Loader.pdb" ascii //weight: 2
+        $x_1_3 = "cmd.exe /C icacls \"%SystemRoot%\\System32\\reagentc.exe\" /deny Everyone:RX" ascii //weight: 1
+        $x_1_4 = "powershell -Command \"Add-MpPreference -ExclusionProcess 'powershell.exe'" ascii //weight: 1
+        $x_1_5 = "Software\\Microsoft\\Windows\\CurrentVersion\\Run" wide //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_SX_2147958429_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.SX!MTB"
+        threat_id = "2147958429"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "37"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {80 e1 1f 8b c2 80 c1 41 ff c2 88 8c 05 ?? ?? ?? ?? 81 fa ff 01 00 00 73}  //weight: 20, accuracy: Low
+        $x_10_2 = {6b db 1f 8d 52 ?? 0f be c1 0f b6 8c 15 e8 ?? ?? ?? ?? d8 84 c9 75 e9}  //weight: 10, accuracy: Low
+        $x_5_3 = "schtasks /Create /SC ONLOGON /TN \"%s\" /TR \"%s\" /F /RL HIGHEST" ascii //weight: 5
+        $x_1_4 = "chrome" ascii //weight: 1
+        $x_1_5 = "VMware" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AHD_2147958666_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AHD!MTB"
+        threat_id = "2147958666"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {44 0f b7 7e ?? 0f b7 09 49 83 c7 ?? 4c 03 fe 8b 76 ?? 4c 03 f9 4a 8d 04 3e}  //weight: 20, accuracy: Low
+        $x_30_2 = "Installing update 1 of 1..." ascii //weight: 30
+        $x_10_3 = "%s_%04X.exe" ascii //weight: 10
+        $x_40_4 = "schtasks /Create /SC ONLOGON /TN \"%s\" /TR \"%s\" /F /RL HIGHEST" ascii //weight: 40
+    condition:
+        (filesize < 20MB) and
+        (
+            ((1 of ($x_30_*) and 1 of ($x_20_*))) or
+            ((1 of ($x_40_*) and 1 of ($x_10_*))) or
+            ((1 of ($x_40_*) and 1 of ($x_20_*))) or
+            ((1 of ($x_40_*) and 1 of ($x_30_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win64_Cerbu_ND_2147960331_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.ND!MTB"
+        threat_id = "2147960331"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = {45 0f 57 ff 4c 8b 35 b0 3c 78 00 65 4d 8b 36 4d 8b 36 31 c0 48 c7 00 00 00 00 00 48 83 c4}  //weight: 2, accuracy: High
+        $x_1_2 = {48 89 11 49 89 d6 48 8b 62 38 48 89 fa 48 8b 3f ff d7 48 8b 0d d0 9e 74 00 65 48 8b 09 48 8b 01}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AHE_2147960428_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AHE!MTB"
+        threat_id = "2147960428"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "60"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {48 8b c1 48 c1 e8 ?? 48 33 c1 48 b9 ?? ?? ?? ?? ?? ?? ?? ?? 48 0f af c8 48 03 ca 48 89 8c d4 b8 02 00 00 49 03 d5 48 3b d7 72}  //weight: 30, accuracy: Low
+        $x_20_2 = "Global\\SystemInfoMutex" ascii //weight: 20
+        $x_10_3 = "BraveSoftware\\Brave-Browser\\User Data" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_SXA_2147964317_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.SXA!MTB"
+        threat_id = "2147964317"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "30"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {74 75 70 00 f3 0f 7f 75 ?? c7 45 ?? 2d 20 53 74 66 c7 45 ?? 61 72 c6 45 d1}  //weight: 20, accuracy: Low
+        $x_10_2 = {6c 79 21 00 48 8d 4d ?? c7 45 ?? 73 75 63 63 f3 0f 7f 45 ?? c7 45 ?? 65 73 73 66 66 c7 45 ?? 75 6c c6 45 f5}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_SXB_2147964787_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.SXB!MTB"
+        threat_id = "2147964787"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "30"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {b9 2c 01 00 00 ff 15 ?? ?? ?? ?? 48 8d 53 e8 83 c8 ff f0 0f c1 42 10 ff c8 85 c0 7f}  //weight: 20, accuracy: Low
+        $x_10_2 = {41 0f b7 00 49 83 c0 02 66 83 f8 61 72 ?? 41 ba e0 ff 00 00 66 41 03 c2 69 c9 01 01 00 00 0f b7 c0 03 c8 49 ff c9 75}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AHF_2147966358_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AHF!MTB"
+        threat_id = "2147966358"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "60"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = "--- CRYPTO WALLETS ---" ascii //weight: 10
+        $x_20_2 = "[%02d:%02d:%02d] [FORENSIC]   Extracting Steam tokens from LevelDB..." ascii //weight: 20
+        $x_30_3 = "[%02d:%02d:%02d] [FORENSIC]   VSS snapshot deleted" ascii //weight: 30
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_SLWZ_2147966568_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.SLWZ!MTB"
+        threat_id = "2147966568"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = "--window-position=0,0 --no-sandbox --allow-no-sandbox-job --disable-gpu" ascii //weight: 2
+        $x_2_2 = "Shellcode running (timeout, still active)" ascii //weight: 2
+        $x_2_3 = "OK: Shellcode injected (CreateRemoteThread)" ascii //weight: 2
+        $x_2_4 = "OK: PE injected and executed" ascii //weight: 2
+        $x_2_5 = "cmd.exe /C \"netsh advfirewall firewall set rule name=\"\"%s\"\" %s\"" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_PGCE_2147967112_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.PGCE!MTB"
+        threat_id = "2147967112"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {88 04 19 8d 42 02 8b c8 83 e0 07 42 0f b6 84 00 ?? ?? ?? ?? 42 32 84 01 ?? ?? ?? ?? 88 04 19 8d 42 03 8b c8 83 c2 ?? 83 e0 ?? 42 0f b6 84 00 ?? ?? ?? ?? 42 32 84 01 ?? ?? ?? ?? 88 04 19 81 fa ?? ?? ?? ?? 72}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AHG_2147967841_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AHG!MTB"
+        threat_id = "2147967841"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "100"
+        strings_accuracy = "High"
+    strings:
+        $x_40_1 = "EchoStrike/modules/integration.xorEncrypt" ascii //weight: 40
+        $x_30_2 = "EchoStrike/modules/utils.RunCommandInBackground" ascii //weight: 30
+        $x_20_3 = "EchoStrike/modules/utils.SetupScheduledTask" ascii //weight: 20
+        $x_10_4 = "EchoStrike/modules/network.simulateWorkload" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AHH_2147967843_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AHH!MTB"
+        threat_id = "2147967843"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {0f b6 0c 10 80 f1 ?? 88 0c 03 48 ff c0 48 3d ?? ?? ?? ?? 75}  //weight: 20, accuracy: Low
+        $x_30_2 = {f3 0f 7f 44 03 ?? f3 0f 6f 44 10 ?? 0f 57 c1 f3 0f 7f 44 03 ?? 48 83 c0 ?? 48 3d ?? ?? ?? ?? 75}  //weight: 30, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AHA_2147967926_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AHA!MTB"
+        threat_id = "2147967926"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "150"
+        strings_accuracy = "High"
+    strings:
+        $x_50_1 = "Cookies folder placeholder" ascii //weight: 50
+        $x_40_2 = "koffi_testeisolado_get_base" ascii //weight: 40
+        $x_30_3 = "koffi_extract_chromium" ascii //weight: 30
+        $x_20_4 = "Iridium\\User Data" ascii //weight: 20
+        $x_10_5 = "CentBrowser\\User Data" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AHI_2147968186_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AHI!MTB"
+        threat_id = "2147968186"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "60"
+        strings_accuracy = "High"
+    strings:
+        $x_30_1 = "Simulate real keyboard typing" ascii //weight: 30
+        $x_20_2 = "Update the bot to a new version" ascii //weight: 20
+        $x_10_3 = "Steal saved browser/Discord tokens" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AHJ_2147968552_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AHJ!MTB"
+        threat_id = "2147968552"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {8b 45 f4 f7 d0 23 45 fc 83 e0 ?? 89 45 ec 8b 45 fc f7 d0 23 45 f4 83 e0 ?? 89 45 e8}  //weight: 30, accuracy: Low
+        $x_20_2 = "{\"%s\":\"%s\",\"%s\":\"%s\",\"%s\":true}" ascii //weight: 20
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AHK_2147969191_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AHK!MTB"
+        threat_id = "2147969191"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "100"
+        strings_accuracy = "High"
+    strings:
+        $x_40_1 = "src\\wallet\\browser_extensions.rs" ascii //weight: 40
+        $x_30_2 = "src\\proc\\browser\\bloader.rs" ascii //weight: 30
+        $x_20_3 = "src\\docs\\system_docs.rs" ascii //weight: 20
+        $x_10_4 = "src\\fingerprint.rs" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_AHL_2147970006_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.AHL!MTB"
+        threat_id = "2147970006"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "60"
+        strings_accuracy = "High"
+    strings:
+        $x_30_1 = "src\\proc\\browser\\bloader.rs" ascii //weight: 30
+        $x_20_2 = "src\\wallet\\browser_extensions.rs" ascii //weight: 20
+        $x_10_3 = "src\\docs\\crypto_keys.rs" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_ARR_2147970581_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.ARR!MTB"
+        threat_id = "2147970581"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "20"
+        strings_accuracy = "Low"
+    strings:
+        $x_11_1 = {48 8b c2 83 e0 07 0f b6 8c 05 ?? ?? ?? ?? 48 8d 44 24 50 48 83 7c 24 68 0f 48 0f 47 44 24 50 30 0c 10 48 ff c2 48 3b 54 24 60}  //weight: 11, accuracy: Low
+        $x_9_2 = {48 8d 45 b0 49 83 ff ?? 48 0f 47 c6 0f b6 0c 10 41 32 8e ?? ?? ?? ?? 48 8d 45 e0}  //weight: 9, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Cerbu_ARR_2147970581_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Cerbu.ARR!MTB"
+        threat_id = "2147970581"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cerbu"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "25"
+        strings_accuracy = "High"
+    strings:
+        $x_11_1 = "[*] Starting Keylogger" ascii //weight: 11
+        $x_6_2 = ">>> ApiHammering Delayed Execution For : %d" ascii //weight: 6
+        $x_4_3 = "] GetTempPathW Failed With Error : %d" ascii //weight: 4
+        $x_5_4 = "[i] Written %d Bytes of %d" ascii //weight: 5
+        $x_9_5 = "KeyloggerRemoteRawInput.exe" ascii //weight: 9
+    condition:
+        (filesize < 20MB) and
+        (
+            ((1 of ($x_11_*) and 1 of ($x_6_*) and 1 of ($x_5_*) and 1 of ($x_4_*))) or
+            ((1 of ($x_11_*) and 1 of ($x_9_*) and 1 of ($x_5_*))) or
+            ((1 of ($x_11_*) and 1 of ($x_9_*) and 1 of ($x_6_*))) or
+            (all of ($x*))
+        )
+}
+

@@ -1,0 +1,168 @@
+rule Trojan_Win64_LucaStealer_NC_2147899137_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/LucaStealer.NC!MTB"
+        threat_id = "2147899137"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "LucaStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "6"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {0f 84 a3 00 00 00 48 8d 55 e0 49 89 c1 49 89 d8 48 c7 44 24 38 ?? ?? ?? ?? 48 8d 0d dc 41 0d 00 48 89 54 24 ?? 48 8d 55 e8 48 89 4c 24 ?? 31 c9 48 89 54 24 28}  //weight: 5, accuracy: Low
+        $x_1_2 = "://zdv.life/downloader.exe" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_LucaStealer_GPA_2147918623_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/LucaStealer.GPA!MTB"
+        threat_id = "2147918623"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "LucaStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "\\regex\\string.rs" ascii //weight: 1
+        $x_1_2 = "\\defense\\anti_dbg.rs" ascii //weight: 1
+        $x_1_3 = "\\defense\\anti_vm.rs" ascii //weight: 1
+        $x_1_4 = "\\discord.rs" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_LucaStealer_AB_2147953617_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/LucaStealer.AB!MTB"
+        threat_id = "2147953617"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "LucaStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {48 83 c0 40 48 89 c1 48 81 e1 00 ff ff ff 0f b6 d0 48 09 ca 48 8d ?? ?? ?? 48 89 f1 e8}  //weight: 1, accuracy: Low
+        $x_1_2 = "logscx\\creditcards" ascii //weight: 1
+        $x_1_3 = "logscx\\Telegram" ascii //weight: 1
+        $x_1_4 = "logscx\\sensfiles.zip" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_LucaStealer_PGLS_2147964138_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/LucaStealer.PGLS!MTB"
+        threat_id = "2147964138"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "LucaStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {68 00 74 00 74 00 70 00 3a 00 2f 00 2f 00 36 00 32 00 2e 00 36 00 30 00 2e 00 32 00 32 00 36 00 2e 00 39 00 37 00 3a 00 35 00 35 00 35 00 33 00 2f 00 [0-31] 2e 00 65 00 78 00 65 00}  //weight: 5, accuracy: Low
+        $x_5_2 = {68 74 00 74 00 70 3a 2f 2f 36 32 2e 36 30 2e 32 32 36 2e 39 37 3a 35 35 35 33 2f [0-31] 2e 65 78 65}  //weight: 5, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (1 of ($x*))
+}
+
+rule Trojan_Win64_LucaStealer_LR_2147964558_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/LucaStealer.LR!MTB"
+        threat_id = "2147964558"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "LucaStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "30"
+        strings_accuracy = "High"
+    strings:
+        $x_20_1 = {80 e1 07 c0 e1 03 48 d3 ea 43 30 14 08 4c 03 c3 49 83 f8 10}  //weight: 20, accuracy: High
+        $x_10_2 = {80 e1 07 b8 ff 00 00 00 c0 e1 03 48 d3 ea 66 23 d0 66 43 31 14 41 4c 03 c3 49 83 f8 0d}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_LucaStealer_LR_2147964558_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/LucaStealer.LR!MTB"
+        threat_id = "2147964558"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "LucaStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "66"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "Extracting comprehensive fingerprint..." ascii //weight: 1
+        $x_2_2 = "\"executable_path\": \"" ascii //weight: 2
+        $x_3_3 = "\"extraction_complete\": true" ascii //weight: 3
+        $x_4_4 = "fingerprint.json" ascii //weight: 4
+        $x_5_5 = "Fingerprint saved to" ascii //weight: 5
+        $x_6_6 = "Login Data For Account" ascii //weight: 6
+        $x_7_7 = "SELECT origin_url, username_value, password_value FROM logins" ascii //weight: 7
+        $x_8_8 = "NO_ABE:Browser uses legacy DPAPI encryption (App-Bound Encryption not enabled)" ascii //weight: 8
+        $x_9_9 = "COOKIES:" ascii //weight: 9
+        $x_10_10 = "PASSWORDS:" ascii //weight: 10
+        $x_11_11 = "SELECT guid, value_encrypted FROM local_stored_cvc" ascii //weight: 11
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_LucaStealer_AHA_2147966581_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/LucaStealer.AHA!MTB"
+        threat_id = "2147966581"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "LucaStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "60"
+        strings_accuracy = "High"
+    strings:
+        $x_30_1 = "@Hollowing failed, running as normal process." ascii //weight: 30
+        $x_20_2 = "@Reverse Proxy requested (stub)" ascii //weight: 20
+        $x_10_3 = "@pkgetdiscordtokens" ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

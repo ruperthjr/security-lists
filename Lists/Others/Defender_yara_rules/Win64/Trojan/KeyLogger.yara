@@ -1,0 +1,220 @@
+rule Trojan_Win64_KeyLogger_DB_2147828897_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/KeyLogger.DB!MTB"
+        threat_id = "2147828897"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "KeyLogger"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_3_1 = {f6 54 0d b0 48 ff c1 48 83 f9 1b 72 f3 4c 8d 45 b0}  //weight: 3, accuracy: High
+        $x_2_2 = {0f b7 01 41 b9 ff ff 00 00 66 f7 d0 66 41 89 04 08 0f b7 01 48 8d 49 02 66 44 3b c8}  //weight: 2, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_KeyLogger_NK_2147927972_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/KeyLogger.NK!MTB"
+        threat_id = "2147927972"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "KeyLogger"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "Low"
+    strings:
+        $x_3_1 = {49 01 d0 4c 89 f2 4c 89 45 ?? 41 b8 02 00 00 00 e8 21 fc ff ff e9 e0 fe ff ff 48 8d 0d 3d e8 0a 00 48 c7 45 ?? 00 00 00 00 e8 98 fb ff ff}  //weight: 3, accuracy: Low
+        $x_2_2 = {48 8b 10 48 8d 4c 24 ?? 4c 8d 4c 24 ?? 41 b8 10 00 00 00 e8 2b 8f ff ff 85 c0 7e 17 0f b7 4c 24 ?? 66 89 4b 18 89 43 14 eb ab}  //weight: 2, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_KeyLogger_NK_2147927972_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/KeyLogger.NK!MTB"
+        threat_id = "2147927972"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "KeyLogger"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = {48 8d 44 24 48 41 b9 01 00 00 00 48 89 44 24 20 48 8d 15 7c 68 00 00 48 8b c3 45 33 c0 48 c7 c1 02 00 00 80 ff 15 89 f2 00 00 85 c0 74 37}  //weight: 2, accuracy: High
+        $x_1_2 = {c7 44 24 40 08 02 00 00 48 89 44 24 20 48 8d 15 91 68 00 00 48 8b c6 45 33 c0 ff 15 15 f2 00 00 48 8b 4c 24 48 8b d8 49 8b c6 ff 15 05 f2 00 00 48 8b cf}  //weight: 1, accuracy: High
+        $x_1_3 = "keylogger" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_KeyLogger_NK_2147927972_2
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/KeyLogger.NK!MTB"
+        threat_id = "2147927972"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "KeyLogger"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "7"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = "Windows Atapi x86_64 Driver" ascii //weight: 2
+        $x_2_2 = "hacks.txt" wide //weight: 2
+        $x_1_3 = "Chave aberta com sucesso" ascii //weight: 1
+        $x_1_4 = "Erro ao obter o nome do usu" ascii //weight: 1
+        $x_1_5 = "InternetConnectW" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_KeyLogger_A_2147956023_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/KeyLogger.A!AMTB"
+        threat_id = "2147956023"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "KeyLogger"
+        severity = "Critical"
+        info = "AMTB: an internal category used to refer to some threats"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "GetTickCount64" ascii //weight: 1
+        $x_1_2 = "CALCULATION_FORMULA_DLL.dll" ascii //weight: 1
+        $x_2_3 = "Project\\KEYBOARD_MONITOR_DLL" ascii //weight: 2
+        $x_1_4 = "You are not authorized to use this module" ascii //weight: 1
+        $x_1_5 = "ituegqr" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (
+            ((1 of ($x_2_*) and 3 of ($x_1_*))) or
+            (all of ($x*))
+        )
+}
+
+rule Trojan_Win64_KeyLogger_MFF_2147960605_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/KeyLogger.MFF!MTB"
+        threat_id = "2147960605"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "KeyLogger"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = {48 8b ce 48 8b d7 8a 01 2c 40 34 bc 88 01 48 ff c1 48 ff ca 75 f0}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_KeyLogger_AR_2147962178_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/KeyLogger.AR!AMTB"
+        threat_id = "2147962178"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "KeyLogger"
+        severity = "Critical"
+        info = "AMTB: an internal category used to refer to some threats"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "8"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {5c 44 6f 77 6e 6c 6f 61 64 73 5c 54 65 6c 65 67 72 61 6d 20 44 65 73 6b 74 6f 70 5c 42 65 61 73 74 [0-2] 5c 78 36 34 5c 52 65 6c 65 61 73 65 5c 42 65 61 73 74 2e 70 64 62}  //weight: 1, accuracy: Low
+        $x_1_2 = "\\AppData\\Roaming\\Exodus\\exodus.wallet" wide //weight: 1
+        $x_1_3 = "\\AppData\\Local\\filecount.txt" wide //weight: 1
+        $x_1_4 = "Launching applications and unsafe files: DISABLED." wide //weight: 1
+        $x_1_5 = "??0_Lockit@std@@QEAA@H@Z" ascii //weight: 1
+        $x_1_6 = "_lock_file" ascii //weight: 1
+        $x_1_7 = ".?AVCBeastApp@@" ascii //weight: 1
+        $x_1_8 = "KillTimer" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_KeyLogger_LRE_2147969753_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/KeyLogger.LRE!MTB"
+        threat_id = "2147969753"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "KeyLogger"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "35"
+        strings_accuracy = "High"
+    strings:
+        $x_20_1 = {48 bb 25 23 22 84 e4 9c f2 cb 48 8b 52 10 33 c9 48 85 d2}  //weight: 20, accuracy: High
+        $x_1_2 = "File succefuly sended" ascii //weight: 1
+        $x_2_3 = "Start collect information to the folder:" ascii //weight: 2
+        $x_3_4 = "All information collected to the folder:" ascii //weight: 3
+        $x_4_5 = "\"encrypted_key\":\"(.*" ascii //weight: 4
+        $x_5_6 = "\\AppData\\Roaming\\Telegram Desktop\\tdata" ascii //weight: 5
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_KeyLogger_KK_2147970441_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/KeyLogger.KK!MTB"
+        threat_id = "2147970441"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "KeyLogger"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "15"
+        strings_accuracy = "High"
+    strings:
+        $x_5_1 = "log_current.bin" ascii //weight: 5
+        $x_4_2 = "aes_key.bin" ascii //weight: 4
+        $x_3_3 = "KEY SENT!!" ascii //weight: 3
+        $x_2_4 = "--- [Window: %ls] ---" ascii //weight: 2
+        $x_1_5 = "key_sender.exe" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

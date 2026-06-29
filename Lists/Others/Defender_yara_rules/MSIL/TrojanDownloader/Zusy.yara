@@ -1,0 +1,109 @@
+rule TrojanDownloader_MSIL_Zusy_CCIG_2147913305_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanDownloader:MSIL/Zusy.CCIG!MTB"
+        threat_id = "2147913305"
+        type = "TrojanDownloader"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "Zusy"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {0b 2b 17 02 07 8f ?? 00 00 01 25 49 06 07 06 8e 69 5d 93 61 d1 53 07 17 58 0b 07 02 8e 69 32 e3}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanDownloader_MSIL_Zusy_PZMZ_2147939602_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanDownloader:MSIL/Zusy.PZMZ!MTB"
+        threat_id = "2147939602"
+        type = "TrojanDownloader"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "Zusy"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR"
+        threshold = "7"
+        strings_accuracy = "High"
+    strings:
+        $x_3_1 = "Add-MpPreference -ExclusionPath C:\\" ascii //weight: 3
+        $x_2_2 = "$output = \"$env:Temp/RuntimeBroker.exe" ascii //weight: 2
+        $x_1_3 = "Start-Process PowerShell -Verb RunAs \"-NoProfile -ExecutionPolicy Bypass -Command" ascii //weight: 1
+        $x_1_4 = "GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanDownloader_MSIL_Zusy_MK_2147961851_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanDownloader:MSIL/Zusy.MK!MTB"
+        threat_id = "2147961851"
+        type = "TrojanDownloader"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "Zusy"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "35"
+        strings_accuracy = "Low"
+    strings:
+        $x_35_1 = {28 17 00 00 0a 72 ?? 00 00 70 28 18 00 00 0a 06 28 19 00 00 0a 00 28 17 00 00 0a 72 ?? 00 00 70 28 18 00 00 0a 28 1a 00 00 0a 26 28 1b 00 00 0a 00 2a}  //weight: 35, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanDownloader_MSIL_Zusy_SX_2147970231_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanDownloader:MSIL/Zusy.SX!MTB"
+        threat_id = "2147970231"
+        type = "TrojanDownloader"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "Zusy"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {9a 06 07 6f 1f 00 00 0a 6f 20 00 00 0a 25 6f 21 00 00 0a 26 6f 22 00 00 0a 6f 23 00 00 0a 6f 24 00 00 0a 0c 08 28 25 00 00 0a 16 28 26 00 00 0a de 49}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanDownloader_MSIL_Zusy_MKA_2147970590_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanDownloader:MSIL/Zusy.MKA!MTB"
+        threat_id = "2147970590"
+        type = "TrojanDownloader"
+        platform = "MSIL: .NET intermediate language scripts"
+        family = "Zusy"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "35"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {06 09 9a 6f ?? 00 00 0a 72 ?? ?? ?? 70 72 ?? ?? ?? 70 6f ?? 00 00 0a 72 ?? ?? ?? 70 72 ?? ?? ?? 70 6f 36 00 00 0a 13 04 07 09 11 04 1f 10 28 ?? 00 00 0a 9c 09 17 d6 0d}  //weight: 20, accuracy: Low
+        $x_15_2 = "IsVMEnvironment" ascii //weight: 15
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

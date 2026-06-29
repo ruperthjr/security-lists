@@ -1,0 +1,116 @@
+rule Trojan_Win64_UACBypass_YTB_2147922270_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/UACBypass.YTB!MTB"
+        threat_id = "2147922270"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "UACBypass"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "C:/Temp/firedrill-main/firedrill-main/cmd/uac_bypass/main.go" ascii //weight: 1
+        $x_1_2 = "pkg/behaviours/bypass_fodhelper" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_UACBypass_MX_2147945757_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/UACBypass.MX!MTB"
+        threat_id = "2147945757"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "UACBypass"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR"
+        threshold = "2"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "DriverInstall\\bin\\TaskScheduler_x64.pdb" ascii //weight: 1
+        $x_1_2 = "bin\\BypassUACDll_x86.pdb" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_UACBypass_HS_2147959021_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/UACBypass.HS!MTB"
+        threat_id = "2147959021"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "UACBypass"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "\\Release\\BypassUAC.pdb" ascii //weight: 1
+        $x_1_2 = "c:\\users\\public\\test.exe" wide //weight: 1
+        $x_1_3 = "\\explorer.exe" wide //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_UACBypass_CM_2147965007_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/UACBypass.CM!MTB"
+        threat_id = "2147965007"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "UACBypass"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "12"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = "main.Persist" ascii //weight: 2
+        $x_2_2 = "main.Bypass" ascii //weight: 2
+        $x_2_3 = "main.CreateRegKey" ascii //weight: 2
+        $x_2_4 = "main.RunAsAdmin" ascii //weight: 2
+        $x_2_5 = "main.IsElevated" ascii //weight: 2
+        $x_2_6 = "DelegateExecute" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_UACBypass_AHB_2147970007_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/UACBypass.AHB!MTB"
+        threat_id = "2147970007"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "UACBypass"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "60"
+        strings_accuracy = "High"
+    strings:
+        $x_30_1 = "[PHASE 1] Stealing Debug Object from winver..." ascii //weight: 30
+        $x_20_2 = "[PHASE 2] Launching Elevated Parent (ComputerDefaults)..." ascii //weight: 20
+        $x_10_3 = "[PHASE 3] Final Detach and Clean..." ascii //weight: 10
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

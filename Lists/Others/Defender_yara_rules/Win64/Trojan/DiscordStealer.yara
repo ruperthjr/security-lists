@@ -1,0 +1,287 @@
+rule Trojan_Win64_DiscordStealer_AHB_2147946419_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/DiscordStealer.AHB!MTB"
+        threat_id = "2147946419"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "DiscordStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_5_1 = {0f 57 c0 0f 11 45 ?? 4c 89 ?? ?? 4c 89 ?? ?? 0f 10 00 0f 11 45 ?? 0f 10 48 10 0f 11 4d ?? 4c 89 ?? 10 48 c7 40 18 0f 00 00 00 c6 00 00 48 8b 54 24 ?? 48 83 fa 0f}  //weight: 5, accuracy: Low
+        $x_1_2 = "\\Local Storage\\leveldb" ascii //weight: 1
+        $x_1_3 = "webhook.site" ascii //weight: 1
+        $x_1_4 = "\\discordcanary" ascii //weight: 1
+        $x_1_5 = "\\Lightcord" ascii //weight: 1
+        $x_1_6 = "\\discordptb" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_DiscordStealer_ARA_2147954784_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/DiscordStealer.ARA!MTB"
+        threat_id = "2147954784"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "DiscordStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = "Successfully sent PC information to Discord" ascii //weight: 2
+        $x_2_2 = "Computer Name" ascii //weight: 2
+        $x_2_3 = "Username" ascii //weight: 2
+        $x_2_4 = "OS Version" ascii //weight: 2
+        $x_2_5 = "CPU Info" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_DiscordStealer_ARR_2147957360_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/DiscordStealer.ARR!MTB"
+        threat_id = "2147957360"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "DiscordStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_2_1 = {31 d2 44 8b 44 24 ?? f7 f1 44 01 c2 89 54 24}  //weight: 2, accuracy: Low
+        $x_8_2 = {89 c2 41 32 01 49 83 c1 ?? 0f b6 c0 c1 ea ?? 33 14 81 89 d0 4d 39 d1}  //weight: 8, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_DiscordStealer_ND_2147959837_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/DiscordStealer.ND!MTB"
+        threat_id = "2147959837"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "DiscordStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "6"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = {c6 40 01 00 48 8b b4 24 58 01 00 00 48 89 ac 24 e0 01 00 00 48 8b bc 24 50 01 00 00 48 8d 56 09 c6 84 24 f0 01 00 00 00 48 c7 84 24 e8 01}  //weight: 2, accuracy: High
+        $x_1_2 = "Stealer Bot" ascii //weight: 1
+        $x_1_3 = "pcinfo.txt" ascii //weight: 1
+        $x_1_4 = "wmic cpu get ProcessorId" ascii //weight: 1
+        $x_1_5 = "Login Data" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_DiscordStealer_AHC_2147960341_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/DiscordStealer.AHC!MTB"
+        threat_id = "2147960341"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "DiscordStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "100"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = "grabber\\grabber.rs" ascii //weight: 10
+        $x_20_2 = "evasion\\process.rs" ascii //weight: 20
+        $x_30_3 = "evasion\\vm.rs" ascii //weight: 30
+        $x_40_4 = "src\\global\\loader.rs" ascii //weight: 40
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_DiscordStealer_AHE_2147961740_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/DiscordStealer.AHE!MTB"
+        threat_id = "2147961740"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "DiscordStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "100"
+        strings_accuracy = "High"
+    strings:
+        $x_20_1 = "Microsoft\\SysCfg" ascii //weight: 20
+        $x_30_2 = "cmd.exe /c start /b \"\" \"%s" ascii //weight: 30
+        $x_40_3 = "SysCfgSvc" ascii //weight: 40
+        $x_10_4 = {4c 89 6c 24 30 4c 0f 43 64 24 70 48 8d 7c 24 30 be 0f 00 00 00 4c 89 6c 24 40 4c 89 6c 24 48 4c 3b fe 76}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_DiscordStealer_MK_2147965028_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/DiscordStealer.MK!MTB"
+        threat_id = "2147965028"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "DiscordStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "High"
+    strings:
+        $x_20_1 = "Capturing clipboard content..." ascii //weight: 20
+        $x_15_2 = "cmd.exe /c schtasks /create /tn \"MicrosoftEdgeUpdateTaskMachine\" /tr \"\\\"" ascii //weight: 15
+        $x_10_3 = "Task not found, using UAC bypass to create..." ascii //weight: 10
+        $x_5_4 = "HTML data captured" ascii //weight: 5
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_DiscordStealer_SX_2147965502_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/DiscordStealer.SX!MTB"
+        threat_id = "2147965502"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "DiscordStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "32"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = "SilenceLoader/1.0" ascii //weight: 10
+        $x_10_2 = "Silence Dll" ascii //weight: 10
+        $x_5_3 = "\\Core\\MilitaryCrypto.hpp" ascii //weight: 5
+        $x_5_4 = "no_license_bsod" ascii //weight: 5
+        $x_2_5 = "/z6v2b9t4" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_DiscordStealer_AHD_2147966357_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/DiscordStealer.AHD!MTB"
+        threat_id = "2147966357"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "DiscordStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "100"
+        strings_accuracy = "High"
+    strings:
+        $x_30_1 = "main.getDiscordTokenFiles" ascii //weight: 30
+        $x_10_2 = "main.regexSearchTokenFiles" ascii //weight: 10
+        $x_20_3 = "main.getDecryptionKey" ascii //weight: 20
+        $x_40_4 = "main.decryptDiscordToken" ascii //weight: 40
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_DiscordStealer_SXA_2147970714_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/DiscordStealer.SXA!MTB"
+        threat_id = "2147970714"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "DiscordStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "60"
+        strings_accuracy = "High"
+    strings:
+        $x_30_1 = "Token-Disc.pdb" ascii //weight: 30
+        $x_20_2 = "Discord-Token-Grabber-master" ascii //weight: 20
+        $x_5_3 = "\\Google\\Chrome\\User Data\\Default" ascii //weight: 5
+        $x_5_4 = "\\discordcanary" ascii //weight: 5
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_DiscordStealer_SXK_2147970811_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/DiscordStealer.SXK!MTB"
+        threat_id = "2147970811"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "DiscordStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_7_1 = "discordGrabber-master" ascii //weight: 7
+        $x_2_2 = "DiscordDev.exe" ascii //weight: 2
+        $x_1_3 = "sysconfig.exe" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_DiscordStealer_AHA_2147971379_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/DiscordStealer.AHA!MTB"
+        threat_id = "2147971379"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "DiscordStealer"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "30"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {2b c8 8b c1 c1 e8 ?? 33 c1 69 c8 ?? ?? ?? ?? 8b c1 c1 e8 ?? 33 c1 69 c8 ?? ?? ?? ?? 8b c1 c1 e8 ?? 32 84 15 ?? ?? ?? ?? 32 c1 88 84 15 ?? ?? ?? ?? 41 83 f8 ?? 72}  //weight: 30, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

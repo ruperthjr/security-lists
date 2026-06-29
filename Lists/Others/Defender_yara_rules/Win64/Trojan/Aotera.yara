@@ -1,0 +1,353 @@
+rule Trojan_Win64_Aotera_KK_2147962258_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.KK!MTB"
+        threat_id = "2147962258"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "35"
+        strings_accuracy = "High"
+    strings:
+        $x_20_1 = {8b d1 41 8b 54 96 10 43 89 54 8e 10 8b d1 45 89 5c 96 10 41 ff c1 41 81 f9 00 01 00 00}  //weight: 20, accuracy: High
+        $x_10_2 = {41 8b c3 41 0f b6 44 86 10 33 d0 41 8b c1 88 54 01 10 41 ff c1 41 3b f9}  //weight: 10, accuracy: High
+        $x_5_3 = {41 c1 e7 04 41 0b c7 42 88 44 37 10 83 c5 02 41 ff c6 3b ee 7c c0}  //weight: 5, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_KK_2147962258_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.KK!MTB"
+        threat_id = "2147962258"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "30"
+        strings_accuracy = "Low"
+    strings:
+        $x_20_1 = {44 8b c9 46 0f b6 4c 0e ?? 49 03 d1 49 b9 ?? ?? ?? ?? ?? ?? ?? ?? 49 0f af d1 4c 8b ca 49 c1 e9 1c 49 33 d1 ff c1 44 3b c1}  //weight: 20, accuracy: Low
+        $x_10_2 = {49 03 d0 4c 8b c2 49 c1 e8 ?? 4c 33 c2 49 b9 ?? ?? ?? ?? ?? ?? ?? ?? 4d 0f af c1 4d 8b c8 49 c1 e9 ?? 4d 33 c1 49 b9 ?? ?? ?? ?? ?? ?? ?? ?? 4d 0f af c1 4d 8b c8 49 c1 e9 ?? 4d 33 c1 44 8b c9 4e 89 44 c8 ?? ff c1 83 f9}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_GVF_2147962303_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.GVF!MTB"
+        threat_id = "2147962303"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {0f 4e d0 8b c1 f7 d8 44 8b c0 41 83 c8 01 45 0f bd d0 f3 45 0f bd c0 41 83 f0 1f f7 05 8a 5e 11 00 00 10 00 00 45 0f 45 d0 45 8b c2 49 c1 e0 03 4c 8d 15 80 7b 0d 00 4d 03 c2 49 03 00 48 c1 f8 20 3b d0 0f 4d c2 03 c6 41 3b 41 08 0f 8f f9 00 00 00}  //weight: 1, accuracy: High
+        $x_1_2 = "gSXHUr3OcH98GNkXZyjGlRa" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_KKA_2147962593_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.KKA!MTB"
+        threat_id = "2147962593"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "20"
+        strings_accuracy = "High"
+    strings:
+        $x_20_1 = {8b c1 44 0f b6 44 06 10 41 83 f0 42 44 88 44 06 10 ff c1 3b d1}  //weight: 20, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_RR_2147962990_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.RR!MTB"
+        threat_id = "2147962990"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {41 8b d1 8b c1 33 44 97 10 44 03 c0 8b d1 41 2b d2 41 c1 c0 11 44 33 c2 41 8b d2 8b c1 41 33 c0 89 44 96 10 41 ff c2 41 83 fa 18 0f}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_RR_2147962990_1
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.RR!MTB"
+        threat_id = "2147962990"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {45 33 18 45 89 18 45 8b c3 41 c1 e0 0c 41 c1 eb 14 45 0b c3 45 8b c8 44 89 09 44 03 02 44 89 02 48 8b d0 44 33 02 44 89 02 41 8b d0 c1 e2 08 41 c1 e8 18 41 0b d0 44 8b c2 44 89 00 41 03 12 41 89 12 48 8b c1 33 10 89 10}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_RR_2147962990_2
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.RR!MTB"
+        threat_id = "2147962990"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "6"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {41 8b d1 8b c1 33 44 97 10 44 03 c0 8b d1 41 2b d2 41 c1 c0 11 44 33 c2 41 8b d2 8b c1 41 33 c0 89 44 96 10 41 ff c2 41 83 fa 18 0f}  //weight: 1, accuracy: High
+        $x_1_2 = "AnalyzeSnapshot" ascii //weight: 1
+        $x_1_3 = "DllGetClassObject" ascii //weight: 1
+        $x_1_4 = "InitializeSession" ascii //weight: 1
+        $x_1_5 = "RunMainLoop" ascii //weight: 1
+        $x_1_6 = "ShutdownSession" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_AH_2147963108_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.AH!MTB"
+        threat_id = "2147963108"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "60"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = "fwI5CYY8elcXi9rOF3iD4stGKMMZe0BstM8GZDIO3xWgXICM8R5XqXHuJYw" ascii //weight: 10
+        $x_20_2 = "fgUgHIQ7f1AezJfhCkfW89FNBMwbNFRup5scYzkywRmsXZbftA5dpW+0Ys21wE7" ascii //weight: 20
+        $x_30_3 = "ew0jE8ckfkwcjZ6gEUyF8tRaBY0WehJgud4dfz08wR/jSp+atAYYqnWvew=" ascii //weight: 30
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_NTA_2147963534_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.NTA!MTB"
+        threat_id = "2147963534"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = {48 33 f9 48 c1 c7 1f 8b 55 a8 ff c2 83 fa 08}  //weight: 2, accuracy: High
+        $x_3_2 = {2b c1 44 6b 45 a8 0d 41 03 c0 25 ff 0f 00 00 41 3b 47 08}  //weight: 3, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_CP_2147963929_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.CP!MTB"
+        threat_id = "2147963929"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = {0f b6 54 05 00 30 14 03 48 83 c0 01 4c 39 f8 72}  //weight: 2, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_GVN_2147964383_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.GVN!MTB"
+        threat_id = "2147964383"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = {8b 4f 0c 81 f1 30 00 30 00 8b 47 0e 35 30 00 31 00 0b c8 75 0a}  //weight: 2, accuracy: High
+        $x_1_2 = {44 8b 3e 41 8d 57 01 89 16 44 3b 7b 08 0f 83 b8 01 00 00 48 8b 13 41 8b c7 3b 4d 30 0f 83 a9 01 00 00 4c 8b 45 28 44 8b d1 47 0f b7 04 50 66 44 89 04 42 ff c1 3b 4d 20 7c c6}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_NA_2147968220_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.NA!MTB"
+        threat_id = "2147968220"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "7"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = {48 8b ce ba 28 00 00 00 e8 7b fc ff ff 4c 33 e0 41 3b ed 0f 8e e5 00 00 00 49 b8 3b a7 ca 84 85 ae 67 bb 4d 33 c4 49 8b f4 48 f7 d6 48 b9 2b f8 94 fe 72 f3 6e 3c 48 33 f1 33 c9 48 85 ff 0f 84 ce 00 00 00 83 7f 08 2c 0f 8c c4 00 00 00 48 8d 4f 10}  //weight: 2, accuracy: High
+        $x_2_2 = {49 8b c0 48 d1 c0 4d 8b d0 49 c1 c2 05 49 23 c2 48 33 c6 49 8b f0 49 c1 c0 02 4c 33 c0 4c 33 01 48 83 c1 08 ff ca 75 d8}  //weight: 2, accuracy: High
+        $x_1_3 = "Attempted to read or write protected memory" wide //weight: 1
+        $x_1_4 = "AllowFileWrites" wide //weight: 1
+        $x_1_5 = "VirtualAllocExNuma" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_LVM_2147969239_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.LVM!MTB"
+        threat_id = "2147969239"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {b9 01 00 00 00 e8 46 66 00 00 33 c0 f0 48 0f b1 1d ?? ?? ?? ?? 75 e9}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_LVK_2147969856_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.LVK!MTB"
+        threat_id = "2147969856"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {41 0f b6 09 83 e1 0f 4a 0f be 84 31 80 61 4e 00 42 8a 8c 31 90 61 4e 00 4c 2b c8 41 8b 41 fc d3 e8 03 f0 8b c6 49 03 c2 48 03 c7 48 3b d8 72 2b 41 0f b6 09 41 ff c0 83 e1 0f 4a 0f be 84 31 80 61 4e 00 42 8a 8c 31 90 61 4e 00 4c 2b c8 41 8b 51 fc d3 ea ff ca 45 3b c3 72 a5}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_AHA_2147970870_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.AHA!MTB"
+        threat_id = "2147970870"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "30"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {41 03 d3 33 ca c1 c1 ?? 44 03 c1 45 33 d8 41 c1 c3 ?? 44 89 5c 24 20 41 03 d3 89 54 24 24 33 ca c1 c1 ?? 89 4c 24 28 44 3b 57 08 0f}  //weight: 30, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win64_Aotera_GMF_2147972189_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win64/Aotera.GMF!MTB"
+        threat_id = "2147972189"
+        type = "Trojan"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Aotera"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "Low"
+    strings:
+        $x_10_1 = {8d 14 0f 3b d6 0f 83 ?? ?? ?? ?? 44 8b c2 46 0f b6 54 03 ?? 44 8b c9 47 0f b6 4c 0e ?? 45 33 d1 3b 55 ?? ?? ?? 46 88 54 05 ?? ff c1 3b c8}  //weight: 10, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

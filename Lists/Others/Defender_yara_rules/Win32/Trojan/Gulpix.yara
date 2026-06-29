@@ -1,0 +1,44 @@
+rule Trojan_Win32_Gulpix_AHB_2147957565_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Gulpix.AHB!MTB"
+        threat_id = "2147957565"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Gulpix"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "50"
+        strings_accuracy = "Low"
+    strings:
+        $x_30_1 = {c6 85 b6 fe ff ff 33 c6 85 b7 fe ff ff 69 c6 85 b8 fe ff ff 53 c6 85 b9 fe ff ff 63 c6 85 ba fe ff ff 78 c6 85 bb fe ff ff 21}  //weight: 30, accuracy: High
+        $x_20_2 = {0f b6 c8 81 e1 ?? ?? ?? ?? 0f b6 d1 0f b6 45 ed c1 f8 ?? 0f b6 c8 83 e1 ?? 0f b6 c1 0b d0 8b 4d 0c}  //weight: 20, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule Trojan_Win32_Gulpix_ARR_2147966307_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "Trojan:Win32/Gulpix.ARR!MTB"
+        threat_id = "2147966307"
+        type = "Trojan"
+        platform = "Win32: Windows 32-bit platform"
+        family = "Gulpix"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "20"
+        strings_accuracy = "Low"
+    strings:
+        $x_14_1 = {66 3b d7 74 ?? 0f b7 94 4d ?? ?? ?? ?? 41 66 3b d6 75}  //weight: 14, accuracy: Low
+        $x_6_2 = {0f 94 c0 33 f6 8d 7c 00 ?? 33 c0 40 8b c8 66 39 b5}  //weight: 6, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

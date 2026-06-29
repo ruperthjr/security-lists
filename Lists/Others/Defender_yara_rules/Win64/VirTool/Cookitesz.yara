@@ -1,0 +1,69 @@
+rule VirTool_Win64_Cookitesz_A_2147921763_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "VirTool:Win64/Cookitesz.A!MTB"
+        threat_id = "2147921763"
+        type = "VirTool"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cookitesz"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {48 8b 54 24 40 48 85 d2 [0-22] 41 b9 40 00 00 00 4c 89 64 24 20 ?? ?? ?? ?? 48 8b ce ?? ?? ?? ?? ?? ?? 85 c0}  //weight: 1, accuracy: Low
+        $x_1_2 = {41 b9 30 00 00 00 ?? ?? ?? ?? ?? 49 8b d7 48 8b ce ?? ?? ?? ?? ?? ?? 48 83 f8 30 ?? ?? ?? ?? ?? ?? 81 7c 24 58 00 10 00 00 ?? ?? f6 44 24 5c 44 ?? ?? 48 8b 4c 24 50 ?? ?? ?? ?? ?? 4c 8b 4c 24 50 4c 8b e0 48 8b 54 24 38 ?? ?? ?? ?? 4d 8b c4 48 89 44 24 20 48 8b ce ?? ?? ?? ?? ?? ?? 85 c0}  //weight: 1, accuracy: Low
+        $x_1_3 = {44 8b 45 98 33 f6 ?? ?? ?? ?? ?? ?? ?? 48 89 75 a0 [0-20] 45 85 c0 ?? ?? ?? ?? ?? ?? 33 d2 b9 10 04 00 00}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule VirTool_Win64_Cookitesz_B_2147924963_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "VirTool:Win64/Cookitesz.B!MTB"
+        threat_id = "2147924963"
+        type = "VirTool"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cookitesz"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {48 8b 54 24 40 [0-18] 48 8b 54 24 38 48 85 d2 ?? ?? 4c 39 64 24 40 ?? ?? 41 b9 40 00 00 00 4c 89 64 24 20 ?? ?? ?? ?? ?? ?? ?? 48 8b cb ?? ?? ?? ?? ?? ?? 85 c0 ?? ?? 45 8b c5 ?? ?? ?? ?? ?? ?? ?? 48 8b cb}  //weight: 1, accuracy: Low
+        $x_1_2 = {44 8b 85 04 04 00 00 45 33 e4 [0-20] 41 8b dc ?? ?? ?? ?? ?? ?? ?? 45 85 c0 ?? ?? ?? ?? ?? ?? 33 d2 b9 10 04 00 00}  //weight: 1, accuracy: Low
+        $x_1_3 = {41 b9 30 00 00 00 ?? ?? ?? ?? ?? 48 8b d5 48 8b cb ?? ?? ?? ?? ?? ?? 48 83 f8 30 ?? ?? ?? ?? ?? ?? 81 7c 24 60 00 10 00 00 ?? ?? ?? ?? ?? ?? f6 44 24 64 04 ?? ?? ?? ?? ?? ?? 81 7c 24 68 00 00 02 00 ?? ?? ?? ?? ?? ?? 48 8b 4c 24 58 ?? ?? ?? ?? ?? 48 8b 5c 24 40 b9 c0 00 00 00 4c 8b f8}  //weight: 1, accuracy: Low
+        $x_1_4 = {4c 89 64 24 30 48 8b f0 48 85 c0 [0-17] 4c 8b ce ?? ?? ?? ?? ?? ?? ?? 48 89 44 24 20 48 8b cb ?? ?? ?? ?? ?? 85 c0 ?? ?? ?? ?? ?? ?? 4c 8b 74 24 30}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule VirTool_Win64_Cookitesz_D_2147966876_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "VirTool:Win64/Cookitesz.D"
+        threat_id = "2147966876"
+        type = "VirTool"
+        platform = "Win64: Windows 64-bit platform"
+        family = "Cookitesz"
+        severity = "Critical"
+        signature_type = "SIGNATURE_TYPE_PEHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {48 8b 74 24 40 b9 98 00 00 00 4c 8b e0 e8 [0-17] 48 8b d8 ?? ?? ?? ?? ?? ?? ?? 48 3b c1 ?? ?? 4c 3b cd ?? ?? 4c 8b c5 48 8b c8 4c 2b c0 ba 98 00 00 00 ?? ?? ?? 42 0f b6 04 01 88 01}  //weight: 1, accuracy: Low
+        $x_1_2 = {48 8b 4d e0 e8 ?? ?? ?? ?? 48 8b 55 00 48 85 d2 ?? ?? 48 83 7d 08 00 ?? ?? 48 89 74 24 20 41 b9 40 00 00 00 ?? ?? ?? ?? ?? ?? ?? 48 8b 4d d8 ff}  //weight: 1, accuracy: Low
+        $x_1_3 = {0f b6 08 80 f9 aa ?? ?? 38 0c 02 ?? ?? 48 ff c0 48 8b c8 48 2b cb 48 81 f9 98 00 00 00 ?? ?? 48 8b 0f 48 81 f9 e8 03 00 00}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+

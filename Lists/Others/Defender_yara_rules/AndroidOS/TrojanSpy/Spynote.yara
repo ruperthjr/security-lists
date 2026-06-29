@@ -1,0 +1,445 @@
+rule TrojanSpy_AndroidOS_Spynote_C_2147755397_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.C!MTB"
+        threat_id = "2147755397"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "Lcmf0/c3b5bm90zq/patch" ascii //weight: 1
+        $x_1_2 = "system/bin/screencap -p /sdcard/rootSU" ascii //weight: 1
+        $x_1_3 = "root@" ascii //weight: 1
+        $x_1_4 = "/base.apk" ascii //weight: 1
+        $x_1_5 = "has_phone_number!=0 AND (mimetype=? OR mimetype=?)" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (4 of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_K_2147785003_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.K!MTB"
+        threat_id = "2147785003"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "key_logger_online_start" ascii //weight: 1
+        $x_1_2 = "camera_manager_capture" ascii //weight: 1
+        $x_1_3 = "Send_Server000" ascii //weight: 1
+        $x_1_4 = "spyandroid" ascii //weight: 1
+        $x_1_5 = "shell_terminal" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_M_2147793794_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.M"
+        threat_id = "2147793794"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "ArrayDns_Key" ascii //weight: 1
+        $x_1_2 = "Contact_server000" ascii //weight: 1
+        $x_1_3 = "DesServicScreen" ascii //weight: 1
+        $x_1_4 = "upload_file000" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_N_2147797463_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.N"
+        threat_id = "2147797463"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_2_1 = "Lpackage/name/mmsiaayjumqbsbhwfryjcrurnxukewxoziwjtlo2439" ascii //weight: 2
+        $x_2_2 = "/fsjhqxbkkisc24322" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_I_2147799529_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.I"
+        threat_id = "2147799529"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "Deviceinfo is OK" ascii //weight: 1
+        $x_1_2 = "upload&androidid=" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_O_2147799530_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.O"
+        threat_id = "2147799530"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "3"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "result=ok&action=getcontact&androidid=" ascii //weight: 1
+        $x_1_2 = "&isbank=" ascii //weight: 1
+        $x_1_3 = "listnum&androidid=" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_AXR_2147813545_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.AXR"
+        threat_id = "2147813545"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "splash.msicapp.netalfa.RECORD" ascii //weight: 1
+        $x_1_2 = "usrgmail" ascii //weight: 1
+        $x_1_3 = "ActivSend" ascii //weight: 1
+        $x_1_4 = "GetLogs" ascii //weight: 1
+        $x_1_5 = "StoragPermissions" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_H_2147813995_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.H!MTB"
+        threat_id = "2147813995"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {14 05 3b a7 00 00 b0 56 48 05 03 01 d9 09 06 1f dc 0a 01 02 48 0a 07 0a da 0b 09 4e 91 0b 06 0b b1 96 b0 b6 da 06 06 00 b0 56 93 05 0b 0b db 05 05 01 df 05 05 01 b0 56 94 05 0b 0b b0 56 97 05 06 0a 8d 55 4f 05 04 01 93 05 0b 08 d8 01 01 01}  //weight: 1, accuracy: High
+        $x_1_2 = "dalvik/system/DexClassLoader" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_D_2147820149_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.D!MTB"
+        threat_id = "2147820149"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "1"
+        strings_accuracy = "Low"
+    strings:
+        $x_1_1 = {12 10 71 10 ?? 01 00 00 0c 01 22 08 2a 00 6e 10 55 00 0a 00 0a 03 6e 10 57 00 0a 00 0a 04 52 95 ?? 00 52 96 ?? 00 07 82 01 b7 76 06 54 00 02 00 6e 10 56 00 08 00 0a 0a 12 0b 32 0a 06 00 71 10 ?? 01 0b 00 0c 01 6e 10 59 00 08 00 6e 10 56 00 08 00 0a 0a 12 30 32 0a 09 00 6e 10 5a 00 08 00 71 10 ?? 01 0b 00 0c 01}  //weight: 1, accuracy: Low
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_F_2147822916_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.F!MTB"
+        threat_id = "2147822916"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "_callr_lsnr_" ascii //weight: 1
+        $x_1_2 = "contactedfwanycitationsqhansdcertifiedahobbiesgdeliciousedefendantrwritersrtoddlerlcathedralc3" ascii //weight: 1
+        $x_1_3 = "Auto_Click" ascii //weight: 1
+        $x_1_4 = "DisablePlayProtect" ascii //weight: 1
+        $x_1_5 = "ActivSend" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (4 of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_G_2147824755_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.G!MTB"
+        threat_id = "2147824755"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "5"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "MgetscreamSz" ascii //weight: 1
+        $x_1_2 = "RngRover" ascii //weight: 1
+        $x_1_3 = "snddataSSMS" ascii //weight: 1
+        $x_1_4 = "FlafhStop" ascii //weight: 1
+        $x_1_5 = "procekills" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_I_2147829370_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.I!MTB"
+        threat_id = "2147829370"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "WackMeUpJob" ascii //weight: 1
+        $x_1_2 = "isServiceWork" ascii //weight: 1
+        $x_1_3 = "activityadm" ascii //weight: 1
+        $x_1_4 = "phonixeffect" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_U_2147841326_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.U"
+        threat_id = "2147841326"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "ConnectedDownloadManager" ascii //weight: 1
+        $x_1_2 = "ygdyeg/systygdyegem/biygdyegn/scrygdyegeencaygdyegp -p ygdyeg/sdcaygdyegrd/roygdyegotSU.ygdyegpng" ascii //weight: 1
+        $x_1_3 = "StartServiceGLocation()" ascii //weight: 1
+        $x_1_4 = "/chygdyeg/ch2.ygdyegphp?sygdyegsl=" ascii //weight: 1
+        $x_2_5 = "Lcom/us/note/C12" ascii //weight: 2
+        $x_2_6 = "Lcom/us/note/b" ascii //weight: 2
+    condition:
+        (filesize < 20MB) and
+        (
+            ((4 of ($x_1_*))) or
+            ((1 of ($x_2_*) and 2 of ($x_1_*))) or
+            ((2 of ($x_2_*))) or
+            (all of ($x*))
+        )
+}
+
+rule TrojanSpy_AndroidOS_Spynote_AW_2147851817_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.AW!MTB"
+        threat_id = "2147851817"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "/Config/sys/apps/log/log-" ascii //weight: 1
+        $x_1_2 = "enabled_accessibility_services" ascii //weight: 1
+        $x_1_3 = "getLaunchIntentForPackage" ascii //weight: 1
+        $x_1_4 = "phonixeffect" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_Z_2147956178_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.Z!MTB"
+        threat_id = "2147956178"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "com.shell.myapplication.MainActivity" ascii //weight: 1
+        $x_1_2 = "com.cwsapp.view.RnAppLockActivity" ascii //weight: 1
+        $x_1_3 = "/common/service/StatusJobService" ascii //weight: 1
+        $x_1_4 = "Lcom/shell/common/receiver/MyDeviceAdminReceiver" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_HAB_2147962201_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.HAB!MTB"
+        threat_id = "2147962201"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "10"
+        strings_accuracy = "High"
+    strings:
+        $x_10_1 = {2e 62 6d 70 00 04 2e 67 69 66 00 05 2e 6a 70 65 67 00 04 2e 6a 70 67 00 04 2e 70 6e 67 00 05 2e 77 65 62 70 00 01 2f 00 1e 2f 43 6f 6e 66 69 67 2f 73 79 73 2f 61 70 70 73 2f 6c 6f 67 65 2f 70 77 64 2e 74 65 78 74 00 0d 2f 70 72 6f 63 2f 63 70 75 69 6e 66 6f 00 0d 2f 70 72 6f 63 2f 6d 65 6d 69 6e 66 6f 00 08 2f 73 64 63 61 72 64 2f 00 01 30 00 02 30 25 00 02 30}  //weight: 10, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_AA_2147962232_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.AA!MTB"
+        threat_id = "2147962232"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {62 02 07 00 1a 03 6a 00 71 10 62 00 01 00 0c 04 24 10 42 00 04 00 0c 04 71 30 67 00 32 04 0c 02 54 63 09 00 6e 10 19 00 03 00 0c 03 6e 20 32 00 23 00 0c 02 13 03 00 20 23 33 40 00 6e 20 5f 00 32 00 0a 04 12 f5 32 54 09 00 12 05 6e 40 5c 00 30 45 28 f5 0d 01 28 09 d8 01 01 01}  //weight: 1, accuracy: High
+        $x_1_2 = {12 02 6e 30 30 00 10 02 0c 00 54 00 01 00 54 73 0a 00 71 30 86 00 01 03 0c 00 6e 10 85 00 07 00 0c 01 38 01 5d 00 21 13 3d 03 5a 00 22 03 39 00 6e 10 68 00 00 00 0c 00 13 04 10 00 23 45 40 00 21 06}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_AB_2147962241_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.AB!MTB"
+        threat_id = "2147962241"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "2"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = "com.appd.instll.load.action.RootlessSaiPiBroadcastReceiver" ascii //weight: 1
+        $x_1_2 = {82 3a a8 0a 0a 02 87 aa 82 9b a8 0b 0b 00 87 bb 6e 30 09 02 ad 0b 0a 0a 71 10 2e 02 0a 00 0a 0b 13 0c c8 00 37 cb 13 00 71 10 37 02 0a 00 0a 0b b0 b5 71 10 36 02 0a 00 0a 0b b0 b6 71 10 30 02 0a 00 0a 0a b0 a7 d8 04 04 01}  //weight: 1, accuracy: High
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
+rule TrojanSpy_AndroidOS_Spynote_AC_2147962243_0
+{
+    meta:
+        author = "defender2yara"
+        detection_name = "TrojanSpy:AndroidOS/Spynote.AC!MTB"
+        threat_id = "2147962243"
+        type = "TrojanSpy"
+        platform = "AndroidOS: Android operating system"
+        family = "Spynote"
+        severity = "Critical"
+        info = "MTB: Microsoft Threat Behavior"
+        signature_type = "SIGNATURE_TYPE_DEXHSTR_EXT"
+        threshold = "4"
+        strings_accuracy = "High"
+    strings:
+        $x_1_1 = {70 10 3b 00 02 00 22 00 5c 01 12 01 70 30 89 03 20 01 5b 20 6c 05 22 00 5c 01 12 11 70 30 89 03 20 01 5b 20 6d 05 1a 00 cf 0d 5b 20 6e 05}  //weight: 1, accuracy: High
+        $x_1_2 = {22 00 d3 02 70 10 ed 09 00 00 52 31 81 05 6e 20 f4 09 10 00 1a 01 c6 12 6e 20 f8 09 10 00 6e 20 f8 09 40 00 6e 10 fe 09 00 00 0c 04 1a 00 69 07 71 20 25 09 40 00 62 04 31 04 1a 01 d6 01 71 20 26 09 41 00 71 00 39 0e 00 00 1a 04 00 00 71 20 29 09 40 00 0c 01}  //weight: 1, accuracy: High
+        $x_1_3 = "Lnet/falcon878/market/AdminReceiver" ascii //weight: 1
+        $x_1_4 = "Lnet/falcon878/market/s/brodatz/ServiceRestartReceiver" ascii //weight: 1
+    condition:
+        (filesize < 20MB) and
+        (all of ($x*))
+}
+
